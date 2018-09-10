@@ -10,6 +10,8 @@ public class BuyTower : MonoBehaviour
     private int myCurrency;
     public GameObject buyLock;
     public bool isBought;
+    public CurrentPad myCurrentPad;
+	public float percentageOfCash;
     void Start()
     {
         myTowerStats = myTower.GetComponent<ThisTower>().thisTower;
@@ -21,16 +23,10 @@ public class BuyTower : MonoBehaviour
     {
         myCurrency = currencyScript.myCurrency;
 
-        if (isBought == false)
+
+        if (myCurrency >= myTowerStats.cost)
         {
-            if (myCurrency >= myTowerStats.cost)
-            {
-                ToggleLock(false);
-            }
-            else
-            {
-                ToggleLock(true);
-            }
+            ToggleLock(false);
         }
         else
         {
@@ -57,6 +53,15 @@ public class BuyTower : MonoBehaviour
     {
         isBought = true;
         currencyScript.myCurrency -= myTowerStats.cost;
+		myCurrentPad.myPad.GetComponent<TowerPad>().myTower = myTowerStats;
+        myCurrentPad.myPad.GetComponent<TowerPad>().HidePanel();
+        myCurrentPad.myPad.GetComponent<TowerPad>().isBought = true;
+    }
+
+    public void Sell()
+    {
+		isBought = false;
+		//currencyScript.myCurrency += myTowerStats.cost * percentageOfCash;
     }
 
 }
