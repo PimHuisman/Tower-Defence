@@ -17,6 +17,7 @@ public class TowerPad : MonoBehaviour
     void Start()
     {
         buyPanel.SetActive(false);
+		sellPanel.SetActive(false);
     }
 
     // Update is called once per frame

@@ -4,5 +4,5 @@ using UnityEngine;
 
 
 public class Currency : MonoBehaviour {
-	public int myCurrency;
+	public float myCurrency;
 }

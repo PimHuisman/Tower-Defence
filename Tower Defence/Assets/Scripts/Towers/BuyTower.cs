@@ -4,34 +4,39 @@ using UnityEngine;
 using UnityEngine.UI;
 public class BuyTower : MonoBehaviour
 {
-    public GameObject myTower;
+    public GameObject myPad;
     private TowerStat myTowerStats;
     public Currency currencyScript;
-    private int myCurrency;
+    private float myCurrency;
     public GameObject buyLock;
     public bool isBought;
     public CurrentPad myCurrentPad;
-	public float percentageOfCash;
+    public float percentageOfCash;
     void Start()
     {
-        myTowerStats = myTower.GetComponent<ThisTower>().thisTower;
+        //myTowerStats = myTower.GetComponent<ThisTower>().thisTower;
         ToggleLock(true);
-
     }
 
     void Update()
     {
         myCurrency = currencyScript.myCurrency;
+		
+        myTowerStats = myPad.GetComponent<ThisTower>().thisTower;
+		
+        if (myCurrentPad.myPad.GetComponent<TowerPad>().isBought == false)
+        {
+            if (myCurrency >= myTowerStats.cost)
+            {
+                ToggleLock(false);
+            }
+            else
+            {
+                ToggleLock(true);
+            }
+        }
 
 
-        if (myCurrency >= myTowerStats.cost)
-        {
-            ToggleLock(false);
-        }
-        else
-        {
-            ToggleLock(true);
-        }
     }
 
     void ToggleLock(bool lockMe)
@@ -53,15 +58,18 @@ public class BuyTower : MonoBehaviour
     {
         isBought = true;
         currencyScript.myCurrency -= myTowerStats.cost;
-		myCurrentPad.myPad.GetComponent<TowerPad>().myTower = myTowerStats;
+        myCurrentPad.myPad.GetComponent<TowerPad>().myTower = myTowerStats;
         myCurrentPad.myPad.GetComponent<TowerPad>().HidePanel();
         myCurrentPad.myPad.GetComponent<TowerPad>().isBought = true;
     }
 
     public void Sell()
     {
-		isBought = false;
-		//currencyScript.myCurrency += myTowerStats.cost * percentageOfCash;
+        isBought = false;
+        currencyScript.myCurrency += myTowerStats.cost * percentageOfCash;
+        myCurrentPad.myPad.GetComponent<TowerPad>().myTower = null;
+        myCurrentPad.myPad.GetComponent<TowerPad>().HidePanel();
+        myCurrentPad.myPad.GetComponent<TowerPad>().isBought = true;
     }
 
 }
