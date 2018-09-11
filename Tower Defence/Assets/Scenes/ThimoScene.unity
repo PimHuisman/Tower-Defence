@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3331233}
   - component: {fileID: 3331232}
+  - component: {fileID: 3331231}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -129,6 +130,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3331231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 3331230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8b1979cbc2e7b4da169bed8b424920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPads:
+  - {fileID: 899340563}
+  buyPanel: {fileID: 255901839}
+  sellPanel: {fileID: 1655565452}
 --- !u!114 &3331232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,28 +170,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &253619009 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1394444488312382, guid: d014c2736b2725b429912e49a8cc51bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 989712357}
---- !u!114 &253619010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 253619009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f658a715710734d8fccf5f0be21130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPad: {fileID: 0}
-  currencyScript: {fileID: 3331232}
-  buyLock: {fileID: 1252401576}
-  isBought: 0
-  myCurrentPad: {fileID: 255901844}
-  percentageOfCash: 0
 --- !u!1 &255901839
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +181,6 @@ GameObject:
   - component: {fileID: 255901843}
   - component: {fileID: 255901842}
   - component: {fileID: 255901841}
-  - component: {fileID: 255901844}
   m_Layer: 5
   m_Name: BuyPanel
   m_TagString: Untagged
@@ -275,28 +268,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 255901839}
   m_CullTransparentMesh: 0
---- !u!114 &255901844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 255901839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f860d5b0f00af45937fc0436dce3b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPad: {fileID: 0}
---- !u!1 &391585656 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1988576296472426, guid: d014c2736b2725b429912e49a8cc51bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 2045738366}
---- !u!1 &443096887 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1988576296472426, guid: d014c2736b2725b429912e49a8cc51bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1424276224}
 --- !u!1 &515197756
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,11 +301,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &689374638 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1988576296472426, guid: d014c2736b2725b429912e49a8cc51bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1200459044}
 --- !u!1 &899340563
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +385,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1992357277}
+  - {fileID: 1570682915}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -433,12 +400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826f6623ee2831641aa89c113775f2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBought: 0
-  myMouse: {fileID: 1861329772}
-  buyPanel: {fileID: 255901839}
-  sellPanel: {fileID: 1655565452}
-  uiPoint: {fileID: 1992357276}
-  myTower: {fileID: 0}
+  mouseScript: {fileID: 1861329772}
+  isPressed: 0
+  currentTower: {fileID: 0}
 --- !u!224 &961187424 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224044610628937734, guid: d014c2736b2725b429912e49a8cc51bd,
@@ -559,21 +523,22 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 253619010}
+      objectReference: {fileID: 3331231}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
+      value: Build
       objectReference: {fileID: 0}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 00de74cea059aac4380a8c9d0acd5217,
+        type: 2}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: TowerStat, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1637185870049320, guid: d014c2736b2725b429912e49a8cc51bd, type: 2}
       propertyPath: m_Name
@@ -582,7 +547,7 @@ Prefab:
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
@@ -784,11 +749,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1880902260}
+      objectReference: {fileID: 3331231}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
+      value: Build
       objectReference: {fileID: 0}
     - target: {fileID: 114313463836035938, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
@@ -799,11 +764,12 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 0670fc5b3ec235b4cb511b5e5571d9c3,
+        type: 2}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: TowerStat, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1637185870049320, guid: d014c2736b2725b429912e49a8cc51bd, type: 2}
       propertyPath: m_Name
@@ -812,7 +778,7 @@ Prefab:
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
@@ -842,11 +808,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224044610628937734, guid: d014c2736b2725b429912e49a8cc51bd,
     type: 2}
   m_PrefabInternal: {fileID: 1200459044}
---- !u!1 &1252401576 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1988576296472426, guid: d014c2736b2725b429912e49a8cc51bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 989712357}
 --- !u!1001 &1424276224
 Prefab:
   m_ObjectHideFlags: 0
@@ -957,11 +918,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1493366155}
+      objectReference: {fileID: 3331231}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
+      value: Build
       objectReference: {fileID: 0}
     - target: {fileID: 114313463836035938, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
@@ -972,11 +933,12 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: aabd4706f984ee84b9d739c40afce4f9,
+        type: 2}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: TowerStat, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1637185870049320, guid: d014c2736b2725b429912e49a8cc51bd, type: 2}
       propertyPath: m_Name
@@ -985,7 +947,7 @@ Prefab:
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
@@ -1019,28 +981,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224044610628937734, guid: d014c2736b2725b429912e49a8cc51bd,
     type: 2}
   m_PrefabInternal: {fileID: 1424276224}
---- !u!1 &1493366154 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1394444488312382, guid: d014c2736b2725b429912e49a8cc51bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1424276224}
---- !u!114 &1493366155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1493366154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f658a715710734d8fccf5f0be21130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPad: {fileID: 0}
-  currencyScript: {fileID: 3331232}
-  buyLock: {fileID: 443096887}
-  isBought: 0
-  myCurrentPad: {fileID: 255901844}
-  percentageOfCash: 0
 --- !u!1001 &1502202613
 Prefab:
   m_ObjectHideFlags: 0
@@ -1166,7 +1106,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2003034838}
+      objectReference: {fileID: 3331231}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -1180,12 +1120,12 @@ Prefab:
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
+      value: Build
       objectReference: {fileID: 0}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: TowerStat, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 114238028046705628, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
@@ -1196,10 +1136,50 @@ Prefab:
         type: 2}
       propertyPath: myCurrentPad
       value: 
-      objectReference: {fileID: 255901844}
-    m_RemovedComponents: []
+      objectReference: {fileID: 0}
+    - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: ac483872dda22ad4580e5299f8eb5655,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 114238028046705628, guid: d014c2736b2725b429912e49a8cc51bd, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: d014c2736b2725b429912e49a8cc51bd, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1570682914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570682915}
+  m_Layer: 0
+  m_Name: TowerPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1570682915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1570682914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 899340567}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1574263212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,7 +1191,6 @@ GameObject:
   - component: {fileID: 1574263216}
   - component: {fileID: 1574263215}
   - component: {fileID: 1574263214}
-  - component: {fileID: 1574263217}
   m_Layer: 5
   m_Name: SellButton
   m_TagString: Untagged
@@ -1278,7 +1257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1574263217}
+      - m_Target: {fileID: 0}
         m_MethodName: Sell
         m_Mode: 1
         m_Arguments:
@@ -1325,23 +1304,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1574263212}
   m_CullTransparentMesh: 0
---- !u!114 &1574263217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1574263212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f658a715710734d8fccf5f0be21130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPad: {fileID: 0}
-  currencyScript: {fileID: 3331232}
-  buyLock: {fileID: 515197756}
-  isBought: 0
-  myCurrentPad: {fileID: 1655565454}
-  percentageOfCash: 60
 --- !u!1 &1655565452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,14 +1314,13 @@ GameObject:
   - component: {fileID: 1655565453}
   - component: {fileID: 1655565456}
   - component: {fileID: 1655565455}
-  - component: {fileID: 1655565454}
   m_Layer: 5
   m_Name: SellPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1655565453
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1379,18 +1340,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -565.9, y: -255.5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1655565454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1655565452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f860d5b0f00af45937fc0436dce3b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPad: {fileID: 0}
 --- !u!114 &1655565455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1674,28 +1623,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1880902259 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1394444488312382, guid: d014c2736b2725b429912e49a8cc51bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1200459044}
---- !u!114 &1880902260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1880902259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f658a715710734d8fccf5f0be21130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPad: {fileID: 0}
-  currencyScript: {fileID: 3331232}
-  buyLock: {fileID: 689374638}
-  isBought: 0
-  myCurrentPad: {fileID: 255901844}
-  percentageOfCash: 0
 --- !u!1 &1965411158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,34 +1726,6 @@ Transform:
   m_Father: {fileID: 899340567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2003034838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114238028046705628, guid: d014c2736b2725b429912e49a8cc51bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1502202613}
-  m_Script: {fileID: 11500000, guid: c7f658a715710734d8fccf5f0be21130, type: 3}
---- !u!1 &2031764639 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1394444488312382, guid: d014c2736b2725b429912e49a8cc51bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 2045738366}
---- !u!114 &2031764640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2031764639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f658a715710734d8fccf5f0be21130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPad: {fileID: 0}
-  currencyScript: {fileID: 3331232}
-  buyLock: {fileID: 391585656}
-  isBought: 0
-  myCurrentPad: {fileID: 255901844}
-  percentageOfCash: 0
 --- !u!1001 &2045738366
 Prefab:
   m_ObjectHideFlags: 0
@@ -1937,11 +1836,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2031764640}
+      objectReference: {fileID: 3331231}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
+      value: Build
       objectReference: {fileID: 0}
     - target: {fileID: 114313463836035938, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
@@ -1952,11 +1851,12 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 27cb7c87eac586e4994c30ff5f2335dc,
+        type: 2}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: TowerStat, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1637185870049320, guid: d014c2736b2725b429912e49a8cc51bd, type: 2}
       propertyPath: m_Name
@@ -1965,7 +1865,7 @@ Prefab:
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114515843952682684, guid: d014c2736b2725b429912e49a8cc51bd,
         type: 2}

@@ -5,70 +5,37 @@ using UnityEngine.UI;
 
 public class TowerPad : MonoBehaviour
 {
-    public bool isBought;
-    public MouseToWorldSpace myMouse;
+    public MouseToWorldSpace mouseScript;
     private RaycastHit mouseHit;
-    public GameObject buyPanel;
-    public GameObject sellPanel;
-    public GameObject uiPoint;
-    public TowerStat myTower;
+    public bool isPressed;
+    public TowerStat currentTower;
 
-    // Use this for initialization
-    void Start()
-    {
-        buyPanel.SetActive(false);
-		sellPanel.SetActive(false);
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        CheckMouse();
+        DetectMouse();
     }
 
-    void CheckMouse()
-    {
-        mouseHit = myMouse.mouseHit;
 
-        if (mouseHit.collider == gameObject.GetComponent<Collider>())
+    //Void to detect mouse
+    void DetectMouse()
+    {
+        mouseHit = mouseScript.mouseHit;
+
+        if (isPressed == false)
         {
-            if (Input.GetButtonDown("Fire1"))
+            //Detect if mouse is hovering over tower pad
+            if (mouseHit.collider == gameObject.transform.GetComponent<Collider>())
             {
-                if (isBought == false)
+                
+
+                //Detect if user clicks on tower pad
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    ShowBuyPanel();
-                }
-                else
-                {
-                    ShowSellPanel();
+                    
+                    isPressed = true;
                 }
             }
         }
-
-        if (Input.GetButtonDown("Fire2"))
-        {
-            HidePanel();
-        }
-    }
-
-    void ShowBuyPanel()
-    {
-        buyPanel.SetActive(true);
-        buyPanel.GetComponent<CurrentPad>().myPad = gameObject;
-        Vector3 panelPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-        buyPanel.transform.position = panelPos;
-    }
-
-    void ShowSellPanel()
-    {
-        sellPanel.SetActive(true);
-        sellPanel.GetComponent<CurrentPad>().myPad = gameObject;
-        Vector3 panelPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-        sellPanel.transform.position = panelPos;
-    }
-
-    public void HidePanel()
-    {
-        buyPanel.SetActive(false);
     }
 }
