@@ -5,9 +5,10 @@ using UnityEngine;
 public class BuildOrDestroy : MonoBehaviour
 {
     public List<GameObject> towerPads;
-	private GameObject currentPad;
-	public GameObject buyPanel;
-	public GameObject sellPanel;
+    public GameObject currentPad;
+    public GameObject buyPanel;
+    public GameObject sellPanel;
+    private TowerPad currentPadScript;
 
     void Update()
     {
@@ -15,26 +16,51 @@ public class BuildOrDestroy : MonoBehaviour
         {
             if (pad.GetComponent<TowerPad>().isPressed)
             {
-				currentPad = pad;
-                if (pad.GetComponent<TowerPad>().currentTower == null)
+                currentPad = pad;
+                currentPadScript = currentPad.GetComponent<TowerPad>();
+
+                if (currentPadScript.currentTower == null)
                 {
+
+
                     buyPanel.SetActive(true);
+
                 }
-            } else {
-				currentPad = null;
-			}
+                else
+                {
+
+                    sellPanel.SetActive(true);
+
+                }
+
+            }
+            else
+            {
+                //currentPad = null;
+            }
         }
     }
 
     public void Build(TowerStat towerToBuild)
     {
-		print("Building " + towerToBuild.myName);
-		GameObject newTower = Instantiate(towerToBuild.tower, currentPad.transform.GetChild(1));
-		newTower.transform.position = Vector3.zero;
+
+        print(currentPad.name);
+        print("Building " + towerToBuild.myName);
+        currentPadScript.currentTower = towerToBuild;
+        GameObject newTower = Instantiate(towerToBuild.tower, currentPad.transform);
+        newTower.transform.localPosition = Vector3.zero;
+        buyPanel.SetActive(false);
+        currentPadScript.isPressed = false;
     }
 
-    void Destroy()
+    public void Destroy()
     {
 
+        TowerStat towerOnPad = currentPadScript.currentTower;
+        print("Destroying " + towerOnPad.myName);
+        Destroy(currentPad.transform.GetChild(2).gameObject);
+        currentPadScript.currentTower = null;
+        sellPanel.SetActive(false);
+        currentPadScript.isPressed = false;
     }
 }

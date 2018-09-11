@@ -11,7 +11,7 @@ public class MouseToWorldSpace : MonoBehaviour {
 		mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 		if(Physics.Raycast(mouseRay, out mouseHit)) {
-			
+			print("Mouse is hitting " + mouseHit.collider.name);
 		}
 
 	}
