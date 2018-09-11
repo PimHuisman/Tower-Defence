@@ -14,8 +14,8 @@ MonoBehaviour:
   myName: Cannon
   cost: 3
   range: 5
-  tower: {fileID: 1507097866643160, guid: f72bea77a8fa25e4b83e2b319a28d1db, type: 2}
-  ammo: {fileID: 1328622649505548, guid: c1ec786e8859300488d5e45394112512, type: 2}
   addForce: 500
   damage: 10
   fireRate: 2
+  tower: {fileID: 1121303175564910, guid: f72bea77a8fa25e4b83e2b319a28d1db, type: 2}
+  ammo: {fileID: 1328622649505548, guid: c1ec786e8859300488d5e45394112512, type: 2}
