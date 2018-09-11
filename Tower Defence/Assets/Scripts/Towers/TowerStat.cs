@@ -8,9 +8,11 @@ public class TowerStat : ScriptableObject
     public string myName;
     public int cost;
     public float range;
-    public GameObject tower;
-    public GameObject ammo;
+    public int addForce;
     public int damage;
     public float fireRate;
+    [Header("Objects")]
+    public GameObject tower;
+    public GameObject ammo;
 
 }

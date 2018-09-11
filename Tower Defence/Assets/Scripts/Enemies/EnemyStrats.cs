@@ -1,16 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[CreateAssetMenu(fileName = "New Enemy", menuName = "Enemy")]
+public class EnemyStrats : ScriptableObject
+{
+	public string myName;
+	public int health;
+	public float speed;
+	public int damage;
 
-public class EnemyStrats : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
