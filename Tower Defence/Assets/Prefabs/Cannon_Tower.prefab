@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23114672191309348}
   - component: {fileID: 64013074700961614}
   - component: {fileID: 114942518266296890}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4650059437946228}
   - component: {fileID: 114486213237672642}
   - component: {fileID: 135554997208461820}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cannon_Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4267499180896528}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 33731630339143896}
   - component: {fileID: 23767238404425996}
   - component: {fileID: 64618297692515964}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
