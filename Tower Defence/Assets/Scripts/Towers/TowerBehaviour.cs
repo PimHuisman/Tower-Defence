@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TowerBehaviour : MonoBehaviour 
 {
+	[SerializeField] TowerStat stats;
 	List<Transform> targets = new List<Transform>();
-	 
+
+
 	void Start () 
 	{
 
@@ -15,7 +17,6 @@ public class TowerBehaviour : MonoBehaviour
 	{
 		
 	}
-
 	void OnTriggerEnter(Collider other) 
 	{
 		if (other.transform.tag == "Enemy")
