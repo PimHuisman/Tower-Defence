@@ -5,11 +5,18 @@ using UnityEngine.UI;
 
 public class TowerPad : MonoBehaviour
 {
-    public MouseToWorldSpace mouseScript;
+    private MouseToWorldSpace mouseScript;
+    private BuildOrDestroy bodScript;
     private RaycastHit mouseHit;
     public bool isPressed;
     public TowerStat currentTower;
+    private bool otherIsPressed;
 
+    void Start()
+    {
+        mouseScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseToWorldSpace>();
+        bodScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<BuildOrDestroy>();
+    }
 
     void Update()
     {
@@ -25,13 +32,26 @@ public class TowerPad : MonoBehaviour
         if (isPressed == false)
         {
             //Detect if mouse is hovering over tower pad
-            if (mouseHit.collider == gameObject.transform.GetComponent<Collider>() )
+            if (mouseHit.collider == gameObject.transform.GetComponent<Collider>())
             {
                 print("Mouse ray is hitting the tower pad.");
                 //Detect if user clicks on tower pad
                 if (Input.GetButtonDown("Fire1"))
-                {                    
-                    isPressed = true;
+                {
+                    foreach (GameObject pad in bodScript.towerPads)
+                    {
+                        if (pad.GetComponent<TowerPad>().isPressed == true)
+                        {
+                            otherIsPressed = true;
+                        }
+                    } 
+
+                    if (otherIsPressed == false)
+                    {
+                        isPressed = true;
+                    }
+
+                    otherIsPressed = false;
                 }
             }
         }
