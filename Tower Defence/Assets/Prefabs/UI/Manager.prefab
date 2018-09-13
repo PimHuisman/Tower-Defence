@@ -19,11 +19,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4246594941955940}
+  - component: {fileID: 114377068241443556}
   - component: {fileID: 114534152809780770}
   - component: {fileID: 114338697430301792}
   m_Layer: 0
   m_Name: Manager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,12 +53,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8b1979cbc2e7b4da169bed8b424920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPads:
-  - {fileID: 0}
-  - {fileID: 0}
+  towerPads: []
   currentPad: {fileID: 0}
   buyPanel: {fileID: 0}
   sellPanel: {fileID: 0}
+--- !u!114 &114377068241443556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1044183436889338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112d3668a38cbc74ba74202b8000370f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overlay: {fileID: 0}
+  deathUI: {fileID: 0}
 --- !u!114 &114534152809780770
 MonoBehaviour:
   m_ObjectHideFlags: 1
