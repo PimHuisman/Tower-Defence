@@ -9,6 +9,7 @@ public class BuildOrDestroy : MonoBehaviour
     public GameObject buyPanel;
     public GameObject sellPanel;
     private TowerPad currentPadScript;
+    public GameObject particles;
 
     void Start() {
         towerPads = GameObject.FindGameObjectsWithTag("Tower Pad");
@@ -39,6 +40,7 @@ public class BuildOrDestroy : MonoBehaviour
     {
         print(currentPad.name);
         print("Building " + towerToBuild.myName);
+        Particles();
         currentPadScript.currentTower = towerToBuild;
         GameObject newTower = Instantiate(towerToBuild.tower, currentPad.transform);
         newTower.transform.localPosition = Vector3.zero;
@@ -48,12 +50,16 @@ public class BuildOrDestroy : MonoBehaviour
 
     public void Destroy()
     {
-
         TowerStat towerOnPad = currentPadScript.currentTower;
         print("Destroying " + towerOnPad.myName);
+        Particles();
         Destroy(currentPad.transform.GetChild(2).gameObject);
         currentPadScript.currentTower = null;
         sellPanel.SetActive(false);
         currentPadScript.isPressed = false;
+    }
+
+    public void Particles() {
+        Instantiate(particles, currentPad.transform.GetChild(1).position, currentPad.transform.rotation);
     }
 }
