@@ -1,27 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndScreen : MonoBehaviour {
     public GameObject overlay;
 	public GameObject deathUI;
+	public GameObject blur;
+
+	private Scene myScene;
+	public string menuSceneName;
+
+	void Start() {
+		myScene = SceneManager.GetActiveScene();
+		blur.SetActive(false);
+	}
 
 	public void Die() {
 		print("Oof!");
 		overlay.SetActive(false);
 		deathUI.SetActive(true);
+		blur.SetActive(true);
+		Time.timeScale = 0;
 	}
 
 	public void Retry() {
-		
+		SceneManager.LoadScene(myScene.name);
 	}
 
 	public void MainMenu() {
-		//Go to main menu
-	}
-
-	public void Exit() {
-		print("Quitting game...");
-		Application.Quit();
+		SceneManager.LoadScene(menuSceneName);
 	}
 }
