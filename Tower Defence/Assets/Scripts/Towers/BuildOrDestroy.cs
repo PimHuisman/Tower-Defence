@@ -60,6 +60,8 @@ public class BuildOrDestroy : MonoBehaviour
     }
 
     public void Particles() {
-        Instantiate(particles, currentPad.transform.GetChild(1).position, currentPad.transform.rotation);
+        GameObject parts = Instantiate(particles, currentPad.transform.GetChild(1).position, particles.transform.rotation);
+        parts.GetComponent<ParticleSystem>().Play();
+        Destroy(parts, 1);
     }
 }
