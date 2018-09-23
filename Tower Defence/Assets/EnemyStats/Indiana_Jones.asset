@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d6c635c40aea5e448b08e9a6ce0a22c, type: 3}
-  m_Name: Indiana Jones
+  m_Name: Indiana_Jones
   m_EditorClassIdentifier: 
-  myName: Indiana Jones
-  health: 3
+  myName: Indiana_Jones
+  health: 2
   speed: 2
   damage: 1
