@@ -8,6 +8,7 @@ public class BuildOrDestroy : MonoBehaviour
     public GameObject currentPad;
     public GameObject buyPanel;
     public GameObject sellPanel;
+    public GameObject blur;
     private TowerPad currentPadScript;
     public GameObject particles;
 
@@ -27,13 +28,24 @@ public class BuildOrDestroy : MonoBehaviour
                 if (currentPadScript.currentTower == null)
                 {
                     buyPanel.SetActive(true);
+                    Vector3 panelPos = Camera.main.WorldToScreenPoint(currentPad.transform.GetChild(0).position);
+                    print(panelPos);
+                    buyPanel.transform.position = panelPos;
+                    blur.SetActive(true);
                 }
                 else
                 {
                     sellPanel.SetActive(true);
+                    Vector3 panelPos = Camera.main.WorldToScreenPoint(currentPad.transform.GetChild(0).position);
+                    sellPanel.transform.position = panelPos;
+                    blur.SetActive(true);
                 }
             }
         }
+    }
+
+    public void IsNotPressed() {
+        currentPadScript.isPressed = false;
     }
 
     public void Build(TowerStat towerToBuild)
@@ -44,8 +56,9 @@ public class BuildOrDestroy : MonoBehaviour
         currentPadScript.currentTower = towerToBuild;
         GameObject newTower = Instantiate(towerToBuild.tower, currentPad.transform);
         newTower.transform.localPosition = Vector3.zero;
-        buyPanel.SetActive(false);
         currentPadScript.isPressed = false;
+        buyPanel.SetActive(false);
+        blur.SetActive(false);
     }
 
     public void Destroy()
@@ -55,8 +68,9 @@ public class BuildOrDestroy : MonoBehaviour
         Particles();
         Destroy(currentPad.transform.GetChild(2).gameObject);
         currentPadScript.currentTower = null;
-        sellPanel.SetActive(false);
         currentPadScript.isPressed = false;
+        sellPanel.SetActive(false);
+        blur.SetActive(false);
     }
 
     public void Particles() {
