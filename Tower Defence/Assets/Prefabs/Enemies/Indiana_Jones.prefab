@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61934fa7f11e37d408d043cdf40ef6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemystats: {fileID: 11400000, guid: 30fb078637fecf741a607d0b5f838b25, type: 2}
+  enemyStats: {fileID: 11400000, guid: 30fb078637fecf741a607d0b5f838b25, type: 2}
   currentHealth: 0
 --- !u!195 &195586286809744162
 NavMeshAgent:

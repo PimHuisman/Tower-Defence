@@ -13,5 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myName: Indiana_Jones
   health: 2
-  speed: 2
-  damage: 1
+  speed: 3
+  attackDamage: 0
+  attackCooldown: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Old_Guy
   m_EditorClassIdentifier: 
   myName: Old_Guy
-  health: 6
-  speed: 2
-  damage: 3
+  health: 4
+  speed: 5
+  attackDamage: 0
+  attackCooldown: 0

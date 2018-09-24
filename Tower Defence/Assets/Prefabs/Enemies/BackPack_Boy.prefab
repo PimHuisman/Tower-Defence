@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61934fa7f11e37d408d043cdf40ef6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemystats: {fileID: 11400000, guid: aed7e72c1b288104a9c9194064306a3e, type: 2}
+  enemyStats: {fileID: 11400000, guid: aed7e72c1b288104a9c9194064306a3e, type: 2}
   currentHealth: 0
 --- !u!114 &114522063087285596
 MonoBehaviour:

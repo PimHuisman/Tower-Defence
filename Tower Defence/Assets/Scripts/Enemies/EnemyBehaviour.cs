@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour 
 {
-	[SerializeField] EnemyStrats enemystats;
+	[SerializeField] EnemyStrats enemyStats;
 	[SerializeField] int currentHealth;
 
 	// Use this for initialization
 	void Start () 
 	{
-		GetComponent<NavMeshAgent>().speed = enemystats.speed;
-		currentHealth = enemystats.health;
+		GetComponent<NavMeshAgent>().speed = enemyStats.speed;
+		currentHealth = enemyStats.health;
 	}
 	
 	public void Health(int damage)
@@ -24,7 +24,14 @@ public class EnemyBehaviour : MonoBehaviour
 		}
 	}
 
-	void Attack() {
-		
+	void OnCollisionEnter(Collision c) {
+		if(c.gameObject.GetComponent<TempleStats>()) {
+			HurtTemple(c.gameObject.GetComponent<TempleStats>());
+		}
+	}
+
+	void HurtTemple(TempleStats temple) {
+		temple.health -= enemyStats.health;
+		temple.CheckHealth();
 	}
 }

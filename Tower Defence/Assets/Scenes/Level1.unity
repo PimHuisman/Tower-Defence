@@ -4061,6 +4061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e2011b4832bd342b2d7bfe428e4fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  printIfHit: 0
 --- !u!114 &1487302458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5638,6 +5639,7 @@ GameObject:
   - component: {fileID: 1963728801}
   - component: {fileID: 1963728802}
   - component: {fileID: 1963728803}
+  - component: {fileID: 1963728804}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Manager
@@ -5767,6 +5769,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainButtonSound: {fileID: 8300000, guid: a8e2280250262264abdd8e731ee3a233, type: 3}
   source: {fileID: 1487302459}
+--- !u!114 &1963728804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1963728796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd0cb9693b6c484ba30882580237717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTimeScale: 1
 --- !u!1001 &2019777999
 Prefab:
   m_ObjectHideFlags: 0
