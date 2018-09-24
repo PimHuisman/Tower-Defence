@@ -23,4 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
 			Destroy(gameObject);
 		}
 	}
+
+	void Attack() {
+		
+	}
 }

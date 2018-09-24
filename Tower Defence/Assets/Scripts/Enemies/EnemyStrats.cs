@@ -7,6 +7,7 @@ public class EnemyStrats : ScriptableObject
 	public string myName;
 	public int health;
 	public float speed;
-	public int damage;
+	public int attackDamage;
+	public int attackCooldown;
 
 }
