@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Cannon
   m_EditorClassIdentifier: 
   myName: Cannon
-  cost: 3
+  cost: 30
   range: 5
   addForce: 500
   damage: 10

@@ -3,7 +3,13 @@ guid: 4e8b1979cbc2e7b4da169bed8b424920
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - currentPad: {instanceID: 0}
+  - buyPanel: {instanceID: 0}
+  - sellPanel: {instanceID: 0}
+  - blur: {instanceID: 0}
+  - particles: {instanceID: 0}
+  - placementSound: {fileID: 8300000, guid: 0f5e0cc060a0253498cd9f63faa3334a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

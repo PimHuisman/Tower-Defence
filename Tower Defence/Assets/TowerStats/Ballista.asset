@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Ballista
   m_EditorClassIdentifier: 
   myName: Ballista
-  cost: 2
+  cost: 20
   range: 0
   addForce: 0
   damage: 0

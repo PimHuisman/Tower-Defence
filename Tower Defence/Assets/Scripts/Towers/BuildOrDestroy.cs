@@ -11,9 +11,18 @@ public class BuildOrDestroy : MonoBehaviour
     public GameObject blur;
     private TowerPad currentPadScript;
     public GameObject particles;
+    public AudioClip placementSound;
 
-    void Start() {
+    private AudioSource placementSource;
+
+    public Currency currencyScript;
+    public float sellMultiplier;
+
+    void Start()
+    {
         towerPads = GameObject.FindGameObjectsWithTag("Tower Pad");
+        buyPanel.SetActive(false);
+        sellPanel.SetActive(false);
     }
 
     void Update()
@@ -23,6 +32,8 @@ public class BuildOrDestroy : MonoBehaviour
             if (pad.GetComponent<TowerPad>().isPressed)
             {
                 currentPad = pad;
+                placementSource = currentPad.GetComponent<AudioSource>();
+
                 currentPadScript = currentPad.GetComponent<TowerPad>();
 
                 if (currentPadScript.currentTower == null)
@@ -44,17 +55,18 @@ public class BuildOrDestroy : MonoBehaviour
         }
     }
 
-    public void IsNotPressed() {
+    public void IsNotPressed()
+    {
         currentPadScript.isPressed = false;
     }
 
-    public void Build(TowerStat towerToBuild)
+    public void Build(MyTower towerToBuild)
     {
-        print(currentPad.name);
-        print("Building " + towerToBuild.myName);
+        currencyScript.myCurrency -= towerToBuild.tower.cost;
         Particles();
-        currentPadScript.currentTower = towerToBuild;
-        GameObject newTower = Instantiate(towerToBuild.tower, currentPad.transform);
+        Sound();
+        currentPadScript.currentTower = towerToBuild.tower;
+        GameObject newTower = Instantiate(towerToBuild.tower.tower, currentPad.transform);
         newTower.transform.localPosition = Vector3.zero;
         currentPadScript.isPressed = false;
         buyPanel.SetActive(false);
@@ -64,7 +76,7 @@ public class BuildOrDestroy : MonoBehaviour
     public void Destroy()
     {
         TowerStat towerOnPad = currentPadScript.currentTower;
-        print("Destroying " + towerOnPad.myName);
+        currencyScript.myCurrency += towerOnPad.cost * sellMultiplier;
         Particles();
         Destroy(currentPad.transform.GetChild(2).gameObject);
         currentPadScript.currentTower = null;
@@ -73,9 +85,16 @@ public class BuildOrDestroy : MonoBehaviour
         blur.SetActive(false);
     }
 
-    public void Particles() {
+    public void Particles()
+    {
         GameObject parts = Instantiate(particles, currentPad.transform.GetChild(1).position, particles.transform.rotation);
         parts.GetComponent<ParticleSystem>().Play();
         Destroy(parts, 1);
+    }
+
+    public void Sound()
+    {
+        placementSource.clip = placementSound;
+        placementSource.Play();
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Unit
   m_EditorClassIdentifier: 
   myName: Unit
-  cost: 5
+  cost: 50
   range: 0
   addForce: 0
   damage: 0

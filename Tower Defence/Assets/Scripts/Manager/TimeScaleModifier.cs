@@ -9,6 +9,5 @@ public class TimeScaleModifier : MonoBehaviour {
 
 	void Update () {
 		Time.timeScale = myTimeScale;
-		print(Time.timeScale);
 	}
 }
