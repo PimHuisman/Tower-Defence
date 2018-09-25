@@ -3,35 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBehaviour : MonoBehaviour 
+public class EnemyBehaviour : MonoBehaviour
 {
-	[SerializeField] EnemyStrats enemyStats;
-	[SerializeField] int currentHealth;
+    [SerializeField] EnemyStrats enemyStats;
+    [SerializeField] int currentHealth;
+    public bool hitTemple;
 
-	// Use this for initialization
-	void Start () 
-	{
-		GetComponent<NavMeshAgent>().speed = enemyStats.speed;
-		currentHealth = enemyStats.health;
-	}
-	
-	public void Health(int damage)
-	{
-		currentHealth-= damage;
-		if(currentHealth <= 0)
-		{
-			Destroy(gameObject);
-		}
-	}
+    // Use this for initialization
+    void Start()
+    {
+        GetComponent<NavMeshAgent>().speed = enemyStats.speed;
+        currentHealth = enemyStats.health;
+    }
 
-	void OnCollisionEnter(Collision c) {
-		if(c.gameObject.GetComponent<TempleStats>()) {
-			HurtTemple(c.gameObject.GetComponent<TempleStats>());
-		}
-	}
+    public void Health(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
-	void HurtTemple(TempleStats temple) {
-		temple.health -= enemyStats.health;
-		temple.CheckHealth();
-	}
+    void OnCollisionEnter(Collision c)
+    {
+        print("Colliding");
+
+        if (c.gameObject.GetComponent<TempleStats>())
+        {
+            if (hitTemple == false)
+            {
+                print("Colliding with temple!");
+                HurtTemple(c.gameObject.GetComponent<TempleStats>());
+            }
+        }
+    }
+
+    void HurtTemple(TempleStats temple)
+    {
+		hitTemple = true;
+        temple.health -= enemyStats.health;
+        temple.CheckHealth();
+		
+
+        Destroy(gameObject, 1);
+    }
 }
