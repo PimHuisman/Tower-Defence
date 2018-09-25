@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: aed7e72c1b288104a9c9194064306a3e, type: 2}
   currentHealth: 0
+  hitTemple: 0
 --- !u!114 &114522063087285596
 MonoBehaviour:
   m_ObjectHideFlags: 1
