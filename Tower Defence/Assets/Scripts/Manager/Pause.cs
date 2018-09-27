@@ -6,8 +6,12 @@ public class Pause : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject blur;
+    public GameObject optionsMenu;
+
     public bool isPaused;
 	public ButtonSound buttonSound;
+
+    public TimeScaleModifier tsModifier;
 
     void Update()
     {
@@ -26,15 +30,16 @@ public class Pause : MonoBehaviour
             pauseMenu.SetActive(true);
             blur.SetActive(true);
 
-            Time.timeScale = 0;
+            tsModifier.myTimeScale = 0;
             isPaused = true;
         }
         else
         {
 			pauseMenu.SetActive(false);
             blur.SetActive(false);
+            optionsMenu.SetActive(false);
 
-			Time.timeScale = 1;
+			tsModifier.myTimeScale = 1;
 			isPaused = false;	
         }
     }
