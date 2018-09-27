@@ -2,32 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pause : MonoBehaviour 
+public class Pause : MonoBehaviour
 {
-	[SerializeField] GameObject pauseMenu;
-	bool ispaused;
-	
-	void Start () 
-	{
-		ispaused = false;
-	}
-	
-	void Update () 
-	{
-		if (Input.GetButtonDown("Cancel"))
-		{
-			ispaused = !ispaused;
-		}
+    public GameObject pauseMenu;
+    public GameObject blur;
+    public bool isPaused;
+	public ButtonSound buttonSound;
 
-		if (ispaused)
-		{
-			Time.timeScale = 0;
-			pauseMenu.SetActive(true);
-		}
-		else
-		{
-			Time.timeScale = 1;
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            PauseGame();
+			buttonSound.PlaySound();
+        }
+    }
+
+
+    public void PauseGame()
+    {
+        if (isPaused == false)
+        {
+            pauseMenu.SetActive(true);
+            blur.SetActive(true);
+
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+        else
+        {
 			pauseMenu.SetActive(false);
-		}
-	}
+            blur.SetActive(false);
+
+			Time.timeScale = 1;
+			isPaused = false;	
+        }
+    }
+
+	
 }
