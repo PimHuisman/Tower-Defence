@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class TowerBehaviour : MonoBehaviour 
 {
+	[Header("Arrows")]
+
+	[SerializeField] int amountofArrows;
+	[SerializeField] int rowAmount;
+	[SerializeField] float spacing;
+	float upPos;
+	[SerializeField] float upSpacing;
+    [SerializeField] float spawnWait;
+	[SerializeField] Transform arrowPos;
+	[SerializeField] GameObject arrowObject;
 	[SerializeField] TowerStat stats;
 	int addForce;
 	public List<Transform> targets = new List<Transform>();
@@ -12,18 +22,6 @@ public class TowerBehaviour : MonoBehaviour
 	[SerializeField] float fireCountdown;
 	float fireRate;
 	[SerializeField] Transform firePoint;
-	[Header("Random Offset")]
-	float xOffset;
-	[SerializeField] float xOffsetMin;
-	[SerializeField] float xOffsetMax;
-	float yOffset;
-	[SerializeField] float yOffsetMin;
-	[SerializeField] float yOffsetMax;
-	float zOffset;
-	[SerializeField] float zOffsetMin;
-	[SerializeField] float zOffsetMax;
-
-
 
 	void Start () 
 	{
@@ -34,20 +32,31 @@ public class TowerBehaviour : MonoBehaviour
 	
 	void Update () 
 	{
-		CheckEnemies();
-		if (lockTarget)
+		SpawnArrows();
+	}
+
+	void SpawnArrows()
+	{
+		if (Input.GetButtonDown("Fire1"))
 		{
-			if (fireCountdown <=0)
-			{
-				xOffset = Random.Range(xOffsetMin, xOffsetMax);
-				yOffset = Random.Range(yOffsetMin, yOffsetMax);
-				zOffset = Random.Range(zOffsetMin, zOffsetMax);
-				Shoot();
-				fireCountdown = 1f/fireRate;
+			for (int z = 0; z <  amountofArrows; z++)
+            {
+				if (z >= rowAmount)
+				{
+					upPos = upSpacing;
+				}
+				else
+				{
+					upPos = 0;
+				}
+				Vector3 newArrowPos = new Vector3(arrowPos.position.x, arrowPos.position.y + upPos, arrowPos.position.z + -spacing*z);
+				//Vector3 tilePosition = new Vector3(arrowPos.position.x, -hightMap + y, - widthMap+ z);
+                Instantiate(arrowObject, newArrowPos, arrowPos.rotation);
 			}
-			fireCountdown -= Time.deltaTime;
 		}
 	}
+	#region Old Script
+	/*
 	void CheckEnemies()
 	{
 		for (int i = 0; i < targets.Count; i++)
@@ -95,4 +104,19 @@ public class TowerBehaviour : MonoBehaviour
 			print("Enemy got away");
 		}
 	}
+
+			CheckEnemies();
+		if (lockTarget)
+		{
+			if (fireCountdown <=0)
+			{
+				xOffset = Random.Range(xOffsetMin, xOffsetMax);
+				yOffset = Random.Range(yOffsetMin, yOffsetMax);
+				zOffset = Random.Range(zOffsetMin, zOffsetMax);
+				Shoot();
+				fireCountdown = 1f/fireRate;
+			}
+			fireCountdown -= Time.deltaTime;
+	*/
+	#endregion
 }
