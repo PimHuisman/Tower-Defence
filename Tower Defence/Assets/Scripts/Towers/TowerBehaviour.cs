@@ -22,6 +22,7 @@ public class TowerBehaviour : MonoBehaviour
 
 	void Start () 
 	{
+		//GenerateArrows();
 		StartCoroutine(Timer());
 		addForce = stats.addForce;
 		arrow = stats.ammo;
@@ -49,8 +50,8 @@ public class TowerBehaviour : MonoBehaviour
         {
             for (int z = 0; z < mapsize.z; z++)
             {
-                Vector3 newArroPos = new Vector3(arrowPos.localPosition.x, arrowPos.localPosition.y + spacingY *y, arrowPos.localPosition.z  + -spasingZ *z);
-                Transform arrow = Instantiate(arrowObject, newArroPos, arrowPos.rotation) as Transform;
+                Vector3 newArroPos = new Vector3(arrowPos.position.x, arrowPos.position.y + spacingY *y, arrowPos.position.z + -spasingZ *z);
+                Transform arrow = Instantiate(arrowObject, newArroPos, weapon.rotation) as Transform;
 				arrow.transform.parent = arrowPos.transform;
 				arrowList.Add(arrow);
             }
