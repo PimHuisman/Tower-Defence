@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowList: []
   spacingY: 0.082
-  spasingZ: 0.062
+  spacingZ: 0.062
   mapsize: {x: 0, y: 3, z: 6}
   arrowPos: {fileID: 1968745807}
   arrowObject: {fileID: 4743803434574550, guid: 90c23bc365f9b4d42a45c7f46c8a50b4,
@@ -1030,7 +1030,7 @@ Transform:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 198492802}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.25, y: -3.5003107e-17, z: 5.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1038,7 +1038,7 @@ Transform:
   - {fileID: 1079265548}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!135 &198492805
 SphereCollider:
   m_ObjectHideFlags: 0
