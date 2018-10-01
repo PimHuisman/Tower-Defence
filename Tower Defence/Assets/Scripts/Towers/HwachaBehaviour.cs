@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HwachaBehaviour : MonoBehaviour 
+public class HwachaBehaviour : TowerBehaviour 
 {
 	[Header("Arrows")]
 	public List<Transform> arrowList = new List<Transform>();
@@ -20,7 +20,7 @@ public class HwachaBehaviour : MonoBehaviour
 	float fireRate;
 	[SerializeField] Transform weapon;
 
-	void Start () 
+	public override void Start()
 	{
 		//GenerateArrows();
 		StartCoroutine(Timer());
@@ -28,14 +28,14 @@ public class HwachaBehaviour : MonoBehaviour
 		arrow = stats.ammo;
 		fireRate = stats.fireRate;
 	}
-	void Update() 
+	public override void Update() 
 	{
 		if (Input.GetButtonDown("Fire1"))
 		{
 			Shoot();
 		}
 	}
-	void Shoot()
+	public override void Shoot()
 	{
 		GenerateArrows();
 		for (int i = 0; i < arrowList.Count; i++)
@@ -44,7 +44,7 @@ public class HwachaBehaviour : MonoBehaviour
 		}
 	}
 
-    void GenerateArrows()
+    public override void GenerateArrows()
     {
         for (int y = 0; y < mapsize.y; y++)
         {
