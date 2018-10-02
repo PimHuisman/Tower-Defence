@@ -1,26 +1,14 @@
 fileFormatVersion: 2
-guid: 83ec0737fbe7633449f8b88cf106d440
+guid: 3f8d3e9251a318e44bd44f27d2d543b3
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Ballista
-    100002: Ballista Tower
-    100004: //RootNode
-    100006: RotatePad
-    400000: Ballista
-    400002: Ballista Tower
-    400004: //RootNode
-    400006: RotatePad
+    100000: //RootNode
+    400000: //RootNode
     2100000: No Name
-    2300000: Ballista Tower
-    2300002: RotatePad
-    3300000: Ballista Tower
-    3300002: RotatePad
-    4300000: RotatePad
-    4300002: Ballista
-    4300004: Ballista Tower
-    9500000: //RootNode
-    13700000: Ballista
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: BIKarrow
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -73,7 +61,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -98,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

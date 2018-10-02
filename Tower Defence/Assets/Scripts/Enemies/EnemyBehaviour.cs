@@ -7,27 +7,38 @@ public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField] EnemyStrats enemyStats;
     [SerializeField] int currentHealth;
+    [SerializeField] AudioClip deathSound;
+    AudioSource mySource;
+
     public bool hitTemple;
 
     // Use this for initialization
     void Start()
     {
         GetComponent<NavMeshAgent>().speed = enemyStats.speed;
+        mySource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
         currentHealth = enemyStats.health;
     }
 
-    public void Health(int damage)
+    public void DamageMe(int damage)
     {
         currentHealth -= damage;
+
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die() {
+        mySource.clip = deathSound;
+        mySource.Play();
+        Destroy(gameObject);
     }
 
     void OnCollisionEnter(Collision c)
     {
-        print("Colliding");
+        //print("Colliding");
 
         if (c.gameObject.GetComponent<TempleStats>())
         {

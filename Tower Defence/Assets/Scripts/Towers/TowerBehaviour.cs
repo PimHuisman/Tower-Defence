@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class TowerBehaviour : MonoBehaviour
 {
-    List<Transform> targets = new List<Transform>();
+    public List<Transform> targets = new List<Transform>();
     Transform mainTarget;
     public TowerStat tower;
     public Transform weapon;
-    public Transform projectile;
-    public Transform rangeObject;
+    public GameObject projectile;
+    GameObject currentProjectile;
+    public Transform projectileSpawn;
+    float respawnPercentage;
+    public AudioSource mySource;
+    public AudioClip shootClip;
 
     float range;
     float force;
-    float damage;
+    int damage;
     float fireRate;
 
 
@@ -23,35 +27,15 @@ public class TowerBehaviour : MonoBehaviour
         force = tower.force;
         damage = tower.damage;
         fireRate = tower.fireRate;
+        respawnPercentage = tower.projectileRespawnPercentage;
         SetRange();
     }
 
     public virtual void SetRange()
     {
-        CapsuleCollider c = rangeObject.GetComponent<CapsuleCollider>();
+        SphereCollider c = GetComponent<SphereCollider>();
         c.radius = range;
     }
-
-    public virtual void SetMainTarget()
-    {
-        if (targets[0] != null)
-        {
-            mainTarget = targets[0];
-        }
-    }
-
-    public virtual void WeaponTarget()
-    {
-        weapon.LookAt(mainTarget);
-    }
-
-    public virtual void Shoot()
-    {
-        projectile.LookAt(mainTarget);
-        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-        projectileRb.AddForce(projectile.forward * force);
-    }
-
     public virtual void CheckEnemies()
     {
         for (int i = 0; i < targets.Count; i++)
@@ -61,12 +45,45 @@ public class TowerBehaviour : MonoBehaviour
                 targets.Remove(targets[i]);
             }
         }
+        SetMainTarget();
     }
+    public virtual void SetMainTarget()
+    {
+        if (targets.Count != 0)
+        {
+            if (targets[0] != null)
+            {
+                mainTarget = targets[0];
+                WeaponTarget();
+            }
+        }
+    }
+
+
+    public virtual void WeaponTarget()
+    {
+        weapon.LookAt(new Vector3(mainTarget.position.x, weapon.position.y, mainTarget.position.z));
+    }
+
+    public virtual void Shoot()
+    {
+        print("Shooting!");
+        currentProjectile = Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+        currentProjectile.GetComponent<Stick>().damage = damage;
+        currentProjectile.transform.LookAt(mainTarget);
+        Rigidbody projectileRb = currentProjectile.GetComponent<Rigidbody>();
+        projectileRb.AddForce(currentProjectile.transform.forward * force);
+        PlayAudio(shootClip);
+        
+        currentProjectile = null;
+    }
+
 
     public virtual void Enter(Collider other)
     {
         if (other.transform.tag == "Enemy")
         {
+            print("Enemy is entering.");
             targets.Add(other.transform);
         }
     }
@@ -79,5 +96,21 @@ public class TowerBehaviour : MonoBehaviour
             CheckEnemies();
         }
     }
+    public virtual IEnumerator ShootRoutine()
+    {
+        while (true)
+        {
+            while (targets.Count > 0)
+            {
+                yield return new WaitForSeconds(1f / fireRate);
+                Shoot();
+            }
+            yield return null;
+        }
+    }
 
+    public virtual void PlayAudio(AudioClip myClip) {
+        mySource.clip = myClip;
+        mySource.Play();
+    }
 }

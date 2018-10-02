@@ -11,6 +11,8 @@ public class TowerStat : ScriptableObject
     public int force;
     public int damage;
     public float fireRate;
+    public float projectileRespawnPercentage;
+
     [Header("Objects")]
     public GameObject tower;
     public GameObject ammo;

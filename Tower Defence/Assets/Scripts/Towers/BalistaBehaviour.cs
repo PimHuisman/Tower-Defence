@@ -7,27 +7,24 @@ public class BalistaBehaviour : TowerBehaviour
     void Start()
     {
         SetStats();
+		StartCoroutine(ShootRoutine());
     }
 
-	void Update() {
-		SetMainTarget();
-	}
-
+    void Update()
+    {
+        CheckEnemies();
+    }
 
     void OnTriggerEnter(Collider other)
     {
         base.Enter(other);
     }
 
-    void OnTriggerStay(Collider other)
-    {
-        base.Stay(other);
-    }
-
     void OnTriggerExit(Collider other)
     {
         base.Exit(other);
     }
+
     public override void CheckEnemies()
     {
         base.CheckEnemies();
