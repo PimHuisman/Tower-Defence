@@ -8,7 +8,7 @@ public class TowerStat : ScriptableObject
     public string myName;
     public int cost;
     public float range;
-    public int addForce;
+    public int force;
     public int damage;
     public float fireRate;
     [Header("Objects")]

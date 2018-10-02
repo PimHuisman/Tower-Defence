@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class TowerBehaviour : MonoBehaviour
 {
-    public List<Transform> targets = new List<Transform>();
-    public bool lockTarget;
+    List<Transform> targets = new List<Transform>();
+    bool lockTarget;
+    Transform mainTarget;
+    public TowerStat tower;
     public Transform weapon;
-    public Transform mainTarget;
+    public Transform projectile;
+    public Transform rangeObject;
+    float range;
+    float force;
+    float damage;
+    float fireRate;
 
-    public virtual void Start()
+
+    public virtual void SetStats()
     {
-
-    }
-
-    public virtual void Update()
-    {
-
+        range = tower.range;
+        force = tower.force;
+        damage = tower.damage;
+        fireRate = tower.fireRate;
     }
 
     public virtual void Shoot()
     {
-
+        projectile.LookAt(targets[0]);
+        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+        projectileRb.AddForce(projectile.forward * force);
     }
+
     public virtual void CheckEnemies()
     {
         for (int i = 0; i < targets.Count; i++)
