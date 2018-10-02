@@ -4,111 +4,23 @@ using UnityEngine;
 
 public class HwachaBehaviour : TowerBehaviour
 {
-    [Header("Arrows")]
-    public List<Transform> arrowList = new List<Transform>();
-    [SerializeField] float spacingY;
-    [SerializeField] float spacingZ;
-    [SerializeField] Vector3 mapsize;
-    [SerializeField] Transform arrowPos;
-    [SerializeField] Transform arrowObject;
-    [SerializeField] TowerStat stats;
-    int addForce;
-    public List<Transform> targets = new List<Transform>();
-    [SerializeField] bool lockTarget;
-    [SerializeField] GameObject arrow;
-    [SerializeField] float fireCountdown;
-    float fireRate;
-    [SerializeField] Transform weapon;
-
-    public override void Start()
+    public override void CheckEnemies()
     {
-        //GenerateArrows();
-        StartCoroutine(Timer());
-        addForce = stats.addForce;
-        arrow = stats.ammo;
-        fireRate = stats.fireRate;
-    }
-    public override void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
-    }
-    public override void Shoot()
-    {
-        GenerateArrows();
-        for (int i = 0; i < arrowList.Count; i++)
-        {
-
-        }
-    }
-
-    public override void GenerateArrows()
-    {
-        for (int y = 0; y < mapsize.y; y++)
-        {
-            for (int z = 0; z < mapsize.z; z++)
-            {
-                float testX = arrowPos.position.x;
-                float testY = arrowPos.position.y + spacingY * y;
-                float testZ = arrowPos.position.z + -spacingZ * z;
-
-                Vector3 newArroPos = new Vector3(testX, testY, testZ);
-                Transform arrow = Instantiate(arrowObject, newArroPos, arrowPos.rotation) as Transform;
-                //arrow.transform.parent = arrowPos.transform;
-                arrow.transform.SetParent(arrowPos.transform,true);
-                arrowList.Add(arrow);
-            }
-        }
-    }
-    IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(0);
-
-        while (lockTarget)
-        {
-            Shoot();
-            yield return new WaitForSeconds(3);
-        }
-    }
-    void CheckEnemies()
-    {
-        for (int i = 0; i < targets.Count; i++)
-        {
-            if (targets[i] == null)
-            {
-                targets.Remove(targets[i]);
-                lockTarget = false;
-            }
-        }
+        base.CheckEnemies();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Enemy")
-        {
-            lockTarget = true;
-            targets.Add(other.transform);
-        }
+        base.Enter(other);
     }
+    
     void OnTriggerStay(Collider other)
     {
-
-        if (other.transform.tag == "Enemy")
-        {
-            Vector3 lead = new Vector3(targets[0].position.x, weapon.transform.position.y, targets[0].position.z);
-            weapon.transform.LookAt(lead);
-        }
+        base.Stay(other);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "Enemy")
-        {
-            targets.Remove(other.transform);
-            weapon.LookAt(null);
-            CheckEnemies();
-        }
+        base.Exit(other);
     }
 }

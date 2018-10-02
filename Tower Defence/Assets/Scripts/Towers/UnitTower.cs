@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class UnitTower : TowerBehaviour
 {
-	[SerializeField] GameObject unit;
-	[SerializeField] int unitMaxAmount;
-	[SerializeField] Transform areaPos;
-	public List<Transform> unitList = new List<Transform>();
-	public override void Start() 
+    [SerializeField] GameObject unit;
+    [SerializeField] int unitMaxAmount;
+    [SerializeField] Transform areaPos;
+    public List<Transform> unitList = new List<Transform>();
+    public override void Start()
     {
-		GenerateArrows();
+        GenerateArrows();
     }
 
     public override void Update()
@@ -22,11 +22,11 @@ public class UnitTower : TowerBehaviour
     {
 
     }
-    public override void GenerateArrows()
+    public void GenerateArrows()
     {
-		for (int i = 0; i < unitMaxAmount; i++)
-		{
-			Instantiate(unit, areaPos.position, areaPos.rotation);
-		}
+        for (int i = 0; i < unitMaxAmount; i++)
+        {
+            Instantiate(unit, areaPos.position, areaPos.rotation);
+        }
     }
 }
