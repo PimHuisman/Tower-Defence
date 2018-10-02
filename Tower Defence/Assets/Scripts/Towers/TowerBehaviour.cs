@@ -5,12 +5,12 @@ using UnityEngine;
 public class TowerBehaviour : MonoBehaviour
 {
     List<Transform> targets = new List<Transform>();
-    bool lockTarget;
     Transform mainTarget;
     public TowerStat tower;
     public Transform weapon;
     public Transform projectile;
     public Transform rangeObject;
+
     float range;
     float force;
     float damage;
@@ -23,11 +23,31 @@ public class TowerBehaviour : MonoBehaviour
         force = tower.force;
         damage = tower.damage;
         fireRate = tower.fireRate;
+        SetRange();
+    }
+
+    public virtual void SetRange()
+    {
+        CapsuleCollider c = rangeObject.GetComponent<CapsuleCollider>();
+        c.radius = range;
+    }
+
+    public virtual void SetMainTarget()
+    {
+        if (targets[0] != null)
+        {
+            mainTarget = targets[0];
+        }
+    }
+
+    public virtual void WeaponTarget()
+    {
+        weapon.LookAt(mainTarget);
     }
 
     public virtual void Shoot()
     {
-        projectile.LookAt(targets[0]);
+        projectile.LookAt(mainTarget);
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
         projectileRb.AddForce(projectile.forward * force);
     }
@@ -48,15 +68,6 @@ public class TowerBehaviour : MonoBehaviour
         if (other.transform.tag == "Enemy")
         {
             targets.Add(other.transform);
-        }
-    }
-
-    public virtual void Stay(Collider other)
-    {
-        if (other.transform.tag == "Enemy")
-        {
-            Vector3 lead = new Vector3(targets[0].position.x, weapon.position.y, targets[0].position.z);
-            weapon.transform.LookAt(lead);
         }
     }
 

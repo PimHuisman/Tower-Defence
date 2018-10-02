@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BalistaBehaviour : TowerBehaviour
 {
-
     void Start()
     {
-        base.SetStats();
+        SetStats();
     }
+
+	void Update() {
+		SetMainTarget();
+	}
 
 
     void OnTriggerEnter(Collider other)

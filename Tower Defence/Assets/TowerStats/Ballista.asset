@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myName: Ballista
   cost: 20
-  range: 0
-  addForce: 0
+  range: 15
+  force: 0
   damage: 0
   fireRate: 0
   tower: {fileID: 0}
