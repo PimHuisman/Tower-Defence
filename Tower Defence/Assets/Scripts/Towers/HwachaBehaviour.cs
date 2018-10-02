@@ -55,8 +55,9 @@ public class HwachaBehaviour : TowerBehaviour
                 float testZ = arrowPos.position.z + -spacingZ * z;
 
                 Vector3 newArroPos = new Vector3(testX, testY, testZ);
-                Transform arrow = Instantiate(arrowObject, newArroPos, arrowPos.rotation, arrowPos.transform) as Transform;
+                Transform arrow = Instantiate(arrowObject, newArroPos, arrowPos.rotation) as Transform;
                 //arrow.transform.parent = arrowPos.transform;
+                arrow.transform.SetParent(arrowPos.transform,true);
                 arrowList.Add(arrow);
             }
         }
