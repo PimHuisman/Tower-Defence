@@ -11,7 +11,12 @@ ModelImporter:
     400002: Ballista Tower
     400004: //RootNode
     400006: RotatePad
-    2100000: No Name
+    2100000: Brick_03
+    2100002: Wood
+    2100004: Metal
+    2100006: Rope
+    2100008: Brick_02
+    2100010: Brick_01
     2300000: Ballista Tower
     2300002: RotatePad
     3300000: Ballista Tower
