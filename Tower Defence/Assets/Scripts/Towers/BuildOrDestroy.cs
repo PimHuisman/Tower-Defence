@@ -77,7 +77,7 @@ public class BuildOrDestroy : MonoBehaviour
     public void Destroy()
     {
         TowerStat towerOnPad = currentPadScript.currentTower;
-        currencyScript.myCurrency += towerOnPad.cost * sellMultiplier;
+        currencyScript.AddCurrency(towerOnPad.cost * sellMultiplier);
         PlayParticles();
         PlaySound(sellSound);
         Destroy(currentPad.transform.GetChild(2).gameObject);

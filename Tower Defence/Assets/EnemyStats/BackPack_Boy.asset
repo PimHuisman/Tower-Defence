@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myName: BackPack_Boy
   health: 40
+  currencyWhenDead: 5
   speed: 2
   attackDamage: 0
   attackCooldown: 0

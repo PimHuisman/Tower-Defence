@@ -33,17 +33,13 @@ public class Stick : MonoBehaviour
             }
             else
             {
-
                 MakeAndPlaySound(other.contacts[0].point);
 
                 if (other.gameObject.GetComponent<EnemyBehaviour>())
                 {
                     print("Arrow hit enemy!");
 
-                    if (other.transform.GetComponent<EnemyBehaviour>())
-                    {
-                        other.transform.GetComponent<EnemyBehaviour>().DamageMe(damage, other);
-                    }
+                    other.transform.GetComponent<EnemyHealth>().DamageMe(damage, other);
                 }
 
                 GameObject emptyGameObject = new GameObject();

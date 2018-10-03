@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myName: Indiana_Jones
   health: 20
+  currencyWhenDead: 5
   speed: 3
   attackDamage: 0
   attackCooldown: 0
