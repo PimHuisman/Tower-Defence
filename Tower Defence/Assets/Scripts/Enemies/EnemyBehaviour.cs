@@ -8,6 +8,9 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] EnemyStrats enemyStats;
     [SerializeField] int currentHealth;
     [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] GameObject damageParticles;
+    [SerializeField] GameObject deathParticles;
     AudioSource mySource;
 
     public bool hitTemple;
@@ -20,19 +23,40 @@ public class EnemyBehaviour : MonoBehaviour
         currentHealth = enemyStats.health;
     }
 
-    public void DamageMe(int damage)
+    public void DamageMe(int damage, Collision other)
     {
         currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
+            PlayAudio(deathSound);
+            PlayParticles(deathParticles, other.transform.position, other.transform.rotation);
             Die();
+        }
+        else
+        {
+            PlayAudio(damageSound);
+            PlayParticles(damageParticles, other.contacts[0].point, Quaternion.Euler(-other.contacts[0].normal));
         }
     }
 
-    public void Die() {
-        mySource.clip = deathSound;
-        mySource.Play();
+    public void PlayAudio(AudioClip clip)
+    {
+        mySource.PlayOneShot(clip);
+    }
+
+    public void PlayParticles(GameObject parts, Vector3 position, Quaternion rotation)
+    {
+        GameObject newParts = Instantiate(damageParticles, position, rotation);
+        ParticleSystem partSystem = newParts.GetComponent<ParticleSystem>();
+        partSystem.Play();
+        Destroy(newParts, partSystem.main.duration);
+    }
+
+
+
+    public void Die()
+    {
         Destroy(gameObject);
     }
 
@@ -52,10 +76,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     void HurtTemple(TempleStats temple)
     {
-		hitTemple = true;
+        hitTemple = true;
         temple.health -= enemyStats.health;
         temple.CheckHealth();
-		
+
 
         Destroy(gameObject, 1);
     }

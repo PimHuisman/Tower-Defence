@@ -7,18 +7,35 @@ public class Stick : MonoBehaviour
     public float timeToDestroy;
     public float pierceDepth;
     public int damage;
+    public GameObject audioPlayer;
+
+    private AudioSource mySource;
+    public AudioClip stickAudio;
+
+    void MakeAndPlaySound(Vector3 point)
+    {
+        GameObject newPlayer = Instantiate(audioPlayer, point, audioPlayer.transform.rotation);
+
+        mySource = newPlayer.GetComponent<AudioSource>();
+
+        mySource.PlayOneShot(stickAudio);
+
+        Destroy(newPlayer, stickAudio.length);
+    }
 
     void OnCollisionEnter(Collision other)
     {
         if (other.transform.tag != "Tower")
         {
+            MakeAndPlaySound(other.contacts[0].point);
+
             if (other.gameObject.GetComponent<EnemyBehaviour>())
             {
                 print("Arrow hit enemy!");
 
                 if (other.transform.GetComponent<EnemyBehaviour>())
                 {
-                    other.transform.GetComponent<EnemyBehaviour>().DamageMe(damage);
+                    other.transform.GetComponent<EnemyBehaviour>().DamageMe(damage, other);
                 }
             }
 

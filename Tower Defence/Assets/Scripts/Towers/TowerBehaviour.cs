@@ -110,7 +110,7 @@ public class TowerBehaviour : MonoBehaviour
     }
 
     public virtual void PlayAudio(AudioClip myClip) {
-        mySource.clip = myClip;
-        mySource.Play();
+        //mySource.clip = myClip;
+        mySource.PlayOneShot(myClip);
     }
 }

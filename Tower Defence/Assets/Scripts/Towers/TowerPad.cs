@@ -110,8 +110,8 @@ public class TowerPad : MonoBehaviour
     {
         if (play == true)
         {
-            mySource.clip = clip;
-            mySource.Play();
+            //mySource.clip = clip;
+            mySource.PlayOneShot(clip);
         }
         else
         {

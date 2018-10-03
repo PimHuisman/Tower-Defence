@@ -21,19 +21,40 @@ public class MyTower : MonoBehaviour
         costText.text = tower.cost.ToString();
 
         CheckCurrency();
+        CheckTower();
     }
 
     void CheckCurrency()
     {
         if (currencyScript.myCurrency >= tower.cost)
         {
-            lockSprite.SetActive(false);
-            gameObject.GetComponent<Button>().interactable = true;
+            Lock(false);
         }
         else
         {
+            Lock(true);
+        }
+    }
+
+    void CheckTower()
+    {
+        if (tower.tower == null)
+        {
+            Lock(true);
+        }
+    }
+
+    void Lock(bool lockMe)
+    {
+        if (lockMe == true)
+        {
             lockSprite.SetActive(true);
             gameObject.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            lockSprite.SetActive(false);
+            gameObject.GetComponent<Button>().interactable = true;
         }
     }
 

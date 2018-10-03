@@ -10,6 +10,8 @@ MonoImporter:
   - blur: {instanceID: 0}
   - particles: {instanceID: 0}
   - placementSound: {fileID: 8300000, guid: 0f5e0cc060a0253498cd9f63faa3334a, type: 3}
+  - sellSound: {fileID: 8300000, guid: ffea6c221c60f8d43a4991c943cf5433, type: 3}
+  - currencyScript: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

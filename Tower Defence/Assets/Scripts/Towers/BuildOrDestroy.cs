@@ -12,6 +12,7 @@ public class BuildOrDestroy : MonoBehaviour
     private TowerPad currentPadScript;
     public GameObject particles;
     public AudioClip placementSound;
+    public AudioClip sellSound;
 
     private AudioSource placementSource;
 
@@ -63,8 +64,8 @@ public class BuildOrDestroy : MonoBehaviour
     public void Build(MyTower towerToBuild)
     {
         currencyScript.myCurrency -= towerToBuild.tower.cost;
-        Particles();
-        Sound();
+        PlayParticles();
+        PlaySound(placementSound);
         currentPadScript.currentTower = towerToBuild.tower;
         GameObject newTower = Instantiate(towerToBuild.tower.tower, currentPad.transform);
         newTower.transform.localPosition = Vector3.zero;
@@ -77,7 +78,8 @@ public class BuildOrDestroy : MonoBehaviour
     {
         TowerStat towerOnPad = currentPadScript.currentTower;
         currencyScript.myCurrency += towerOnPad.cost * sellMultiplier;
-        Particles();
+        PlayParticles();
+        PlaySound(sellSound);
         Destroy(currentPad.transform.GetChild(2).gameObject);
         currentPadScript.currentTower = null;
         currentPadScript.isPressed = false;
@@ -85,16 +87,17 @@ public class BuildOrDestroy : MonoBehaviour
         blur.SetActive(false);
     }
 
-    public void Particles()
+    public void PlayParticles()
     {
         GameObject parts = Instantiate(particles, currentPad.transform.GetChild(1).position, particles.transform.rotation);
-        parts.GetComponent<ParticleSystem>().Play();
-        Destroy(parts, 1);
+        ParticleSystem partSystem = parts.GetComponent<ParticleSystem>();
+        partSystem.Play();
+        Destroy(parts, partSystem.main.duration);
     }
 
-    public void Sound()
+    public void PlaySound(AudioClip clip)
     {
-        placementSource.clip = placementSound;
-        placementSource.Play();
+        placementSource.PlayOneShot(clip);
+        print("Playing " + clip.name);
     }
 }
