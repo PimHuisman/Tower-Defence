@@ -265,7 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPressed: 0
   currentTower: {fileID: 0}
-  highlightAddColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0}
   mySource: {fileID: 82379747040602398}
   hoverSound: {fileID: 8300000, guid: 82b232e0eec3fa049bf2ca55c48b22e1, type: 3}
   clickSound: {fileID: 8300000, guid: bc4cc4fa107c38c4fb2e4e2d5a8657b5, type: 3}
+  colorToAdd: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0}

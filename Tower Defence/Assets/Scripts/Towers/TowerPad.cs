@@ -16,24 +16,34 @@ public class TowerPad : MonoBehaviour
     public AudioClip clickSound;
     private bool isPlaying;
     Renderer myRend;
-    List<Material> myMats;
+    List<Material> myMats = new List<Material>();
+    List<Color> normalColor = new List<Color>();
+    List<Color> highlightColor = new List<Color>();
+    public Color colorToAdd;
 
     void Start()
     {
         FindObjects();
-        MakeColor();
+        CheckForRenderer();
+
+    }
+
+    void CheckForRenderer()
+    {
         if (GetComponent<Renderer>() != null)
         {
             print("I have a renderer!");
             myRend = GetComponent<Renderer>();
             print("I have " + myRend.materials.Length + " materials.");
+
+            MakeColor();
         }
         else
         {
             print("Missing renderer!");
         }
-        //myRend = GetComponent<MeshRenderer>();
 
+        MakeColor();
     }
 
     void FindObjects()
@@ -44,12 +54,34 @@ public class TowerPad : MonoBehaviour
 
     void MakeColor()
     {
+        for (int i = 0; i < myRend.materials.Length; i++)
+        {
+            myMats.Add(myRend.materials[i]);
 
+            normalColor.Add(myMats[i].color);
+
+            Color newColor = normalColor[i] + colorToAdd;
+
+            highlightColor.Add(newColor);
+        }
     }
 
     void Highlight(bool hl)
     {
-
+        if (hl == true)
+        {
+            for (int i = 0; i < myRend.materials.Length; i++)
+            {
+                myRend.materials[i].color = highlightColor[i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i < myRend.materials.Length; i++)
+            {
+                myRend.materials[i].color = normalColor[i];
+            }
+        }
     }
 
     void Update()
