@@ -27,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         currentHealth -= damage;
 
+        PlayAudio(damageSound);
         if (currentHealth <= 0)
         {
             PlayAudio(deathSound);
@@ -35,7 +36,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
-            PlayAudio(damageSound);
+            //PlayAudio(damageSound);
             PlayParticles(damageParticles, other.contacts[0].point, Quaternion.Euler(-other.contacts[0].normal));
         }
     }

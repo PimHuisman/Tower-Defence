@@ -57,6 +57,4 @@ public class MyTower : MonoBehaviour
             gameObject.GetComponent<Button>().interactable = true;
         }
     }
-
-
 }

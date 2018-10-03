@@ -5,19 +5,19 @@ using UnityEngine;
 public class TowerBehaviour : MonoBehaviour
 {
     public List<Transform> targets = new List<Transform>();
-    Transform mainTarget;
+    public Transform mainTarget;
     public TowerStat tower;
     public Transform weapon;
     public GameObject projectile;
-    GameObject currentProjectile;
+    public GameObject currentProjectile;
     public Transform projectileSpawn;
     float respawnPercentage;
     public AudioSource mySource;
     public AudioClip shootClip;
 
     float range;
-    float force;
-    int damage;
+    public float force;
+    public int damage;
     float fireRate;
 
 
@@ -110,7 +110,7 @@ public class TowerBehaviour : MonoBehaviour
     }
 
     public virtual void PlayAudio(AudioClip myClip) {
-        //mySource.clip = myClip;
+
         mySource.PlayOneShot(myClip);
     }
 }

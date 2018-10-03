@@ -27,28 +27,36 @@ public class Stick : MonoBehaviour
     {
         if (other.transform.tag != "Tower")
         {
-            MakeAndPlaySound(other.contacts[0].point);
-
-            if (other.gameObject.GetComponent<EnemyBehaviour>())
+            if (other.transform.GetComponent<Stick>())
             {
-                print("Arrow hit enemy!");
 
-                if (other.transform.GetComponent<EnemyBehaviour>())
-                {
-                    other.transform.GetComponent<EnemyBehaviour>().DamageMe(damage, other);
-                }
             }
+            else
+            {
 
-            GameObject emptyGameObject = new GameObject();
-            emptyGameObject.transform.parent = other.transform;
-            transform.parent = emptyGameObject.transform;
-            Destroy(transform.GetComponent<Rigidbody>());
-            Destroy(emptyGameObject, timeToDestroy);
-            Destroy(transform.GetComponent<Collider>());
+                MakeAndPlaySound(other.contacts[0].point);
+
+                if (other.gameObject.GetComponent<EnemyBehaviour>())
+                {
+                    print("Arrow hit enemy!");
+
+                    if (other.transform.GetComponent<EnemyBehaviour>())
+                    {
+                        other.transform.GetComponent<EnemyBehaviour>().DamageMe(damage, other);
+                    }
+                }
+
+                GameObject emptyGameObject = new GameObject();
+                emptyGameObject.transform.parent = other.transform;
+                transform.parent = emptyGameObject.transform;
+                Destroy(transform.GetComponent<Rigidbody>());
+                Destroy(emptyGameObject, timeToDestroy);
+                Destroy(transform.GetComponent<Collider>());
 
 
 
-            transform.Translate(transform.forward * pierceDepth);
+                transform.Translate(transform.forward * pierceDepth);
+            }
 
         }
     }
