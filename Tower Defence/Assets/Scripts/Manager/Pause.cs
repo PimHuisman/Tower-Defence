@@ -37,7 +37,7 @@ public class Pause : MonoBehaviour
         {
 			pauseMenu.SetActive(false);
             blur.SetActive(false);
-            optionsMenu.SetActive(false);
+            //optionsMenu.SetActive(false);
 
 			tsModifier.myTimeScale = 1;
 			isPaused = false;	

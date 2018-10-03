@@ -11,19 +11,29 @@ public class TowerPad : MonoBehaviour
     public bool isPressed;
     public TowerStat currentTower;
     private bool otherIsPressed;
-    private Renderer myRenderer;
-    private Color normalColor;
-    public Color highlightAddColor;
-    private Color highlightColor;
     public AudioSource mySource;
     public AudioClip hoverSound;
     public AudioClip clickSound;
-
     private bool isPlaying;
+    Renderer myRend;
+    List<Material> myMats;
+
     void Start()
     {
         FindObjects();
         MakeColor();
+        if (GetComponent<Renderer>() != null)
+        {
+            print("I have a renderer!");
+            myRend = GetComponent<Renderer>();
+            print("I have " + myRend.materials.Length + " materials.");
+        }
+        else
+        {
+            print("Missing renderer!");
+        }
+        //myRend = GetComponent<MeshRenderer>();
+
     }
 
     void FindObjects()
@@ -34,15 +44,19 @@ public class TowerPad : MonoBehaviour
 
     void MakeColor()
     {
-        myRenderer = GetComponent<Renderer>();
-        normalColor = myRenderer.material.color;
-        highlightColor = normalColor + highlightAddColor;
+
+    }
+
+    void Highlight(bool hl)
+    {
+
     }
 
     void Update()
     {
         DetectMouse();
     }
+
 
 
     //Void to detect mouse
@@ -62,7 +76,7 @@ public class TowerPad : MonoBehaviour
                     PlaySound(hoverSound, true);
                     isPlaying = true;
                 }
-                
+
 
                 //Detect if user clicks on tower pad
                 if (Input.GetButtonDown("Fire1"))
@@ -94,17 +108,6 @@ public class TowerPad : MonoBehaviour
         }
     }
 
-    void Highlight(bool hl)
-    {
-        if (hl == true)
-        {
-            myRenderer.material.color = highlightColor;
-        }
-        else
-        {
-            myRenderer.material.color = normalColor;
-        }
-    }
 
     void PlaySound(AudioClip clip, bool play)
     {
