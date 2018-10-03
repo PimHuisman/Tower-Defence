@@ -12,26 +12,35 @@ public class Currency : MonoBehaviour {
 	public GameObject newCurrencyObject;
 	public GameObject objectPlace;
 	public float timeToDisableObject;
+	float addedAmount;
 
 	void Update() {
 		currencyText.text = currencyString + myCurrency.ToString();
 	}
 
 	public void AddCurrency(float amount) {
+		addedAmount = amount;
 		GameObject newObject = Instantiate(newCurrencyObject, currencyPanel.transform);
+		RectTransform objectRect = newObject.GetComponent<RectTransform>();
+		objectRect = objectPlace.GetComponent<RectTransform>();
+		//newObject.GetComponent<RectTransform>() = objectPlace.GetComponent<RectTransform>();
+
+		Animator anim = newObject.GetComponent<Animator>();
+		anim.enabled = true;
+
 		newObject.GetComponent<Text>().text = "+ " + amount;
-		float seconds = newObject.GetComponent<Animation>().clip.length;
-		print("Void amount: " + amount);
-		
-		print("Loading...");
-		StartCoroutine("CurrencyRoutine", seconds);
-		print("Done!");
+		float secs = 1;
+		StartCoroutine("NewEnim", secs);
 		Destroy(newObject, timeToDisableObject);
 	}
 
-	public IEnumerator CurrencyRoutine(float seconds) {
+	public IEnumerator NewEnim(float seconds) {
 		yield return new WaitForSeconds(seconds);
+		myCurrency += addedAmount;
+
+		yield return null;
 	}
+
 
 }
 
