@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Old_Guy
   m_EditorClassIdentifier: 
   myName: Old_Guy
-  health: 40
+  health: 20
   currencyWhenDead: 5
   speed: 5
   attackDamage: 0

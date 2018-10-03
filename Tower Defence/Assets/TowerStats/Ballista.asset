@@ -16,7 +16,7 @@ MonoBehaviour:
   range: 15
   force: 3000
   damage: 15
-  fireRate: 0.5
+  fireRate: 0.4
   projectileRespawnPercentage: 0
-  tower: {fileID: 1092578569052628, guid: 9e2c0410cdec7ca4cb004c4f99be1e55, type: 2}
-  ammo: {fileID: 0}
+  tower: {fileID: 1301845847321034, guid: b170ce20bf1010645be64873b1c9666b, type: 2}
+  ammo: {fileID: 1582708557830062, guid: 3e18ec518bbccae40ba5b7de01b6206f, type: 2}

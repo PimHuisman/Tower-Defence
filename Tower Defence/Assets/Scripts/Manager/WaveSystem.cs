@@ -50,6 +50,10 @@ public class WaveSystem : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("I"))
+        {
+            currentAmountOfEnemies = 0;
+        }
         //totalEnemies.text = ("Left" + "/" + currentAmountOfEnemies);
         //wave.text = ("Wave" + "/" + waveAmount);
         if (currentAmountOfEnemies <= 0)

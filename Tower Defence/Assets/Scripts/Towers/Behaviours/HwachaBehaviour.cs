@@ -29,7 +29,10 @@ public class HwachaBehaviour : TowerBehaviour
             //print("Shooting!");
 
 
-            weapon.LookAt(mainTarget.forward * offset + mainTarget.transform.position);
+            if (mainTarget != null)
+            {
+                weapon.LookAt(mainTarget.forward * offset + mainTarget.transform.position);
+            }
             //currentChild.rotation = weapon.rotation;
             currentProjectile = Instantiate(projectile, currentChild.position, currentChild.rotation);
             currentProjectile.GetComponent<Stick>().damage = damage;
