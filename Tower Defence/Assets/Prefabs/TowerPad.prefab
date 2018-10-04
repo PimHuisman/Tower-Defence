@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23713613362944772}
   - component: {fileID: 82481808584763674}
   - component: {fileID: 114451208056138930}
+  - component: {fileID: 65394468607174760}
   m_Layer: 0
   m_Name: TowerPad
   m_TagString: Tower Pad
@@ -145,6 +146,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1182280816355548}
   m_Mesh: {fileID: 4300000, guid: 3b0ab46f0d104934db8a7d76b221ed5f, type: 3}
+--- !u!65 &65394468607174760
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182280816355548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4237704, y: 0.56248456, z: 3.4237704}
+  m_Center: {x: -0.00007945299, y: 0.28079632, z: 0.00008124113}
 --- !u!82 &82481808584763674
 AudioSource:
   m_ObjectHideFlags: 1
