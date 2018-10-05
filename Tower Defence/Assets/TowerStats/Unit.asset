@@ -18,5 +18,5 @@ MonoBehaviour:
   damage: 0
   fireRate: 0
   projectileRespawnPercentage: 0
-  tower: {fileID: 0}
+  tower: {fileID: 1625491241935272, guid: f7a919de57f431349b8275750d9d0511, type: 2}
   ammo: {fileID: 0}
