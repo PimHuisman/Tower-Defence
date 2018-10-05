@@ -2,15 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Units : MonoBehaviour {
+public class Units : MonoBehaviour 
+{
+	Transform target;
+	public int health;
+	public int currentHealth;
 
-	// Use this for initialization
-	void Start () {
-		
+	void Start() 
+	{
+		currentHealth = health;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void Update() 
+	{
+		//CheckHealth();
 	}
+
+	void CheckHealth(int damage)
+	{
+		currentHealth -= damage;
+		// Check if your health is zero.
+		// If it is zero say to your tower remove me.
+	}
+
+	void OnTriggerEnter(Collider other) 
+	{
+		// When enemy enters radius set it == to target.
+	}
+
+	IEnumerator AttackRate()
+	{
+
+		yield return new WaitForSeconds(0);
+	}
+
 }
