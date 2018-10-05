@@ -6,13 +6,13 @@ public class HwachaBehaviour : TowerBehaviour
 {
     public float offset;
 
-    void Start()
+    public override void Start()
     {
         SetStats();
         StartCoroutine(ShootRoutine());
     }
 
-    void Update()
+    public override void Update()
     {
         CheckEnemies();
     }

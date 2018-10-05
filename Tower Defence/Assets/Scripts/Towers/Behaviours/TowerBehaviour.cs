@@ -20,7 +20,15 @@ public class TowerBehaviour : MonoBehaviour
     public int damage;
     float fireRate;
 
+    public virtual void Start()
+    {
 
+    }
+
+    public virtual void Update() 
+    {
+        
+    }
     public virtual void SetStats()
     {
         range = tower.range;
