@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject blur;
     public GameObject optionsMenu;
+    public bool canBePaused;
 
     public bool isPaused;
 	public ButtonSound buttonSound;
@@ -37,7 +38,7 @@ public class Pause : MonoBehaviour
         {
 			pauseMenu.SetActive(false);
             blur.SetActive(false);
-            //optionsMenu.SetActive(false);
+            optionsMenu.SetActive(false);
 
 			tsModifier.myTimeScale = 1;
 			isPaused = false;	
