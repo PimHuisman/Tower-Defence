@@ -12,7 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool hitTemple;
     Vector3 target;
     Vector3 endPos;
-	NavMeshAgent agent;
+    NavMeshAgent agent;
 
     // Use this for initialization
     void Start()
@@ -21,10 +21,10 @@ public class EnemyBehaviour : MonoBehaviour
         enemyStats = GetComponent<MyStats>().myStrats;
         GetComponent<NavMeshAgent>().speed = enemyStats.speed;
         agent = GetComponent<NavMeshAgent>();
-		endPos = GameObject.FindGameObjectWithTag("EndPoint").transform.position;
+        endPos = GameObject.FindGameObjectWithTag("EndPoint").transform.position;
     }
 
-    void Update() 
+    void Update()
     {
         TargetDestanation(target);
     }
@@ -44,17 +44,21 @@ public class EnemyBehaviour : MonoBehaviour
         Destroy(gameObject, 1);
     }
 
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Unit")
         {
             target = other.transform.position;
         }
+        else
+        {
+            //target = endPos;
+        }
     }
 
-    void OnTriggerExit(Collider other) 
+    void OnTriggerExit(Collider other)
     {
-        if(other.transform.tag == "Unit")
+        if (other.transform.tag == "Unit")
         {
             target = endPos;
         }

@@ -124,7 +124,7 @@ public class WaveSystem : MonoBehaviour
         for (int i = 0; i < Enemy2; i++)
         {
             Instantiate(enemies[1], randomspawnEnemy2.transform);
-            print(Enemy2SpawnPoints);
+            //print(Enemy2SpawnPoints);
             yield return new WaitForSeconds(spawnWait);
         }
 

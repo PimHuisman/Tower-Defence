@@ -18,6 +18,10 @@ AudioMixerController:
   m_AudioMixerGroupViews:
   - guids:
     - c792d0d97e4d7474fa4a3ccf4ea91c76
+    - 6afceceb063d8994193a9c14c6c3e529
+    - f2cf7f62855a69b4ba8399807662f2d8
+    - 9a665b23bca172445ae8d40146fcd513
+    - f01905b01ba3e004cb1781c6f1cfed9e
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -29,7 +33,9 @@ AudioMixerGroupController:
   m_Name: Master
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c792d0d97e4d7474fa4a3ccf4ea91c76
-  m_Children: []
+  m_Children:
+  - {fileID: 243449018934444216}
+  - {fileID: 243310222522811496}
   m_Volume: 69f32c1418bcd6e42a96c8e678ab54bf
   m_Pitch: 4425d073c9a1c71428b511bd27cda68d
   m_Effects:
@@ -61,3 +67,125 @@ AudioMixerSnapshotController:
   m_SnapshotID: a1286d471201c814fae9a739c9c57c61
   m_FloatValues: {}
   m_TransitionOverrides: {}
+--- !u!243 &243310222522811496
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Towers
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: f2cf7f62855a69b4ba8399807662f2d8
+  m_Children:
+  - {fileID: 243442359240977654}
+  - {fileID: 243517087606571270}
+  m_Volume: fdb0678598c34be4891e7ce0d307c5e5
+  m_Pitch: ead9d5ac30ff2af4f9f7d294bdf5c7ef
+  m_Effects:
+  - {fileID: 244389512635779406}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243442359240977654
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Balista
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 9a665b23bca172445ae8d40146fcd513
+  m_Children: []
+  m_Volume: 686b6229d8f176243a3b2b28cd0fbf4e
+  m_Pitch: 1ec63eb9b89567b44b6636486435f200
+  m_Effects:
+  - {fileID: 244568563920409060}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243449018934444216
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: TowerPad
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 6afceceb063d8994193a9c14c6c3e529
+  m_Children: []
+  m_Volume: edf7c72ab6d087c40a74c727186f6cd3
+  m_Pitch: 20ed474280b822c479644a1c181f7da0
+  m_Effects:
+  - {fileID: 244972773469687864}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243517087606571270
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hwacha
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: f01905b01ba3e004cb1781c6f1cfed9e
+  m_Children: []
+  m_Volume: ae9caabc4a9f7bd449e893709709bd48
+  m_Pitch: a6e954dc6bb100f4e98c6774f08b8e9c
+  m_Effects:
+  - {fileID: 244829530003310672}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &244389512635779406
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: b1bbcce115e8d694cbbcbc3890196cc6
+  m_EffectName: Attenuation
+  m_MixLevel: 33080a5be46d8f94883603e92ef31978
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244568563920409060
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: db5f7b2b6d1ca394db9ef39e573b72d0
+  m_EffectName: Attenuation
+  m_MixLevel: 6ab0c55fdc717144f947edfaab87b6e1
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244829530003310672
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 8e5265ae33247d546b7da9cc9422e39d
+  m_EffectName: Attenuation
+  m_MixLevel: 48704f604d6c2cb42a4b550d31e6075e
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244972773469687864
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 079660c5538efb24293392413a5a07d5
+  m_EffectName: Attenuation
+  m_MixLevel: 47ecc6bc195435d408c1db426daced51
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0

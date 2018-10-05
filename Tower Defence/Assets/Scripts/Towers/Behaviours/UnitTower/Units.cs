@@ -48,7 +48,9 @@ public class Units : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // When enemy enters radius set it == to target.
+        if(other.GetComponent<EnemyBehaviour>()) {
+            target = other.transform;
+        }
     }
 
     IEnumerator AttackRate()
