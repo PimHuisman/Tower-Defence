@@ -10,8 +10,8 @@ public class EnemyBehaviour : MonoBehaviour
     AudioSource mySource;
 
     public bool hitTemple;
-    public Transform unitPos;
     Vector3 target;
+    Vector3 endPos;
 	NavMeshAgent agent;
 
     // Use this for initialization
@@ -21,7 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
         enemyStats = GetComponent<MyStats>().myStrats;
         GetComponent<NavMeshAgent>().speed = enemyStats.speed;
         agent = GetComponent<NavMeshAgent>();
-		target = GameObject.FindGameObjectWithTag("EndPoint").transform.position;
+		endPos = GameObject.FindGameObjectWithTag("EndPoint").transform.position;
     }
 
     void Update() 
@@ -49,6 +49,14 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.transform.tag == "Unit")
         {
             target = other.transform.position;
+        }
+    }
+
+    void OnTriggerExit(Collider other) 
+    {
+        if(other.transform.tag == "Unit")
+        {
+            target = endPos;
         }
     }
     void OnCollisionEnter(Collision other)

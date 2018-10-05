@@ -33,6 +33,7 @@ public class UnitBehaviour : MonoBehaviour
 		for (int i = 0; i < unitMaxAmount; i++)
 		{
 			Transform newUnit = Instantiate(unit, spawnPos.position, spawnPos.rotation);
+			Vector3 newPos = new Vector3(target.position.x, target.position.y, target.position.z);
 			newUnit.GetComponent<Units>().target = target;
 			newUnit.SetParent(spawnPos);
 			unitsList.Add(newUnit);

@@ -28,12 +28,12 @@ public class Units : MonoBehaviour
 
 	public void CalculateHealth(int damage)
 	{
-		print(damage);
 		currentHealth -= damage;
 		if(currentHealth <= 0)
 		{
 			currentHealth = 0;
 			gameObject.GetComponentInParent<UnitBehaviour>().RemoveUnit(transform);
+			Destroy(gameObject);
 		}
 		// Check if your health is zero.
 		// If it is zero say to your tower remove me.
