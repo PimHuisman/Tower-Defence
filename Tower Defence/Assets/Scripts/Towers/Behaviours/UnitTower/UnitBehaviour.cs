@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UnitBehaviour : MonoBehaviour
 {
-	[SerializeField] List<Transform> units = new List<Transform>();
+	public List<Transform> unitsList = new List<Transform>();
 	[SerializeField] Transform unit;
 	[SerializeField] int unitMaxAmount;
 	[SerializeField] Transform spawnPos;
+	[SerializeField] Transform target;
 	[SerializeField] float timer;
 	[SerializeField] float timerNewUnit;
 	void Start () 
@@ -32,12 +33,15 @@ public class UnitBehaviour : MonoBehaviour
 		for (int i = 0; i < unitMaxAmount; i++)
 		{
 			Transform newUnit = Instantiate(unit, spawnPos.position, spawnPos.rotation);
-			units.Add(newUnit);
+			newUnit.GetComponent<Units>().target = target;
+			newUnit.SetParent(spawnPos);
+			unitsList.Add(newUnit);
 		}
 	}
 
-	public void RemoveUnit()
+	public void RemoveUnit(Transform deadUnit)
 	{
+		unitsList.Remove(deadUnit);
 		// Remove the unit out the list.
 	}
 }

@@ -40,12 +40,12 @@ GameObject:
   - component: {fileID: 23954840709042054}
   - component: {fileID: 65300266989238566}
   - component: {fileID: 54330929026295048}
-  - component: {fileID: 114516993165960448}
   - component: {fileID: 114665043522919666}
   - component: {fileID: 195645101365818692}
   - component: {fileID: 114845419839700508}
   - component: {fileID: 114417340836943002}
   - component: {fileID: 114843253403643108}
+  - component: {fileID: 135713132276110034}
   m_Layer: 0
   m_Name: Old_Guy
   m_TagString: Enemy
@@ -155,9 +155,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &65300266989238566
 BoxCollider:
@@ -256,17 +256,6 @@ MonoBehaviour:
     type: 2}
   healthBarScript: {fileID: 114843253403643108}
   currencyScript: {fileID: 0}
---- !u!114 &114516993165960448
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1417389629466486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 146ea98f2127f564b83ee14146ab1f6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114555559348924830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitTemple: 0
+  unitPos: {fileID: 0}
 --- !u!114 &114843253403643108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,6 +321,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myStrats: {fileID: 11400000, guid: 9b189db8d95a4374da03fa8dff82ffe4, type: 2}
+--- !u!135 &135713132276110034
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417389629466486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!195 &195645101365818692
 NavMeshAgent:
   m_ObjectHideFlags: 1

@@ -10,28 +10,28 @@ public class EnemyBehaviour : MonoBehaviour
     AudioSource mySource;
 
     public bool hitTemple;
+    public Transform unitPos;
+    Vector3 target;
+	NavMeshAgent agent;
 
     // Use this for initialization
     void Start()
     {
+
         enemyStats = GetComponent<MyStats>().myStrats;
         GetComponent<NavMeshAgent>().speed = enemyStats.speed;
+        agent = GetComponent<NavMeshAgent>();
+		target = GameObject.FindGameObjectWithTag("EndPoint").transform.position;
     }
 
-
-
-    void OnCollisionEnter(Collision c)
+    void Update() 
     {
-        //print("Colliding");
+        TargetDestanation(target);
+    }
 
-        if (c.gameObject.GetComponent<TempleStats>())
-        {
-            if (hitTemple == false)
-            {
-                print("Colliding with temple!");
-                HurtTemple(c.gameObject.GetComponent<TempleStats>());
-            }
-        }
+    void TargetDestanation(Vector3 newtarget)
+    {
+        agent.SetDestination(newtarget);
     }
 
     void HurtTemple(TempleStats temple)
@@ -42,5 +42,31 @@ public class EnemyBehaviour : MonoBehaviour
 
 
         Destroy(gameObject, 1);
+    }
+
+    void OnTriggerEnter(Collider other) 
+    {
+        if (other.transform.tag == "Unit")
+        {
+            target = other.transform.position;
+        }
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        //print("Colliding");
+
+        if (other.gameObject.GetComponent<TempleStats>())
+        {
+            if (hitTemple == false)
+            {
+                print("Colliding with temple!");
+                HurtTemple(other.gameObject.GetComponent<TempleStats>());
+            }
+        }
+
+        if (other.gameObject.tag == "Unit")
+        {
+            other.gameObject.GetComponent<Units>().CalculateHealth(1);
+        }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Tower
   - Manager
   - Tower Pad
+  - Unit
   layers:
   - Default
   - TransparentFX
