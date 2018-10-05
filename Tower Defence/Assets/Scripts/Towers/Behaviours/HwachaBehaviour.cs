@@ -6,13 +6,13 @@ public class HwachaBehaviour : TowerBehaviour
 {
     public float offset;
 
-    public override void Start()
+    public void Start()
     {
         SetStats();
         StartCoroutine(ShootRoutine());
     }
 
-    public override void Update()
+    public void Update()
     {
         CheckEnemies();
     }
@@ -23,7 +23,7 @@ public class HwachaBehaviour : TowerBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            print("Did " + i + " loops.");
+            //print("Did " + i + " loops.");
 
             Transform currentChild = weapon.GetChild(i);
             //print("Shooting!");

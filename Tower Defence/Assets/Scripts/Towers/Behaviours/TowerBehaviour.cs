@@ -20,15 +20,6 @@ public class TowerBehaviour : MonoBehaviour
     public int damage;
     float fireRate;
 
-    public virtual void Start()
-    {
-
-    }
-
-    public virtual void Update() 
-    {
-        
-    }
     public virtual void SetStats()
     {
         range = tower.range;
@@ -44,6 +35,7 @@ public class TowerBehaviour : MonoBehaviour
         SphereCollider c = GetComponent<SphereCollider>();
         c.radius = range;
     }
+
     public virtual void CheckEnemies()
     {
         for (int i = 0; i < targets.Count; i++)
@@ -55,6 +47,7 @@ public class TowerBehaviour : MonoBehaviour
         }
         SetMainTarget();
     }
+
     public virtual void SetMainTarget()
     {
         if (targets.Count != 0)
@@ -75,14 +68,14 @@ public class TowerBehaviour : MonoBehaviour
 
     public virtual void Shoot()
     {
-        print("Shooting!");
+        //print("Shooting!");
         currentProjectile = Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
         currentProjectile.GetComponent<Stick>().damage = damage;
         currentProjectile.transform.LookAt(mainTarget);
         Rigidbody projectileRb = currentProjectile.GetComponent<Rigidbody>();
         projectileRb.AddForce(currentProjectile.transform.forward * force);
         PlayAudio(shootClip);
-        
+
         currentProjectile = null;
     }
 
@@ -91,7 +84,7 @@ public class TowerBehaviour : MonoBehaviour
     {
         if (other.transform.tag == "Enemy")
         {
-            print("Enemy is entering.");
+            //print("Enemy is entering.");
             targets.Add(other.transform);
         }
     }
@@ -104,6 +97,7 @@ public class TowerBehaviour : MonoBehaviour
             CheckEnemies();
         }
     }
+
     public virtual IEnumerator ShootRoutine()
     {
         while (true)
@@ -117,7 +111,8 @@ public class TowerBehaviour : MonoBehaviour
         }
     }
 
-    public virtual void PlayAudio(AudioClip myClip) {
+    public virtual void PlayAudio(AudioClip myClip)
+    {
 
         mySource.PlayOneShot(myClip);
     }

@@ -22,7 +22,6 @@ public class HealthBar : MonoBehaviour
     public void ChangeBar(float newHealth, float mainHealth)
     {
         float amount = newHealth / mainHealth;
-		print(amount);
         healthBar.fillAmount = amount;
     }
 }

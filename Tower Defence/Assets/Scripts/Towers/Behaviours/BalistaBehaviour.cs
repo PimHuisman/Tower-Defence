@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BalistaBehaviour : TowerBehaviour
 {
-    public override void Start()
+    public  void Start()
     {
         SetStats();
 		StartCoroutine(ShootRoutine());
     }
 
-    public override void Update()
+    public  void Update()
     {
         CheckEnemies();
     }

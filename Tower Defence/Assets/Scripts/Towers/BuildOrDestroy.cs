@@ -41,7 +41,7 @@ public class BuildOrDestroy : MonoBehaviour
                 {
                     buyPanel.SetActive(true);
                     Vector3 panelPos = Camera.main.WorldToScreenPoint(currentPad.transform.GetChild(0).position);
-                    print(panelPos);
+                    //print(panelPos);
                     buyPanel.transform.position = panelPos;
                     blur.SetActive(true);
                 }
@@ -98,6 +98,6 @@ public class BuildOrDestroy : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         placementSource.PlayOneShot(clip);
-        print("Playing " + clip.name);
+        //print("Playing " + clip.name);
     }
 }

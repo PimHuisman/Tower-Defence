@@ -32,9 +32,9 @@ public class TowerPad : MonoBehaviour
     {
         if (GetComponent<Renderer>() != null)
         {
-            print("I have a renderer!");
+            //print("I have a renderer!");
             myRend = GetComponent<Renderer>();
-            print("I have " + myRend.materials.Length + " materials.");
+            //print("I have " + myRend.materials.Length + " materials.");
 
             MakeColor();
         }
