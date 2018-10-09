@@ -22,6 +22,7 @@ public class EnemyBehaviour : MonoBehaviour
         GetComponent<NavMeshAgent>().speed = enemyStats.speed;
         agent = GetComponent<NavMeshAgent>();
         endPos = GameObject.FindGameObjectWithTag("EndPoint").transform.position;
+        target = endPos;
     }
 
     void Update()
