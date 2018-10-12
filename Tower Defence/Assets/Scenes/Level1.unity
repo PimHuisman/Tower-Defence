@@ -4931,6 +4931,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 23991816719778528, guid: 2a254c28bc65ae34e903ce1543cbfdcb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a254c28bc65ae34e903ce1543cbfdcb, type: 2}
   m_IsPrefabAsset: 0
@@ -7155,8 +7160,8 @@ GameObject:
   - component: {fileID: 1487302455}
   - component: {fileID: 1487302454}
   - component: {fileID: 1487302457}
-  - component: {fileID: 1487302458}
   - component: {fileID: 1487302459}
+  - component: {fileID: 1487302458}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7247,7 +7252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 39b2013af650e0f4d93344d0b946b182, type: 2}
+  profile: {fileID: 11400000, guid: 4138da33889dfc74cb915a97647bd4f1, type: 2}
 --- !u!82 &1487302459
 AudioSource:
   m_ObjectHideFlags: 0

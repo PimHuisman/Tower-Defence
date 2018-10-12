@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: New Post-Processing Profile
   m_EditorClassIdentifier: 
   debugViews:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
       depth:
@@ -25,27 +25,27 @@ MonoBehaviour:
         motionVectorsResolution: 24
         motionVectorsAmplitude: 64
   fog:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       excludeSkybox: 1
   antialiasing:
     m_Enabled: 0
     m_Settings:
-      method: 0
+      method: 1
       fxaaSettings:
-        preset: 2
+        preset: 4
       taaSettings:
-        jitterSpread: 0.75
+        jitterSpread: 1
         sharpen: 0.3
-        stationaryBlending: 0.95
+        stationaryBlending: 0.99
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      intensity: 1
+      intensity: 2
       radius: 0.3
-      sampleCount: 10
-      downsampling: 1
+      sampleCount: 16
+      downsampling: 0
       forceForwardCompatibility: 0
       ambientOnly: 0
       highPrecision: 0
