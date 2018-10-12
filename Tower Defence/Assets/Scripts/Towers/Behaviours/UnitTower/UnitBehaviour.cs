@@ -9,28 +9,43 @@ public class UnitBehaviour : MonoBehaviour
 	[SerializeField] int unitMaxAmount;
 	[SerializeField] Transform spawnPos;
 	[SerializeField] Transform target;
-	[SerializeField] float timer;
+	[SerializeField] int newAmount;
 	[SerializeField] float timerNewUnit;
 	void Start () 
 	{
-		CreateUnits();
+		StartCoroutine("NewEnemy");
+		CreateUnits(unitMaxAmount);
 	}
 	
 	void Update () 
 	{
-		
+		CheckUnits();
 	}
 
 	void CheckUnits()
 	{
-		// Check if a unit has died.
-		// If a unit/units has died create the amount it needs to get to the max units.
+		if (unitsList.Count < unitMaxAmount)
+		{
+			newAmount = unitMaxAmount - unitsList.Count;
+		}
+	}
+	IEnumerator NewEnemy()
+	{
+		while (true)
+        {
+            while (unitsList.Count < unitMaxAmount)
+            {
+                yield return new WaitForSeconds(timerNewUnit);
+                CreateUnits(newAmount);
+            }
+            yield return null;
+        }
 	}
 
-	void CreateUnits()
+	void CreateUnits(int x)
 	{
 		// Create enemies at pos.
-		for (int i = 0; i < unitMaxAmount; i++)
+		for (int i = 0; i < x; i++)
 		{
 			Transform newUnit = Instantiate(unit, spawnPos.position, spawnPos.rotation);
 			Vector3 newPos = new Vector3(target.position.x, target.position.y, target.position.z);
@@ -43,6 +58,5 @@ public class UnitBehaviour : MonoBehaviour
 	public void RemoveUnit(Transform deadUnit)
 	{
 		unitsList.Remove(deadUnit);
-		// Remove the unit out the list.
 	}
 }

@@ -110,8 +110,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ac3afc3d642904ab242b268206dc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  target: {fileID: 0}
+  attackTarget: {fileID: 0}
+  health: 50
   currentHealth: 0
+  offset: {x: 0, y: -0.4, z: 0}
+  attackRate: 0.5
+  damage: 5
+  raycastLength: 2
 --- !u!135 &135911538960505696
 SphereCollider:
   m_ObjectHideFlags: 1

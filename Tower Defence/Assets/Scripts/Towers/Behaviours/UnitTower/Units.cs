@@ -7,11 +7,23 @@ public class Units : MonoBehaviour
 {
     NavMeshAgent agent;
     [HideInInspector] public Transform target;
+    public Transform attackTarget;
+
+    [Header("Health")]
     public int health;
     public int currentHealth;
+    [Header("Raycast")]
+    [SerializeField] Vector3 offset;
+    [SerializeField] float attackRate;
+    [SerializeField] int damage;
+    bool isAttacking;
+    RaycastHit hit;
+    [SerializeField] float raycastLength;
 
     void Start()
     {
+        attackTarget = null;
+        StartCoroutine("AttackRate");
         agent = GetComponent<NavMeshAgent>();
         currentHealth = health;
     }
@@ -19,6 +31,8 @@ public class Units : MonoBehaviour
     void Update()
     {
         SetPosition();
+        CheckHealth();
+        Attack();
     }
 
     void SetPosition()
@@ -26,12 +40,10 @@ public class Units : MonoBehaviour
         agent.SetDestination(target.position);
     }
 
-    public void CalculateHealth(int damage)
+    void CheckHealth()
     {
-        currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
             if (gameObject.GetComponentInParent<UnitBehaviour>())
             {
                 gameObject.GetComponentInParent<UnitBehaviour>().RemoveUnit(transform);
@@ -42,21 +54,65 @@ public class Units : MonoBehaviour
                 print("Parent doesn't have UnitBehaviour script!");
             }
         }
-        // Check if your health is zero.
-        // If it is zero say to your tower remove me.
+    }
+
+    public int CalculateHealth(int damage)
+    {
+        if(currentHealth <= 0)
+        {
+            return currentHealth = 0;
+        }
+        currentHealth -= damage;
+        return currentHealth;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<EnemyBehaviour>()) {
+        if (other.GetComponent<EnemyBehaviour>()) 
+        {
             target = other.transform;
+        }
+    }
+
+    void OnTriggerStay(Collider other) 
+    {
+        if (other.GetComponent<EnemyBehaviour>()) 
+        {
+            attackTarget = other.transform;
+        }
+        else
+        {
+            attackTarget = null;
+        }
+    }
+
+    void Attack()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out hit, raycastLength))
+        {
+            if (hit.transform.tag == "Enemy")
+            {
+                isAttacking = true;
+            }
+            else
+            {
+                isAttacking = false;
+            }
+            Debug.DrawRay(transform.position + offset, transform.forward * raycastLength, Color.red);
         }
     }
 
     IEnumerator AttackRate()
     {
-
-        yield return new WaitForSeconds(0);
+        while (true)
+        {
+            while (isAttacking)
+            {
+                yield return new WaitForSeconds(attackRate);
+                hit.transform.gameObject.GetComponent<EnemyHealth>().DamageMe(damage, null);
+            }
+            yield return null;
+        }
     }
 
 }

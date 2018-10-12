@@ -7,7 +7,8 @@ public class CameraMovement : MonoBehaviour {
 	public float maxSize;
 	public float startSize;
 	public float zoomSensetivity;
-	public float moveSensetivity;
+	public float horMoveSensetivity;
+	public float verMoveSensetivity;
 	public GameObject camObject;
 	private Camera camCamera;
 
@@ -33,12 +34,12 @@ public class CameraMovement : MonoBehaviour {
 		float horizontalAxis = Input.GetAxisRaw ("Horizontal");
 		
 		if (horizontalAxis != 0) {
-			transform.Translate (-transform.right * horizontalAxis * moveSensetivity * Time.deltaTime);
+			transform.Translate (-transform.right * horizontalAxis * horMoveSensetivity * Time.deltaTime);
 		}
 		if(verticalAxis != 0) {
 			Quaternion oldRotation = transform.rotation;	
 			
-			transform.Translate(-new Vector3(transform.rotation.x, transform.rotation.y, 0.0f) * verticalAxis * moveSensetivity * Time.deltaTime);
+			transform.Translate(-new Vector3(transform.rotation.x, transform.rotation.y, 0.0f) * verticalAxis * verMoveSensetivity * Time.deltaTime);
 			//transform.rotation = oldRotation;
 			//transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
 		}

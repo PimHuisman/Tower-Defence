@@ -15,5 +15,5 @@ MonoBehaviour:
   health: 65
   currencyWhenDead: 5
   speed: 2
-  attackDamage: 0
-  attackCooldown: 0
+  attackDamage: 7
+  attackCooldown: 2

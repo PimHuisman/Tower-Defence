@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     EnemyStrats enemyStats;
     [SerializeField] GameObject audioPlayer;
     AudioSource mySource;
-    int currentHealth;
+    [SerializeField]int currentHealth;
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip damageSound;
     [SerializeField] GameObject damageParticles;

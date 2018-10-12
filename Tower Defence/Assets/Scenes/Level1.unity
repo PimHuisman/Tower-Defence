@@ -6220,6 +6220,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114604247893886254, guid: f7a919de57f431349b8275750d9d0511,
+        type: 2}
+      propertyPath: timerNewUnit
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7a919de57f431349b8275750d9d0511, type: 2}
   m_IsPrefabAsset: 0
@@ -8845,7 +8850,8 @@ MonoBehaviour:
   maxSize: 20
   startSize: 20
   zoomSensetivity: 10
-  moveSensetivity: 50
+  horMoveSensetivity: 40
+  verMoveSensetivity: 20
   camObject: {fileID: 1487302453}
 --- !u!1001 &1834459494
 Prefab:
