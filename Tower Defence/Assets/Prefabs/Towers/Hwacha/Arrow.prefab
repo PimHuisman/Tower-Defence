@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114226159778238602}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,3 +148,6 @@ MonoBehaviour:
   target: {fileID: 0}
   launchAngle: 45
   launched: 0
+  hasLanded: 0
+  doWait: 0
+  maxTime: 0

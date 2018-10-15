@@ -10,6 +10,7 @@ TagManager:
   - Manager
   - Tower Pad
   - Unit
+  - Projectile
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,8 @@ public class Calculate : MonoBehaviour {
 	private Rigidbody myRb;
 	public bool launched;
 	public bool hasLanded;
+	public bool doWait;
+	public float maxTime;
 
 	// Use this for initialization
 	void MyStart () {
@@ -36,6 +38,16 @@ public class Calculate : MonoBehaviour {
 	}
 
 	public void Launch () {
+		if (doWait == true) {
+
+			StartCoroutine ("WaitShoot");
+		} else {
+			Launch2 ();
+		}
+
+	}
+
+	void Launch2 () {
 		MyStart ();
 		launched = true;
 
@@ -64,7 +76,12 @@ public class Calculate : MonoBehaviour {
 
 		// launch the object by setting its initial velocity and flipping its state
 		myRb.velocity = globalVelocity;
-
+	}
+	public IEnumerator WaitShoot () {
+		float secs = Random.Range (0, maxTime);
+		yield return new WaitForSeconds (secs);
+		Launch2();
+		yield return null;
 	}
 
 	void OnCollisionEnter (Collision c) {

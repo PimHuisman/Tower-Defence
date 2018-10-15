@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 82724991886060432}
   m_Layer: 0
   m_Name: Ballista_Arrow
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,6 +225,9 @@ MonoBehaviour:
   target: {fileID: 0}
   launchAngle: 45
   launched: 0
+  hasLanded: 0
+  doWait: 0
+  maxTime: 0
 --- !u!114 &114839996885656126
 MonoBehaviour:
   m_ObjectHideFlags: 1

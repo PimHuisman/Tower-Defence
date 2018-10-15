@@ -19,30 +19,27 @@ public class HwachaBehaviour : TowerBehaviour {
         int count = weapon.childCount;
 
         for (int i = 0; i < count; i++) {
+            //print("Did " + i + " loops.");
+
+            Transform currentChild = weapon.GetChild (i);
+            //print("Shooting!");
+
+            if (mainTarget != null) {
+                weapon.LookAt (mainTarget.forward * offset + mainTarget.transform.position);
+            }
+            //currentChild.rotation = weapon.rotation;
+            currentProjectile = Instantiate (projectile, currentChild.position, currentChild.rotation);
+            currentProjectile.GetComponent<Stick> ().damage = damage;
+            Calculate calc = currentProjectile.GetComponent<Calculate> ();
+            calc.maxTime = maxTime;
+            calc.doWait = true;
+            calc.target = mainTarget;
+            calc.launchAngle = angle;
+            calc.Launch();
+            PlayAudio (shootClip);
 
             //currentProjectile = null;
-            StartCoroutine("WaitForShoot", i);
         }
-    }
-
-    public IEnumerator WaitForShoot (int i) {
-        float secs = Random.Range (0, maxTime);
-        yield return new WaitForSeconds (secs);
-        //print("Did " + i + " loops.");
-
-        Transform currentChild = weapon.GetChild (i);
-        //print("Shooting!");
-
-        //currentChild.rotation = weapon.rotation;
-        currentProjectile = Instantiate (projectile, currentChild.position, currentChild.rotation);
-        currentProjectile.GetComponent<Stick> ().damage = damage;
-        Calculate calc = currentProjectile.GetComponent<Calculate> ();
-        calc.target = mainTarget;
-        calc.launchAngle = angle;
-        calc.Launch ();
-        PlayAudio (shootClip);
-
-        yield return null;
     }
 
     void OnTriggerEnter (Collider other) {
