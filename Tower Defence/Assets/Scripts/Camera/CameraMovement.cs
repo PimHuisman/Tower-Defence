@@ -60,26 +60,26 @@ public class CameraMovement : MonoBehaviour {
 	void CheckExtends () {
 		//X Axis
 		if (extends.x >= transform.position.x) {
-			print ("Transfrom is in positive extends.");
+			//print ("Transfrom is in positive extends.");
 		} else {
 			transform.position = new Vector3 (extends.x, transform.position.y, transform.position.z);
 		}
 
 		if (-extends.x <= transform.position.x) {
-			print ("Transform is in negative extends.");
+			//print ("Transform is in negative extends.");
 		} else {
 			transform.position = new Vector3 (-extends.x, transform.position.y, transform.position.z);
 		}
 
 		//Z Axis
 		if (extends.z >= transform.position.z) {
-			print ("Transfrom is in positive extends.");
+			//print ("Transfrom is in positive extends.");
 		} else {
 			transform.position = new Vector3 (transform.position.x, transform.position.y, extends.z);
 		}
 
 		if (-extends.z <= transform.position.z) {
-			print ("Transform is in negative extends.");
+			//print ("Transform is in negative extends.");
 		} else {
 			transform.position = new Vector3 (transform.position.x, transform.position.y, -extends.z);
 		}

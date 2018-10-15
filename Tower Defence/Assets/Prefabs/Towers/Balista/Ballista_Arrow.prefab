@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 33016467166157012}
   - component: {fileID: 23687619366692616}
   - component: {fileID: 65636382895524302}
-  - component: {fileID: 54882858375745522}
   - component: {fileID: 114839996885656126}
+  - component: {fileID: 54882858375745522}
+  - component: {fileID: 114526138519371442}
   - component: {fileID: 82724991886060432}
   m_Layer: 0
   m_Name: Ballista_Arrow
@@ -210,6 +211,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114526138519371442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1408025636353174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461c9d06842d8ca448078b39637b314b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  launchAngle: 45
+  launched: 0
 --- !u!114 &114839996885656126
 MonoBehaviour:
   m_ObjectHideFlags: 1

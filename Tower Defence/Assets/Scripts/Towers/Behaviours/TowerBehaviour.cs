@@ -18,6 +18,7 @@ public class TowerBehaviour : MonoBehaviour
     float range;
     public float force;
     public int damage;
+    public float angle;
     float fireRate;
 
     public virtual void SetStats()
@@ -25,6 +26,7 @@ public class TowerBehaviour : MonoBehaviour
         range = tower.range;
         force = tower.force;
         damage = tower.damage;
+        angle = tower.angle;
         fireRate = tower.fireRate;
         respawnPercentage = tower.projectileRespawnPercentage;
         SetRange();
@@ -71,7 +73,10 @@ public class TowerBehaviour : MonoBehaviour
         //print("Shooting!");
         currentProjectile = Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
         currentProjectile.GetComponent<Stick>().damage = damage;
-        currentProjectile.GetComponent<Calculate>().Launch();
+        Calculate calc = currentProjectile.GetComponent<Calculate>();
+        calc.target = mainTarget;
+        calc.launchAngle = angle;
+        calc.Launch();
         PlayAudio(shootClip);
 
         currentProjectile = null;

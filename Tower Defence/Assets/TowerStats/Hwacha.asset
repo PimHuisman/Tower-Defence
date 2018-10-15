@@ -15,6 +15,7 @@ MonoBehaviour:
   cost: 30
   range: 10
   force: 2000
+  angle: 45
   damage: 2
   fireRate: 0.5
   projectileRespawnPercentage: 0

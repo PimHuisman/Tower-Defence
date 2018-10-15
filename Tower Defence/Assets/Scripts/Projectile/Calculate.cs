@@ -7,40 +7,54 @@ public class Calculate : MonoBehaviour {
 	float distanceToTarget;
 
 	public float launchAngle;
-	public Rigidbody myRb;
+	private Rigidbody myRb;
 	public bool launched;
-	bool hasLanded;
+	public bool hasLanded;
 
 	// Use this for initialization
-	void Start () {
+	void MyStart () {
+		//print ("Starting");
+		if (GetComponent<Rigidbody> ()) {
+			myRb = GetComponent<Rigidbody> ();
+
+		} else { }
+
 		myRb.useGravity = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
+
 		if (launched == true) {
 			if (hasLanded == false) {
+				if (myRb != null) {
 
-				transform.rotation = Quaternion.LookRotation (myRb.velocity);
+					transform.rotation = Quaternion.LookRotation (myRb.velocity);
+				}
 			}
 		}
 	}
 
 	public void Launch () {
+		MyStart ();
 		launched = true;
+
+		print ("Is the rigidbody using gravity before the change? " + myRb.useGravity);
 		myRb.useGravity = true;
+		print ("Is the rigidbody using after before the change? " + myRb.useGravity);
+
 		Vector3 projectileXZPos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		Vector3 targetXZPos = new Vector3 (target.position.x, transform.position.y, target.position.z);
 
 		transform.LookAt (targetXZPos);
 
-		float R = Vector3.Distance (projectileXZPos, targetXZPos);
-		float G = Physics.gravity.y;
+		float distance = Vector3.Distance (projectileXZPos, targetXZPos);
+		float gravity = Physics.gravity.y;
 		float tanAlpha = Mathf.Tan (launchAngle * Mathf.Deg2Rad);
-		float H = target.position.y - transform.position.y;
+		float heightOffset = target.position.y - transform.position.y;
 
 		// calculate initial speed required to land the projectile on the target object 
-		float Vz = Mathf.Sqrt (G * R * R / (2.0f * (H - R * tanAlpha)));
+		float Vz = Mathf.Sqrt (gravity * distance * distance / (2.0f * (heightOffset - distance * tanAlpha)));
 		float Vy = tanAlpha * Vz;
 
 		// create the velocity vector in local space and get it in global space
@@ -54,6 +68,10 @@ public class Calculate : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision c) {
-		hasLanded = true;
+
+		if (transform.tag != "Projectile") {
+
+			hasLanded = true;
+		}
 	}
 }

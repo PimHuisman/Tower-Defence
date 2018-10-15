@@ -9,6 +9,7 @@ public class TowerStat : ScriptableObject
     public int cost;
     public float range;
     public int force;
+    public float angle;
     public int damage;
     public float fireRate;
     public float projectileRespawnPercentage;
