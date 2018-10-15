@@ -51,9 +51,9 @@ public class Calculate : MonoBehaviour {
 		MyStart ();
 		launched = true;
 
-		print ("Is the rigidbody using gravity before the change? " + myRb.useGravity);
+		//print ("Is the rigidbody using gravity before the change? " + myRb.useGravity);
 		myRb.useGravity = true;
-		print ("Is the rigidbody using after before the change? " + myRb.useGravity);
+		//print ("Is the rigidbody using after before the change? " + myRb.useGravity);
 
 		Vector3 projectileXZPos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 		Vector3 targetXZPos = new Vector3 (target.position.x, transform.position.y, target.position.z);
