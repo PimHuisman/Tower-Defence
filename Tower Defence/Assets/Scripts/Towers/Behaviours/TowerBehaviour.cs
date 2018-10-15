@@ -71,9 +71,7 @@ public class TowerBehaviour : MonoBehaviour
         //print("Shooting!");
         currentProjectile = Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
         currentProjectile.GetComponent<Stick>().damage = damage;
-        currentProjectile.transform.LookAt(mainTarget);
-        Rigidbody projectileRb = currentProjectile.GetComponent<Rigidbody>();
-        projectileRb.AddForce(currentProjectile.transform.forward * force);
+        currentProjectile.GetComponent<Calculate>().Launch();
         PlayAudio(shootClip);
 
         currentProjectile = null;
