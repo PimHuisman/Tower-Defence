@@ -7852,8 +7852,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSize: 5
-  maxSize: 20
-  startSize: 20
+  maxSize: 22.5
+  startSize: 22.5
   zoomSensetivity: 10
   moveSensetivity: 1
   camObject: {fileID: 1487302453}
