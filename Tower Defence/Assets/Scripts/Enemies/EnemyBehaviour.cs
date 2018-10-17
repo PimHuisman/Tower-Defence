@@ -12,10 +12,14 @@ public class EnemyBehaviour : MonoBehaviour
     public bool hitTemple;
     public bool attack;
     Transform targetObj;
-    [SerializeField]Vector3 target;
+    [SerializeField] Vector3 target;
     Vector3 endPos;
     NavMeshAgent agent;
+    RaycastHit hit;
+    Vector3 offset;
+    [SerializeField] float raycastLength;
 
+    bool isAttacking = false;
     // Use this for initialization
     void Start()
     {
@@ -30,19 +34,12 @@ public class EnemyBehaviour : MonoBehaviour
     void Update()
     {
         TargetDestanation(target);
+        Attack();
     }
 
     void TargetDestanation(Vector3 newtarget)
     {
         agent.SetDestination(newtarget);
-
-        if(attack)
-        {
-            if (targetObj == null)
-            {
-                newtarget = endPos;
-            }
-        }
     }
 
     IEnumerator AttackRate()
@@ -62,6 +59,26 @@ public class EnemyBehaviour : MonoBehaviour
         }
 	}
 
+    void Attack()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out hit, raycastLength))
+        {
+            if (hit.transform.tag == "Unit")
+            {
+                if (!isAttacking)
+                {
+                    attack = true;
+                    target = hit.transform.position;
+                }
+            }
+            else
+            {
+                attack = false;
+            }
+        }
+        Debug.DrawRay(transform.position + offset, transform.forward * raycastLength, Color.red);
+    }
+
     void HurtTemple(TempleStats temple)
     {
         hitTemple = true;
@@ -76,14 +93,21 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (other.transform.tag == "Unit")
         {
-            Transform unitTarget = other.gameObject.GetComponent<Units>().attackTarget;
-            if(unitTarget == null)
+            if (attack)
             {
-                target = other.transform.position;  
+                agent.isStopped = true;
             }
-            else if(unitTarget != transform)
+        }
+
+        if (other.transform.tag == "Enemy")
+        {
+            isAttacking = other.GetComponent<EnemyBehaviour>().attack;
+            if (other.GetComponent<EnemyBehaviour>())
             {
-                target = endPos;
+                if (other.GetComponent<EnemyBehaviour>().attack)
+                {
+                    target = endPos;
+                }
             }
         }
     }
@@ -102,21 +126,11 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    void OnCollisionStay(Collision other) 
-    {
-        if (other.gameObject.tag == "Unit")
-        {
-            attack = true;
-            targetObj = other.gameObject.transform;
-        }
-    }
-
     void OnCollisionExit(Collision other) 
     {
-        if (other.gameObject.tag == "Unit")
+        if (other.gameObject == null)
         {
-            attack = false;
-            targetObj = null;
+            target = endPos;
         }
     }
 }

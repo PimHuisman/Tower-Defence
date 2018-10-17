@@ -11,10 +11,16 @@ public class UnitBehaviour : MonoBehaviour
 	[SerializeField] Transform target;
 	[SerializeField] int newAmount;
 	[SerializeField] float timerNewUnit;
+
+	[Header("Path")]
+	[SerializeField] TowerStat stats;
+	[SerializeField] LayerMask pathMask;
+	[SerializeField] float radius;
 	void Start () 
 	{
 		StartCoroutine("NewEnemy");
 		CreateUnits(unitMaxAmount);
+		radius = stats.range;
 	}
 	
 	void Update () 
@@ -28,6 +34,13 @@ public class UnitBehaviour : MonoBehaviour
 		{
 			newAmount = unitMaxAmount - unitsList.Count;
 		}
+	}
+
+	void CheckPath()
+	{
+		 Collider[] closestPath = Physics.OverlapSphere(transform.position, radius, pathMask);
+
+
 	}
 	IEnumerator NewEnemy()
 	{
@@ -48,7 +61,7 @@ public class UnitBehaviour : MonoBehaviour
 		for (int i = 0; i < x; i++)
 		{
 			Transform newUnit = Instantiate(unit, spawnPos.position, spawnPos.rotation);
-			Vector3 newPos = new Vector3(target.position.x, target.position.y, target.position.z);
+			Vector3 newPos =  new Vector3(target.position.x, target.position.y, target.position.z);
 			newUnit.GetComponent<Units>().target = target;
 			newUnit.SetParent(spawnPos);
 			unitsList.Add(newUnit);

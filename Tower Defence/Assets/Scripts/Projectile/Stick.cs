@@ -25,7 +25,7 @@ public class Stick : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.transform.tag != "Tower")
+        if (other.transform.tag != "Tower" || other.transform.tag == "Projectile")
         {
             if (other.transform.GetComponent<Stick>())
             {
