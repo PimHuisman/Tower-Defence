@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioPlayer: {fileID: 1877183934367104, guid: 958369cad9dab19478d185279b7dece1,
     type: 2}
+  currentHealth: 0
   deathSound: {fileID: 8300000, guid: 3d8aebc1ca296d64d84ec15e1fb9e6f4, type: 3}
   damageSound: {fileID: 8300000, guid: 29a9430a4e7c41441b5f2448ac5d0ded, type: 3}
   damageParticles: {fileID: 1260725497868722, guid: 219916d2b00fc7a4bb013f36f6857cd8,
@@ -243,7 +244,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitTemple: 0
-  unitPos: {fileID: 0}
+  attack: 0
+  target: {x: 0, y: 0, z: 0}
+  raycastLength: 1.5
 --- !u!114 &114389724566438466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,7 +335,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2
-  m_Center: {x: 0, y: -0.5, z: 0}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!195 &195397634830668002
 NavMeshAgent:
   m_ObjectHideFlags: 1

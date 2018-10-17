@@ -8,18 +8,18 @@ public class TowerBehaviour : MonoBehaviour
     public Transform mainTarget;
     public TowerStat tower;
     public Transform weapon;
-    public GameObject projectile;
-    public GameObject currentProjectile;
+    public Transform projectile;
+    public Transform currentProjectile;
     public Transform projectileSpawn;
     float respawnPercentage;
     public AudioSource mySource;
     public AudioClip shootClip;
-
     float range;
     public float force;
     public int damage;
     public float angle;
     float fireRate;
+    [SerializeField] float offset;
 
     public virtual void SetStats()
     {
@@ -65,13 +65,13 @@ public class TowerBehaviour : MonoBehaviour
 
     public virtual void WeaponTarget()
     {
-        weapon.LookAt(new Vector3(mainTarget.position.x, weapon.position.y, mainTarget.position.z));
+        weapon.LookAt(new Vector3(mainTarget.position.x, weapon.position.y, mainTarget.position.z + offset));
     }
 
     public virtual void Shoot()
     {
         //print("Shooting!");
-        currentProjectile = Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+        currentProjectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation) as Transform;
         currentProjectile.GetComponent<Stick>().damage = damage;
         Calculate calc = currentProjectile.GetComponent<Calculate>();
         calc.target = mainTarget;

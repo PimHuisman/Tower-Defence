@@ -378,13 +378,15 @@ MonoBehaviour:
   mainTarget: {fileID: 0}
   tower: {fileID: 11400000, guid: 0670fc5b3ec235b4cb511b5e5571d9c3, type: 2}
   weapon: {fileID: 4423018843016088}
-  projectile: {fileID: 1408025636353174, guid: aa4f9c78de95f7043ab642b866df0fb5, type: 2}
+  projectile: {fileID: 4100251030936216, guid: aa4f9c78de95f7043ab642b866df0fb5, type: 2}
   currentProjectile: {fileID: 0}
   projectileSpawn: {fileID: 4004274690777322}
   mySource: {fileID: 82041740986557532}
   shootClip: {fileID: 8300000, guid: 4511f195a5516e4468bf810226145a3d, type: 3}
   force: 0
   damage: 0
+  angle: 0
+  offset: -2
 --- !u!135 &135209158345433948
 SphereCollider:
   m_ObjectHideFlags: 1

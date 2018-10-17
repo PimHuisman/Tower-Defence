@@ -2,55 +2,83 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HwachaBehaviour : TowerBehaviour {
-    public float offset;
+public class HwachaBehaviour : TowerBehaviour
+{
     public float maxTime;
+    [SerializeField] float spacingY;
+    [SerializeField] float spacingX;
+    [SerializeField] Vector3 mapsize;
+    [SerializeField] Transform arrowPos;
+    [SerializeField] int arrowAmount;
+    Transform arrow;
+    public List<Transform> arrowList = new List<Transform>();
+    [SerializeField] Transform arrowObject;
 
-    public void Start () {
-        SetStats ();
-        StartCoroutine (ShootRoutine ());
+    public void Start()
+    {
+        SetStats();
+        StartCoroutine(ShootRoutine());
     }
 
-    public void Update () {
-        CheckEnemies ();
+    public void Update()
+    {
+        CheckEnemies();
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            print("Works");
+            GenerateArrows();
+        }
     }
 
-    public override void Shoot () {
-        int count = weapon.childCount;
-
-        for (int i = 0; i < count; i++) {
-            //print("Did " + i + " loops.");
-
-            Transform currentChild = weapon.GetChild (i);
-            //print("Shooting!");
-
-            if (mainTarget != null) {
-                weapon.LookAt (mainTarget.forward * offset + mainTarget.transform.position);
+    public override void Shoot()
+    {
+        GenerateArrows();
+        for (int i = 0; i < arrowList.Count; i++)
+        {
+            if (mainTarget != null)
+            {
+                weapon.LookAt(mainTarget.forward);
             }
-            //currentChild.rotation = weapon.rotation;
-            currentProjectile = Instantiate (projectile, currentChild.position, currentChild.rotation);
-            currentProjectile.GetComponent<Stick> ().damage = damage;
-            Calculate calc = currentProjectile.GetComponent<Calculate> ();
+            arrowList[i].GetComponent<Stick>().damage = damage;
+            Calculate calc = arrowList[i].GetComponent<Calculate>();
             calc.maxTime = maxTime;
             calc.doWait = true;
             calc.target = mainTarget;
             calc.launchAngle = angle;
             calc.Launch();
-            PlayAudio (shootClip);
+            PlayAudio(shootClip);
+        }
+        arrowList.Clear();
+    }
 
-            //currentProjectile = null;
+    void GenerateArrows()
+    {
+        for (int y = 0; y < mapsize.y; y++)
+        {
+            for (int x = 0;x < mapsize.x;x++)
+            {
+                Vector3 newArroPos = new Vector3(arrowPos.position.x + spacingX * x, arrowPos.position.y + spacingY * y, arrowPos.position.z);
+                currentProjectile = Instantiate(arrowObject, newArroPos, arrowPos.rotation) as Transform;
+                //currentProjectile.transform.parent = arrowPos.transform;
+                currentProjectile.transform.SetParent(arrowPos.transform, true);
+                arrowList.Add(currentProjectile);
+            }
         }
     }
 
-    void OnTriggerEnter (Collider other) {
-        base.Enter (other);
+    void OnTriggerEnter(Collider other)
+    {
+        base.Enter(other);
     }
 
-    void OnTriggerExit (Collider other) {
-        base.Exit (other);
+    void OnTriggerExit(Collider other)
+    {
+        base.Exit(other);
     }
 
-    public override void CheckEnemies () {
-        base.CheckEnemies ();
+    public override void CheckEnemies()
+    {
+        base.CheckEnemies();
     }
 }
