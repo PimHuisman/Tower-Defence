@@ -10537,11 +10537,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4999130511336474, guid: 2a254c28bc65ae34e903ce1543cbfdcb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.95
       objectReference: {fileID: 0}
     - target: {fileID: 4999130511336474, guid: 2a254c28bc65ae34e903ce1543cbfdcb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 28.83
+      value: 28.973
       objectReference: {fileID: 0}
     - target: {fileID: 4999130511336474, guid: 2a254c28bc65ae34e903ce1543cbfdcb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -10577,7 +10577,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4999130511336474, guid: 2a254c28bc65ae34e903ce1543cbfdcb, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.100240745
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1591470959049788, guid: 2a254c28bc65ae34e903ce1543cbfdcb, type: 2}
       propertyPath: m_StaticEditorFlags
