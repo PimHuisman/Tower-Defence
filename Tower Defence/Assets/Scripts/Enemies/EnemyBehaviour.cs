@@ -82,9 +82,7 @@ public class EnemyBehaviour : MonoBehaviour
     void HurtTemple(TempleStats temple)
     {
         hitTemple = true;
-        temple.health -= enemyStats.health;
-        temple.CheckHealth();
-
+        temple.DamageMe(enemyStats.health);
 
         Destroy(gameObject, 1);
     }
