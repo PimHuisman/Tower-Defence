@@ -15,7 +15,8 @@ MonoBehaviour:
   cost: 20
   range: 15
   force: 3000
-  damage: 15
+  angle: 0
+  damage: 50
   fireRate: 0.4
   projectileRespawnPercentage: 0
   tower: {fileID: 1301845847321034, guid: b170ce20bf1010645be64873b1c9666b, type: 2}

@@ -65,7 +65,7 @@ public class TowerBehaviour : MonoBehaviour
 
     public virtual void WeaponTarget()
     {
-        weapon.LookAt(new Vector3(mainTarget.position.x, weapon.position.y, mainTarget.position.z + offset));
+        weapon.LookAt(new Vector3(mainTarget.position.x + offset, weapon.position.y, mainTarget.position.z + offset));
     }
 
     public virtual void Shoot()

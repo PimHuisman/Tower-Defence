@@ -38,13 +38,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655749118497976}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.079948, y: 0.91, z: 14.778042}
+  m_LocalRotation: {x: -0, y: -0.6766036, z: -0, w: 0.73634744}
+  m_LocalPosition: {x: 8.162518, y: 1.156, z: 18.968271}
   m_LocalScale: {x: 0.5, y: 1.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -85.158005, z: 0}
 --- !u!23 &23821417245905218
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -119,6 +119,19 @@ MonoBehaviour:
   damage: 5
   isAttacking: 0
   raycastLength: 2
+  viewRadius: 3
+  viewAngle: 120
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  visibleTarget: []
+  meshResolution: 2
+  edgeResolveInterations: 2
+  edgeDstThreshold: 2
+  distance: 0
 --- !u!135 &135911538960505696
 SphereCollider:
   m_ObjectHideFlags: 1

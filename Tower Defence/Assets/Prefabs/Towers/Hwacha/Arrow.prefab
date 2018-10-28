@@ -151,3 +151,8 @@ MonoBehaviour:
   hasLanded: 0
   doWait: 0
   maxTime: 0
+  offset: {x: 0, y: 0, z: 0}
+  offset360: {x: 0, y: 0, z: 1.9}
+  offset270: {x: -3.2, y: 0, z: -1.5}
+  offset180: {x: 1.5, y: 0, z: -0.5}
+  offset90: {x: 3.2, y: 0, z: 1.5}

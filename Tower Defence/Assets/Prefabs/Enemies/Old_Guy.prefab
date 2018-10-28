@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224277937606778644}
   - component: {fileID: 222901237605503730}
   - component: {fileID: 114263086494083080}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 114417340836943002}
   - component: {fileID: 114843253403643108}
   - component: {fileID: 135713132276110034}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Old_Guy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 224667956864254460}
   - component: {fileID: 222269979523294116}
   - component: {fileID: 114555559348924830}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 223597883097758488}
   - component: {fileID: 114061367908353976}
   - component: {fileID: 114303305066076574}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: OldGuyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

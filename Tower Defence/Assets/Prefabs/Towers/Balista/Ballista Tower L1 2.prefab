@@ -386,7 +386,7 @@ MonoBehaviour:
   force: 0
   damage: 0
   angle: 0
-  offset: -2
+  offset: 0
 --- !u!135 &135209158345433948
 SphereCollider:
   m_ObjectHideFlags: 1

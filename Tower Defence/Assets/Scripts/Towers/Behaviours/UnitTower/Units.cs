@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.AI;
 
 public class Units : MonoBehaviour
@@ -106,9 +107,11 @@ public class Units : MonoBehaviour
             if (hit.transform.tag == "Enemy")
             {
                 isAttacking = true;
+                print(hit.transform.name);
             }
             else
             {
+                print("its not working");
                 isAttacking = false;
             }
         }
@@ -122,7 +125,8 @@ public class Units : MonoBehaviour
             while (isAttacking)
             {
                 yield return new WaitForSeconds(attackRate);
-                hit.transform.gameObject.GetComponent<EnemyHealth>().DamageMe(damage, null);
+                //hit.transform.gameObject.GetComponent<EnemyHealth>().DamageMe(damage, null);
+                //print(hit.transform.name);
             }
             yield return null;
         }

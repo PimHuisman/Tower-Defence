@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     EnemyStrats enemyStats;
     [SerializeField] GameObject audioPlayer;
     AudioSource mySource;
-    [SerializeField]int currentHealth;
+    [SerializeField] int currentHealth;
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip damageSound;
     [SerializeField] GameObject damageParticles;
@@ -39,6 +39,16 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    public void DamageMe2(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Die(null);
+        }
+    }
+
 
     public void PlayParticles(GameObject parts, Vector3 position, Quaternion rotation)
     {
@@ -52,10 +62,17 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die(Collision other)
     {
-        MakeAndPlayAudio(deathSound, other);
-        PlayParticles(deathParticles, other.transform.position, other.transform.rotation);
-        currencyScript.AddCurrency(enemyStats.currencyWhenDead);
-        Destroy(gameObject);
+        if (other != null)
+        {
+            MakeAndPlayAudio(deathSound, other);
+            PlayParticles(deathParticles, other.transform.position, other.transform.rotation);
+            currencyScript.AddCurrency(enemyStats.currencyWhenDead);
+            Destroy(gameObject);
+        }
+        else
+        {
+            print("Works");
+        }
     }
 
 

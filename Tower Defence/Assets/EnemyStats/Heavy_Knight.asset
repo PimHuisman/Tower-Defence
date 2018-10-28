@@ -9,11 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d6c635c40aea5e448b08e9a6ce0a22c, type: 3}
-  m_Name: Indiana_Jones
+  m_Name: Heavy_Knight
   m_EditorClassIdentifier: 
-  myName: Indiana_Jones
-  health: 30
+  myName: Old_Guy
+  health: 20
   currencyWhenDead: 5
-  speed: 3
-  attackDamage: 5
-  attackCooldown: 1
+  speed: 5
+  attackDamage: 10
+  attackCooldown: 3
+  enterDamage: 5

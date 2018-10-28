@@ -13,6 +13,11 @@ public class Calculate : MonoBehaviour
     public bool hasLanded;
     public bool doWait;
     public float maxTime;
+    [SerializeField] Vector3 offset;
+    [SerializeField] Vector3 offset360;
+    [SerializeField] Vector3 offset270;
+    [SerializeField] Vector3 offset180;
+    [SerializeField] Vector3 offset90;
 
     // Use this for initialization
     void MyStart()
@@ -26,7 +31,7 @@ public class Calculate : MonoBehaviour
         else { }
 
         myRb.useGravity = false;
-        myRb.isKinematic =true;
+        myRb.isKinematic = true;
     }
 
     // Update is called once per frame
@@ -39,7 +44,6 @@ public class Calculate : MonoBehaviour
             {
                 if (myRb != null)
                 {
-
                     transform.rotation = Quaternion.LookRotation(myRb.velocity);
                 }
             }
@@ -62,6 +66,31 @@ public class Calculate : MonoBehaviour
 
     void Launch2()
     {
+        #region Rotation Target
+        if (target != null)
+        {
+            if (target.transform.eulerAngles.y < 362 && target.transform.eulerAngles.y > 272)
+            {
+                print("i am between 360/270");
+                offset = offset360;
+            }
+            if (target.transform.eulerAngles.y < 272 && target.transform.eulerAngles.y > 182)
+            {
+                print("i am between 270/180");
+                offset = offset270;
+            }
+            if (target.transform.eulerAngles.y < 182 && target.transform.eulerAngles.y > 92)
+            {
+                print("i am between 180/90");
+                offset = offset180;
+            }
+            if (target.transform.eulerAngles.y < 92 && target.transform.eulerAngles.y > 0)
+            {
+                print("i am between 90/0");
+                offset = offset90;
+            }
+        }
+        #endregion
         MyStart();
         launched = true;
 
@@ -71,7 +100,7 @@ public class Calculate : MonoBehaviour
         //print ("Is the rigidbody using after before the change? " + myRb.useGravity);
 
         Vector3 projectileXZPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        Vector3 targetXZPos = new Vector3(target.position.x, transform.position.y, target.position.z);
+        Vector3 targetXZPos = new Vector3(target.position.x, transform.position.y, target.position.z) + offset;
 
         transform.LookAt(targetXZPos);
 
@@ -91,6 +120,7 @@ public class Calculate : MonoBehaviour
 
         // launch the object by setting its initial velocity and flipping its state
         myRb.velocity = globalVelocity;
+
     }
     public IEnumerator WaitShoot()
     {

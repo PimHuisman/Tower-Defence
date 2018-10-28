@@ -82,9 +82,9 @@ public class EnemyBehaviour : MonoBehaviour
     void HurtTemple(TempleStats temple)
     {
         hitTemple = true;
-        temple.DamageMe(enemyStats.health);
+        temple.DamageMe(enemyStats.enterDamage);
 
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 0.5f);
     }
 
     void OnTriggerEnter(Collider other)

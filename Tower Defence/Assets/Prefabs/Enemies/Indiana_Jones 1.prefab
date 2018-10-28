@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224838206492662724}
   - component: {fileID: 222599217912675334}
   - component: {fileID: 114180913481879394}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 114669231117067758}
   - component: {fileID: 114464688601486996}
   - component: {fileID: 135373905723278808}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Indiana_Jones 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 223156366182323106}
   - component: {fileID: 114073649132052654}
   - component: {fileID: 114634853116885544}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: IndianaJonesCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 224083975654327266}
   - component: {fileID: 222488485254160582}
   - component: {fileID: 114325965300716132}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

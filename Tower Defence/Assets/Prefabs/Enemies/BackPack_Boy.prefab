@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114166907389078906}
   - component: {fileID: 114618377004716400}
   - component: {fileID: 135168247993524412}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BackPack_Boy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 224179719948354738}
   - component: {fileID: 222083208501166518}
   - component: {fileID: 114508006235781114}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 224005271982222996}
   - component: {fileID: 222552079234459116}
   - component: {fileID: 114182502272896162}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 223303499273280436}
   - component: {fileID: 114389724566438466}
   - component: {fileID: 114628579324840624}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: BackpackBoyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
