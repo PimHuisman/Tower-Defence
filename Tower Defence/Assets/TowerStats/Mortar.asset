@@ -9,13 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d16f1a4c8ebd1d24daeef459fb4a2661, type: 3}
-  m_Name: Dart Wall
+  m_Name: Mortar
   m_EditorClassIdentifier: 
-  myName: Dart Wall
+  myName: Mortar
   cost: 40
-  range: 0
-  addForce: 0
-  damage: 0
+  range: 10
+  force: 0
+  angle: 80
+  damage: 50
   fireRate: 0
-  tower: {fileID: 0}
+  projectileRespawnPercentage: 0
+  tower: {fileID: 1813061355743678, guid: f4378a78b56f111438e174289ae75941, type: 2}
   ammo: {fileID: 0}
