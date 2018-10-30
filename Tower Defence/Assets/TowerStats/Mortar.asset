@@ -14,10 +14,10 @@ MonoBehaviour:
   myName: Mortar
   cost: 40
   range: 10
-  force: 0
-  angle: 80
+  force: 4000
+  angle: 35
   damage: 50
-  fireRate: 0
+  fireRate: 2
   projectileRespawnPercentage: 0
   tower: {fileID: 1813061355743678, guid: f4378a78b56f111438e174289ae75941, type: 2}
   ammo: {fileID: 0}
