@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: abe8c0e4bd588a949b567aceca1a4f39
+guid: 185282f50dd20cb4ba301309e58c65d2
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Rock.001
+    2100000: Grass
+    2100002: Dirt
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Path_03
+    4300000: Ground
   externalObjects: {}
   materials:
     importMaterials: 1
