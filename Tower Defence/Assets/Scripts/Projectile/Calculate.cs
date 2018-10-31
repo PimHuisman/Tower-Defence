@@ -13,6 +13,7 @@ public class Calculate : MonoBehaviour
     public bool hasLanded;
     public bool doWait;
     public float maxTime;
+    Vector3 targetXZPos;
     [SerializeField] Vector3 offset;
     [SerializeField] Vector3 offset360;
     [SerializeField] Vector3 offset270;
@@ -100,7 +101,12 @@ public class Calculate : MonoBehaviour
         //print ("Is the rigidbody using after before the change? " + myRb.useGravity);
 
         Vector3 projectileXZPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        Vector3 targetXZPos = new Vector3(target.position.x, transform.position.y, target.position.z) + offset;
+        if (target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        targetXZPos = new Vector3(target.position.x, transform.position.y, target.position.z) + offset;
 
         transform.LookAt(targetXZPos);
 

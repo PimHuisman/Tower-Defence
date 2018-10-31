@@ -331,9 +331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2bf1195d8845f45bf9ca6c278070c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tower: {fileID: 11400000, guid: aabd4706f984ee84b9d739c40afce4f9, type: 2}
   targets: []
   mainTarget: {fileID: 0}
-  tower: {fileID: 11400000, guid: aabd4706f984ee84b9d739c40afce4f9, type: 2}
+  stickable: 1
   weapon: {fileID: 4028928145729582}
   projectile: {fileID: 1582708557830062, guid: 3e18ec518bbccae40ba5b7de01b6206f, type: 2}
   currentProjectile: {fileID: 0}
@@ -343,7 +344,6 @@ MonoBehaviour:
   force: 0
   damage: 0
   angle: 0
-  offset: 0
   maxTime: 0.25
   spacingY: 0.072
   spacingX: -0.062

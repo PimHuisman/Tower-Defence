@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class WaveSystem : MonoBehaviour
 {
+    public static WaveSystem instace;
     [Header("Enemy value")]
     public float currentAmountOfEnemies;
     [SerializeField] GameObject[] enemies;
     [SerializeField] float amountOfEnemies;
     [SerializeField] float upEnemies;
     [SerializeField] float downTime;
-    
+
     [Header("Type Enemy")]
     [SerializeField] float Enemy1;
     [SerializeField] float Enemy2;
@@ -19,7 +20,7 @@ public class WaveSystem : MonoBehaviour
     public List<Transform> Enemy1SpawnPoints = new List<Transform>();
     public List<Transform> Enemy2SpawnPoints = new List<Transform>();
     public List<Transform> enemy3SpawnPoints = new List<Transform>();
-    
+
     [Header("Wave")]
     [SerializeField] private Text wave;
     public int waveAmount;
@@ -38,8 +39,12 @@ public class WaveSystem : MonoBehaviour
     [SerializeField] float spawnMostWait;
     [SerializeField] bool stop;
 
+    void Awake()
+    {
+        instace = this;
+    }
 
-    void Start ()
+    void Start()
     {
         resetHealth = true;
         flagCheck = false;

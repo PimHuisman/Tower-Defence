@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Name: Mortar
   m_EditorClassIdentifier: 
   myName: Mortar
-  cost: 40
+  mySprite: {fileID: 0}
+  cost: 320
   range: 10
   force: 4000
   angle: 35
-  damage: 50
-  fireRate: 2
+  damage: 10
+  fireRate: 0.6
   projectileRespawnPercentage: 0
   tower: {fileID: 1813061355743678, guid: f4378a78b56f111438e174289ae75941, type: 2}
   ammo: {fileID: 0}

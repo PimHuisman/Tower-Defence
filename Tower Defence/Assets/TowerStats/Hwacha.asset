@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Hwacha
   m_EditorClassIdentifier: 
   myName: Hwacha
-  cost: 30
+  mySprite: {fileID: 0}
+  cost: 120
   range: 10
   force: 2000
   angle: 23

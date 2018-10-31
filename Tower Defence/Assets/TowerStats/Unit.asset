@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Name: Unit
   m_EditorClassIdentifier: 
   myName: Unit
-  cost: 50
+  mySprite: {fileID: 0}
+  cost: 90
   range: 0
   force: 0
+  angle: 0
   damage: 0
   fireRate: 0
   projectileRespawnPercentage: 0

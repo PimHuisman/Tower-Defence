@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Ballista
   m_EditorClassIdentifier: 
   myName: Ballista
-  cost: 20
+  mySprite: {fileID: 0}
+  cost: 160
   range: 15
   force: 3000
   angle: 0

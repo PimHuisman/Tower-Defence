@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class TowerBehaviour : MonoBehaviour
 {
+    public TowerStat tower;
+    [Header("Target")]
     public List<Transform> targets = new List<Transform>();
     public Transform mainTarget;
-    public TowerStat tower;
+    [Header("Projectile")]
+    [SerializeField] bool stickable;
     public Transform weapon;
     public Transform projectile;
     public Transform currentProjectile;
     public Transform projectileSpawn;
     float respawnPercentage;
+    [Header("Audio")]
     public AudioSource mySource;
     public AudioClip shootClip;
-    float range;
+    [Header("Stats")]
     public float force;
     public int damage;
     public float angle;
+    float range;
     float fireRate;
-    [SerializeField] float offset;
 
     public virtual void SetStats()
     {
@@ -65,14 +69,21 @@ public class TowerBehaviour : MonoBehaviour
 
     public virtual void WeaponTarget()
     {
-        weapon.LookAt(new Vector3(mainTarget.position.x + offset, weapon.position.y, mainTarget.position.z + offset));
+        weapon.LookAt(new Vector3(mainTarget.position.x, weapon.position.y, mainTarget.position.z));
     }
 
     public virtual void Shoot()
     {
         //print("Shooting!");
         currentProjectile = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation) as Transform;
-        currentProjectile.GetComponent<Stick>().damage = damage;
+        if (stickable)
+        {
+            currentProjectile.GetComponent<Stick>().damage = damage;
+        }
+        else
+        {
+            currentProjectile.GetComponent<AreaOfEffect>().damage = damage;
+        }
         Calculate calc = currentProjectile.GetComponent<Calculate>();
         calc.target = mainTarget;
         calc.launchAngle = angle;

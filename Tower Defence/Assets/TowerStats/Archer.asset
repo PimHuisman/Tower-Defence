@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   myName: Archer
-  cost: 10
+  mySprite: {fileID: 0}
+  cost: 70
   range: 10
   force: 5
   angle: 0

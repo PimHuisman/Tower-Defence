@@ -11,6 +11,8 @@ TagManager:
   - Tower Pad
   - Unit
   - Projectile
+  - Ground
+  - Path
   layers:
   - Default
   - TransparentFX

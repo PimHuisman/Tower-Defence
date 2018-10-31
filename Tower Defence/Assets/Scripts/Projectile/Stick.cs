@@ -38,7 +38,6 @@ public class Stick : MonoBehaviour
                 if (other.gameObject.GetComponent<EnemyBehaviour>())
                 {
                     //print("Arrow hit enemy!");
-
                     other.transform.GetComponent<EnemyHealth>().DamageMe(damage, other);
                 }
 

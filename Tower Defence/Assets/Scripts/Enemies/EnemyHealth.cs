@@ -39,17 +39,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void DamageMe2(int damage)
-    {
-        currentHealth -= damage;
-
-        if (currentHealth <= 0)
-        {
-            Die(null);
-        }
-    }
-
-
     public void PlayParticles(GameObject parts, Vector3 position, Quaternion rotation)
     {
         GameObject newParts = Instantiate(damageParticles, position, rotation);
@@ -57,8 +46,6 @@ public class EnemyHealth : MonoBehaviour
         partSystem.Play();
         Destroy(newParts, partSystem.main.duration);
     }
-
-
 
     public void Die(Collision other)
     {
@@ -68,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
             PlayParticles(deathParticles, other.transform.position, other.transform.rotation);
             currencyScript.AddCurrency(enemyStats.currencyWhenDead);
             Destroy(gameObject);
+            WaveSystem.instace.currentAmountOfEnemies --;
         }
         else
         {
