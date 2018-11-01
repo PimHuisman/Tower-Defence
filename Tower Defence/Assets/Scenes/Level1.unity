@@ -1890,11 +1890,11 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.25
+    m_Bias: 0
     m_NormalBias: 0
     m_NearPlane: 0.1
   m_Cookie: {fileID: 0}
@@ -1918,13 +1918,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 308529715}
-  m_LocalRotation: {x: 0.14487162, y: -0.8551185, z: 0.34975103, w: 0.35420167}
-  m_LocalPosition: {x: 13.7, y: 20, z: 23.9}
+  m_LocalRotation: {x: 0.32546178, y: -0.47275326, z: 0.19336027, w: 0.79573286}
+  m_LocalPosition: {x: 51.29, y: 44.46, z: 21.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 44.49, y: -135, z: 0}
+  m_LocalEulerAnglesHint: {x: 44.49, y: -61.43, z: 0}
 --- !u!1 &328475675
 GameObject:
   m_ObjectHideFlags: 0
@@ -9941,6 +9941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textAnimator: {fileID: 922709420}
+  mainCam: {fileID: 1487302453}
   camAnimManager: {fileID: 1614943591}
 --- !u!95 &1711291519
 Animator:

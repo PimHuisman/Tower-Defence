@@ -9,6 +9,7 @@ public class PlayBanner : MonoBehaviour {
 	public Animator textAnimator;
 	float animSpeed;
 	bool canClick;
+	public GameObject mainCam;
 	public CameraAnimatorManager camAnimManager;
 
 	// Use this for initialization
@@ -19,26 +20,32 @@ public class PlayBanner : MonoBehaviour {
 	}
 
 	void Update () {
-		if (canClick) {
-			if (Input.GetButtonDown ("Fire1")) {
-				Play();
+		if (!mainCam.activeSelf) {
+			if (canClick) {
+				if (Input.GetButtonDown ("Fire1")) {
+					Play ();
+				}
 			}
 		}
 	}
 
-	void Play() {
-		textAnimator.Play("TextFadeAway");
-		camAnimManager.GoToPlay();
+	void Play () {
+		textAnimator.Play ("TextFadeAway");
+		camAnimManager.GoToPlay ();
 	}
 
 	void OnMouseEnter () {
-		SetAnimSpeed (1);
-		canClick = true;
+		if (!mainCam.activeSelf) {
+			SetAnimSpeed (1);
+			canClick = true;
+		}
 	}
 
 	public void OnMouseExit () {
-		SetAnimSpeed (-1);
-		canClick = false;
+		if (!mainCam.activeSelf) {
+			SetAnimSpeed (-1);
+			canClick = false;
+		}
 	}
 
 	public void SetAnimSpeed (float speed) {
