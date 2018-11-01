@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseOverBanner : MonoBehaviour {
+public class QuitBanner : MonoBehaviour {
+
 	Animator myAnimator;
 	float animSpeed;
-	bool canStart;
+	bool canClick;
+	public GameObject mainCam;
 
 	// Use this for initialization
 	void Start () {
@@ -15,17 +17,28 @@ public class MouseOverBanner : MonoBehaviour {
 	}
 
 	void Update () {
+		if (canClick) {
+			if (Input.GetButtonDown ("Fire1")) {
+				if (!mainCam.activeSelf) {
+					Quit ();
+				}
+			}
+		}
+	}
 
+	void Quit () {
+		print("Quitting!");
+		Application.Quit ();
 	}
 
 	void OnMouseEnter () {
 		SetAnimSpeed (1);
-		canStart = true;
+		canClick = true;
 	}
 
 	public void OnMouseExit () {
 		SetAnimSpeed (-1);
-		canStart = false;
+		canClick = false;
 	}
 
 	public void SetAnimSpeed (float speed) {

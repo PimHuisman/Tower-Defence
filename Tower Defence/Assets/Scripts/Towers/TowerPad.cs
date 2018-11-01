@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TowerPad : MonoBehaviour
 {
-    private MouseToWorldSpace mouseScript;
-    private BuildOrDestroy bodScript;
+    public MouseToWorldSpace mouseScript;
+    public BuildOrDestroy bodScript;
     private RaycastHit mouseHit;
     public bool isPressed;
     public TowerStat currentTower;
@@ -48,8 +48,8 @@ public class TowerPad : MonoBehaviour
 
     void FindObjects()
     {
-        mouseScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseToWorldSpace>();
-        bodScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<BuildOrDestroy>();
+        //mouseScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseToWorldSpace>();
+        //bodScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<BuildOrDestroy>();
     }
 
     void MakeColor()

@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseOverBanner : MonoBehaviour {
+public class PlayBanner : MonoBehaviour {
+
 	Animator myAnimator;
+	Animator camAnimator;
+	public Animator textAnimator;
 	float animSpeed;
-	bool canStart;
+	bool canClick;
+	public CameraAnimatorManager camAnimManager;
 
 	// Use this for initialization
 	void Start () {
@@ -15,17 +19,26 @@ public class MouseOverBanner : MonoBehaviour {
 	}
 
 	void Update () {
+		if (canClick) {
+			if (Input.GetButtonDown ("Fire1")) {
+				Play();
+			}
+		}
+	}
 
+	void Play() {
+		textAnimator.Play("TextFadeAway");
+		camAnimManager.GoToPlay();
 	}
 
 	void OnMouseEnter () {
 		SetAnimSpeed (1);
-		canStart = true;
+		canClick = true;
 	}
 
 	public void OnMouseExit () {
 		SetAnimSpeed (-1);
-		canStart = false;
+		canClick = false;
 	}
 
 	public void SetAnimSpeed (float speed) {

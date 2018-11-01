@@ -13,6 +13,7 @@ TagManager:
   - Projectile
   - Ground
   - Path
+  - AnimCamera
   layers:
   - Default
   - TransparentFX
