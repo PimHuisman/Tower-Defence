@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Unit
   m_EditorClassIdentifier: 
   myName: Unit
-  mySprite: {fileID: 0}
+  mySprite: {fileID: 21300000, guid: 7c3063d5dbb5f6a428d467f7d46c3df4, type: 3}
   cost: 90
   range: 0
   force: 0

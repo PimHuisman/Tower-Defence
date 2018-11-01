@@ -44,7 +44,7 @@ public class CameraAnimatorManager : MonoBehaviour {
 		myAnimator.SetFloat ("Speed", 0);
 		mainCam.SetActive (true);
 		manager.SetActive(true);
-		//canvas.SetActive(true);
+		canvas.SetActive(true);
 		gameObject.SetActive (false);
 
 	}

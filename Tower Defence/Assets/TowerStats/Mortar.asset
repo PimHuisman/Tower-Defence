@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Mortar
   m_EditorClassIdentifier: 
   myName: Mortar
-  mySprite: {fileID: 0}
+  mySprite: {fileID: 21300000, guid: 3a9b843a332e04c4d8297df7c9f6b8d1, type: 3}
   cost: 320
   range: 10
   force: 4000
