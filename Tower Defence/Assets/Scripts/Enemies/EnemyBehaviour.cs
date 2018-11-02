@@ -6,21 +6,19 @@ using UnityEngine.AI;
 public class EnemyBehaviour : MonoBehaviour
 {
     public EnemyStrats enemyStats;
-    Animator anim;
-    AudioSource mySource;
-
     public bool hitTemple;
     public bool attack;
-    Transform targetObj;
     [SerializeField] Vector3 target;
+    [SerializeField] float raycastLength;
+    bool isAttacking = false;
+    Transform targetObj;
+    Vector3 offset;
     Vector3 endPos;
     NavMeshAgent agent;
     RaycastHit hit;
-    Vector3 offset;
-    [SerializeField] float raycastLength;
+    Animator anim;
+    AudioSource mySource;
 
-    bool isAttacking = false;
-    // Use this for initialization
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -40,27 +38,27 @@ public class EnemyBehaviour : MonoBehaviour
     void TargetDestanation(Vector3 newtarget)
     {
         agent.SetDestination(newtarget);
-        anim.SetFloat("IsWalking",agent.speed);
+        anim.SetFloat("IsWalking", agent.speed);
     }
 
     IEnumerator AttackRate()
-	{
-		while (true)
+    {
+        while (true)
         {
             while (attack)
             {
                 yield return new WaitForSeconds(enemyStats.attackCooldown);
-                if(targetObj != null)
+                if (targetObj != null)
                 {
                     anim.SetBool("IsAttacking", true);
                     targetObj.gameObject.GetComponent<Units>().CalculateHealth(enemyStats.attackDamage);
                     anim.SetBool("IsAttacking", false);
                 }
-                
+
             }
             yield return null;
         }
-	}
+    }
 
     void Attack()
     {
@@ -128,7 +126,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collision other) 
+    void OnCollisionExit(Collision other)
     {
         if (other.gameObject == null)
         {

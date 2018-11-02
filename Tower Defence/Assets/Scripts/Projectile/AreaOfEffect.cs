@@ -9,15 +9,12 @@ public class AreaOfEffect : MonoBehaviour
     Collision col;
     void OnCollisionEnter(Collision other)
     {
-        print("Return Damage");
-        if (other.transform.tag == "Path" || other.transform.tag == "Ground")
-        {
-        }
         if (other.transform.gameObject)
         {
             print(other.transform.name);
             col = other;
             DamageArea();
+            print("do damage");
         }
     }
 
