@@ -13,11 +13,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject damageParticles;
     [SerializeField] GameObject deathParticles;
     [SerializeField] HealthBar healthBarScript;
-    [SerializeField] Currency currencyScript;
+    Currency currencyScript;
 
     void Start()
     {
-        enemyStats = GetComponent<MyStats>().myStrats;
+        enemyStats = GetComponent<EnemyBehaviour>().enemyStats;
         currentHealth = enemyStats.health;
         currencyScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<Currency>();
     }

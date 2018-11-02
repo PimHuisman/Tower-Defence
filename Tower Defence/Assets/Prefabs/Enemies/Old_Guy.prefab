@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 54330929026295048}
   - component: {fileID: 114665043522919666}
   - component: {fileID: 195645101365818692}
-  - component: {fileID: 114845419839700508}
   - component: {fileID: 114417340836943002}
   - component: {fileID: 114843253403643108}
   - component: {fileID: 135713132276110034}
@@ -295,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61934fa7f11e37d408d043cdf40ef6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: 9b189db8d95a4374da03fa8dff82ffe4, type: 2}
   hitTemple: 0
   attack: 0
   target: {x: 0, y: 0, z: 0}
@@ -312,18 +312,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthCanvas: {fileID: 1704908573927872}
   healthBar: {fileID: 114263086494083080}
---- !u!114 &114845419839700508
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1417389629466486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0c3fda54a462904ba2e592696a309ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myStrats: {fileID: 11400000, guid: 9b189db8d95a4374da03fa8dff82ffe4, type: 2}
 --- !u!135 &135713132276110034
 SphereCollider:
   m_ObjectHideFlags: 1

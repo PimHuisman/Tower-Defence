@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    EnemyStrats enemyStats;
-
+    public EnemyStrats enemyStats;
+    Animator anim;
     AudioSource mySource;
 
     public bool hitTemple;
@@ -23,8 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        anim = GetComponent<Animator>();
         StartCoroutine("AttackRate");
-        enemyStats = GetComponent<MyStats>().myStrats;
         GetComponent<NavMeshAgent>().speed = enemyStats.speed;
         agent = GetComponent<NavMeshAgent>();
         endPos = GameObject.FindGameObjectWithTag("EndPoint").transform.position;
@@ -40,6 +40,7 @@ public class EnemyBehaviour : MonoBehaviour
     void TargetDestanation(Vector3 newtarget)
     {
         agent.SetDestination(newtarget);
+        anim.SetFloat("IsWalking",agent.speed);
     }
 
     IEnumerator AttackRate()
@@ -51,7 +52,9 @@ public class EnemyBehaviour : MonoBehaviour
                 yield return new WaitForSeconds(enemyStats.attackCooldown);
                 if(targetObj != null)
                 {
+                    anim.SetBool("IsAttacking", true);
                     targetObj.gameObject.GetComponent<Units>().CalculateHealth(enemyStats.attackDamage);
+                    anim.SetBool("IsAttacking", false);
                 }
                 
             }
@@ -94,6 +97,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (attack)
             {
                 agent.isStopped = true;
+                anim.SetFloat("IsWalking", 0);
             }
         }
 

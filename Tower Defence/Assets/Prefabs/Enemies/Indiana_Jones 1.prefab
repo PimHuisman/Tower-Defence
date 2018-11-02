@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 54849683838650542}
   - component: {fileID: 114911035180878046}
   - component: {fileID: 195586286809744162}
-  - component: {fileID: 114989646145003416}
   - component: {fileID: 114669231117067758}
   - component: {fileID: 114464688601486996}
   - component: {fileID: 135373905723278808}
@@ -308,22 +307,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61934fa7f11e37d408d043cdf40ef6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: 30fb078637fecf741a607d0b5f838b25, type: 2}
   hitTemple: 0
   attack: 0
   target: {x: 0, y: 0, z: 0}
   raycastLength: 1.5
---- !u!114 &114989646145003416
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1340151737455618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0c3fda54a462904ba2e592696a309ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myStrats: {fileID: 11400000, guid: 30fb078637fecf741a607d0b5f838b25, type: 2}
 --- !u!135 &135373905723278808
 SphereCollider:
   m_ObjectHideFlags: 1

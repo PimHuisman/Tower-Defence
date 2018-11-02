@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 54543257850607674}
   - component: {fileID: 114298573779204932}
   - component: {fileID: 195397634830668002}
-  - component: {fileID: 114031718232646866}
   - component: {fileID: 114166907389078906}
   - component: {fileID: 114618377004716400}
   - component: {fileID: 135168247993524412}
@@ -171,18 +170,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9, z: 0.9}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114031718232646866
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1082112127656618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0c3fda54a462904ba2e592696a309ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myStrats: {fileID: 11400000, guid: aed7e72c1b288104a9c9194064306a3e, type: 2}
 --- !u!114 &114166907389078906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61934fa7f11e37d408d043cdf40ef6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: aed7e72c1b288104a9c9194064306a3e, type: 2}
   hitTemple: 0
   attack: 0
   target: {x: 0, y: 0, z: 0}

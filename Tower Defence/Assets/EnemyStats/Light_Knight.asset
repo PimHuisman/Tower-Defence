@@ -14,7 +14,7 @@ MonoBehaviour:
   myName: Indiana_Jones
   health: 30
   currencyWhenDead: 5
-  speed: 3
+  speed: 1.5
   attackDamage: 5
   attackCooldown: 1
   enterDamage: 1
