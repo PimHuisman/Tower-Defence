@@ -23,8 +23,6 @@ public class TowerPad : MonoBehaviour
 
     void Start()
     {
-        bodScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<BuildOrDestroy>();
-        mouseScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseToWorldSpace>();
         FindObjects();
         CheckForRenderer();
     }
