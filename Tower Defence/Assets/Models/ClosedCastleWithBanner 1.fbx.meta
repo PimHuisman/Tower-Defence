@@ -1,19 +1,59 @@
 fileFormatVersion: 2
-guid: 47edf3260967c804493e0e52b1b09886
+guid: 042e9b7785cc41f49ad50585804a255c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Stone2
-    2100002: Stone1
-    2100004: WoodGate1
-    2100006: WoodGate2
-    2100008: Stone4
-    2100010: Stone3
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube.001
+    100000: Banner
+    100002: Banner1
+    100004: BannerPole
+    100006: //RootNode
+    100008: Cube
+    100010: Cube.003
+    100012: Cube.005
+    100014: Cube.008
+    400000: Banner
+    400002: Banner1
+    400004: BannerPole
+    400006: //RootNode
+    400008: Cube
+    400010: Cube.003
+    400012: Cube.005
+    400014: Cube.008
+    2100000: Color 1
+    2100002: Holders
+    2100004: Rope.003
+    2100006: Color 2
+    2100008: WoodGate1
+    2100010: WoodGate2
+    2100012: Metal
+    2100014: Material
+    2100016: ColorA
+    2100018: ColorB
+    2100020: Stone2.002
+    2100022: Stone1.002
+    2100024: Stone4.002
+    2100026: Stone3.002
+    2300000: Banner
+    2300002: Banner1
+    2300004: BannerPole
+    2300006: Cube
+    2300008: Cube.003
+    2300010: Cube.005
+    2300012: Cube.008
+    3300000: Banner
+    3300002: Banner1
+    3300004: BannerPole
+    3300006: Cube
+    3300008: Cube.003
+    3300010: Cube.005
+    3300012: Cube.008
+    4300000: Cube
+    4300002: Cube.008
+    4300004: Cube.005
+    4300006: Banner1
+    4300008: Banner
+    4300010: BannerPole
+    4300012: Cube.003
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -53,7 +93,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

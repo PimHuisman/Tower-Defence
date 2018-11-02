@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 114304217946110232}
   - component: {fileID: 135181630185277964}
   - component: {fileID: 95187864818759318}
-  - component: {fileID: 64929180484484324}
+  - component: {fileID: 65810453859707040}
   m_Layer: 10
   m_Name: LightKnight
   m_TagString: Enemy
@@ -1712,8 +1712,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!64 &64929180484484324
-MeshCollider:
+--- !u!65 &65810453859707040
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -1721,11 +1721,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 1d64af51587a5fa418392113d58ffde6, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.9, z: 0.4}
+  m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!95 &95187864818759318
 Animator:
   serializedVersion: 3
