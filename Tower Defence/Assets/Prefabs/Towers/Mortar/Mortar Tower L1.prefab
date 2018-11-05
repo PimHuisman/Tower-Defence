@@ -235,7 +235,8 @@ AudioSource:
   m_GameObject: {fileID: 1813061355743678}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243891823143132464, guid: f67a6fb94710df1408fd7dae3e0012fb,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -333,19 +334,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3668cd3653313a4bbcad7ed68ac769a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tower: {fileID: 11400000, guid: 00de74cea059aac4380a8c9d0acd5217, type: 2}
   targets: []
   mainTarget: {fileID: 0}
-  tower: {fileID: 11400000, guid: 00de74cea059aac4380a8c9d0acd5217, type: 2}
+  stickable: 0
   weapon: {fileID: 4246140643491622}
   projectile: {fileID: 4903408515742806, guid: 55b2b9a84e010fc4d8518a09ab1334ad, type: 2}
   currentProjectile: {fileID: 0}
   projectileSpawn: {fileID: 4233979405187850}
   mySource: {fileID: 82206435965979768}
-  shootClip: {fileID: 8300000, guid: 4511f195a5516e4468bf810226145a3d, type: 3}
   force: 0
   damage: 0
   angle: 0
-  offset: 0
 --- !u!135 &135016286537176352
 SphereCollider:
   m_ObjectHideFlags: 1

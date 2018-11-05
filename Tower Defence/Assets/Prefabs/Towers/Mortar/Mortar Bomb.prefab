@@ -115,6 +115,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raduis: 5
   damage: 0
+  audioPlayer: {fileID: 1877183934367104, guid: 958369cad9dab19478d185279b7dece1,
+    type: 2}
+  hitAudio: {fileID: 0}
+  mortarMixer: {fileID: 243891823143132464, guid: f67a6fb94710df1408fd7dae3e0012fb,
+    type: 2}
 --- !u!114 &114863780086465356
 MonoBehaviour:
   m_ObjectHideFlags: 1

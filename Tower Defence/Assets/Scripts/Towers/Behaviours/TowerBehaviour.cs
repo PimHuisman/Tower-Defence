@@ -88,6 +88,7 @@ public class TowerBehaviour : MonoBehaviour
         else
         {
             currentProjectile.GetComponent<AreaOfEffect>().damage = damage;
+            currentProjectile.GetComponent<AreaOfEffect>().hitAudio = hitClip;
         }
         Calculate calc = currentProjectile.GetComponent<Calculate>();
         calc.target = mainTarget;
