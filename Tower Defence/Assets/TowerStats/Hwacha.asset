@@ -22,3 +22,5 @@ MonoBehaviour:
   projectileRespawnPercentage: 0
   tower: {fileID: 1034746880949242, guid: 88c0345a811a8e04d80e05c8a1d8c687, type: 2}
   ammo: {fileID: 1582708557830062, guid: 3e18ec518bbccae40ba5b7de01b6206f, type: 2}
+  fireClip: {fileID: 0}
+  hitClip: {fileID: 8300000, guid: 29a9430a4e7c41441b5f2448ac5d0ded, type: 3}
