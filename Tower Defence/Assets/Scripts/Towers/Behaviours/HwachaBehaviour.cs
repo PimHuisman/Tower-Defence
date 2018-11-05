@@ -47,7 +47,7 @@ public class HwachaBehaviour : TowerBehaviour
             calc.target = mainTarget;
             calc.launchAngle = angle;
             calc.Launch();
-            PlayAudio(shootClip);
+            //PlayAudio(shootClip);
         }
         arrowList.Clear();
     }

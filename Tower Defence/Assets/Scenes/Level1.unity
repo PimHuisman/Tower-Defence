@@ -616,7 +616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &78210307
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1189,7 +1189,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 183909522}
   m_OnClick:
     m_PersistentCalls:
@@ -3886,7 +3886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &639854458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4120,7 +4120,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 687747809}
   m_OnClick:
     m_PersistentCalls:
@@ -5478,7 +5478,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: $100
+  m_Text: $400
 --- !u!222 &850572810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6822,7 +6822,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1073989710}
   m_OnClick:
     m_PersistentCalls:
@@ -9492,7 +9492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1653251110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10923,7 +10923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1f5ce29b3b0e04785d98dc217384a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCurrency: 100
+  myCurrency: 400
   currencyString: $
   currencyPanel: {fileID: 337139172}
   currencyText: {fileID: 850572809}

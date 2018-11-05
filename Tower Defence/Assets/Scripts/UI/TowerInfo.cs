@@ -20,6 +20,7 @@ public class TowerInfo : MonoBehaviour {
 	public void OnEnter () {
 		infoParent.SetActive(true);
 		tSprite.sprite = stat.mySprite;
+		tSprite.preserveAspect = true;
 		tName.text = stat.myName;
 		tDamage.text = stat.damage.ToString();
 		tFireRate.text = stat.fireRate.ToString();

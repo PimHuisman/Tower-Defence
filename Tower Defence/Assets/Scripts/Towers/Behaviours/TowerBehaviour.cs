@@ -17,7 +17,9 @@ public class TowerBehaviour : MonoBehaviour
     float respawnPercentage;
     [Header("Audio")]
     public AudioSource mySource;
-    public AudioClip shootClip;
+    AudioClip shootClip;
+    AudioClip hitClip;
+
     [Header("Stats")]
     public float force;
     public int damage;
@@ -31,6 +33,8 @@ public class TowerBehaviour : MonoBehaviour
         force = tower.force;
         damage = tower.damage;
         angle = tower.angle;
+        shootClip = tower.fireClip;
+        hitClip = tower.hitClip;
         fireRate = tower.fireRate;
         respawnPercentage = tower.projectileRespawnPercentage;
         SetRange();
@@ -79,6 +83,7 @@ public class TowerBehaviour : MonoBehaviour
         if (stickable)
         {
             currentProjectile.GetComponent<Stick>().damage = damage;
+            currentProjectile.GetComponent<Stick>().stickAudio = hitClip;
         }
         else
         {
@@ -128,6 +133,6 @@ public class TowerBehaviour : MonoBehaviour
     public virtual void PlayAudio(AudioClip myClip)
     {
 
-        mySource.PlayOneShot(myClip);
+        mySource.PlayOneShot(shootClip);
     }
 }

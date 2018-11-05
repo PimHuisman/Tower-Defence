@@ -19,5 +19,7 @@ public class TowerStat : ScriptableObject
     [Header("Objects")]
     public GameObject tower;
     public GameObject ammo;
+    public AudioClip fireClip;
+    public AudioClip hitClip;
 
 }
