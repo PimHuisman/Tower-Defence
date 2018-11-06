@@ -5836,7 +5836,13 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 23960847058838258, guid: 79ef5bba06d87e84088dfaef909afaf7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64319829907402414, guid: 79ef5bba06d87e84088dfaef909afaf7, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 79ef5bba06d87e84088dfaef909afaf7, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1004632686
@@ -7165,6 +7171,23 @@ RectTransform:
   m_AnchoredPosition: {x: 198.92499, y: -380.9}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1283961927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1540411883991490, guid: 79ef5bba06d87e84088dfaef909afaf7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1001658268}
+--- !u!65 &1283961928
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1283961927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000002, y: 2.220446e-16, z: 10.000002}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1288747420
 Transform:
   m_ObjectHideFlags: 0
