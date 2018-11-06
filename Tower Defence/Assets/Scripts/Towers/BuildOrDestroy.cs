@@ -8,6 +8,7 @@ public class BuildOrDestroy : MonoBehaviour
     public GameObject currentPad;
     public GameObject buyOutOfBounds;
     public GameObject buyPanel;
+    public GameObject sellOutOfBounds;
     public GameObject sellPanel;
     public GameObject blur;
     private TowerPad currentPadScript;
@@ -24,7 +25,7 @@ public class BuildOrDestroy : MonoBehaviour
     {
         towerPads = GameObject.FindGameObjectsWithTag("Tower Pad");
         buyOutOfBounds.SetActive(false);
-        sellPanel.SetActive(false);
+        sellOutOfBounds.SetActive(false);
     }
 
     void Update()
@@ -48,7 +49,7 @@ public class BuildOrDestroy : MonoBehaviour
                 }
                 else
                 {
-                    sellPanel.SetActive(true);
+                    sellOutOfBounds.SetActive(true);
                     Vector3 panelPos = Camera.main.WorldToScreenPoint(currentPad.transform.GetChild(0).position);
                     sellPanel.transform.position = panelPos;
                     blur.SetActive(true);
@@ -84,7 +85,7 @@ public class BuildOrDestroy : MonoBehaviour
         Destroy(currentPad.transform.GetChild(2).gameObject);
         currentPadScript.currentTower = null;
         currentPadScript.isPressed = false;
-        sellPanel.SetActive(false);
+        sellOutOfBounds.SetActive(false);
         blur.SetActive(false);
     }
 
