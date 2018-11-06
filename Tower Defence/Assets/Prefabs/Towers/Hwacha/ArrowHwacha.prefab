@@ -9,48 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1441193531087744}
+  m_RootGameObject: {fileID: 1582708557830062}
   m_IsPrefabAsset: 1
---- !u!1 &1441193531087744
+--- !u!1 &1582708557830062
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4903408515742806}
-  - component: {fileID: 33158452274693112}
-  - component: {fileID: 23559346824237580}
-  - component: {fileID: 114863780086465356}
-  - component: {fileID: 54578649801492320}
-  - component: {fileID: 114480327472095876}
-  - component: {fileID: 135415351572192356}
+  - component: {fileID: 4922010124214000}
+  - component: {fileID: 33502449089424834}
+  - component: {fileID: 23110779855149752}
+  - component: {fileID: 65432983588502174}
+  - component: {fileID: 54640308491148306}
+  - component: {fileID: 114209003372345720}
+  - component: {fileID: 114226159778238602}
   m_Layer: 0
-  m_Name: Mortar Bomb
-  m_TagString: Untagged
+  m_Name: ArrowHwacha
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4903408515742806
+--- !u!4 &4922010124214000
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441193531087744}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 1582708557830062}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23559346824237580
+--- !u!23 &23110779855149752
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441193531087744}
+  m_GameObject: {fileID: 1582708557830062}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +60,10 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100024, guid: e614e72ab0889d4448fa275b94f9e765, type: 3}
+  - {fileID: 2100000, guid: 9273a30ed9420984ca0c2a4a6cea7d15, type: 3}
+  - {fileID: 2100002, guid: 9273a30ed9420984ca0c2a4a6cea7d15, type: 3}
+  - {fileID: 2100004, guid: 9273a30ed9420984ca0c2a4a6cea7d15, type: 3}
+  - {fileID: 2100006, guid: 9273a30ed9420984ca0c2a4a6cea7d15, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,77 +83,76 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33158452274693112
+--- !u!33 &33502449089424834
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441193531087744}
-  m_Mesh: {fileID: 4300004, guid: e614e72ab0889d4448fa275b94f9e765, type: 3}
---- !u!54 &54578649801492320
+  m_GameObject: {fileID: 1582708557830062}
+  m_Mesh: {fileID: 4300000, guid: 9273a30ed9420984ca0c2a4a6cea7d15, type: 3}
+--- !u!54 &54640308491148306
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441193531087744}
+  m_GameObject: {fileID: 1582708557830062}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &114480327472095876
+--- !u!65 &65432983588502174
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582708557830062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020791527, y: 0.021486385, z: 0.492818}
+  m_Center: {x: 0.0016483692, y: 0.00031247362, z: 0.24291313}
+--- !u!114 &114209003372345720
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441193531087744}
+  m_GameObject: {fileID: 1582708557830062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de51ea729ed3f948ba3ce7c0a508cd2, type: 3}
+  m_Script: {fileID: 11500000, guid: d31ffcc15c576e14b8299dca0cb219ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raduis: 3
+  timeToDestroy: 10
+  pierceDepth: 0
   damage: 0
   audioPlayer: {fileID: 1877183934367104, guid: 958369cad9dab19478d185279b7dece1,
     type: 2}
-  hitAudio: {fileID: 0}
-  mortarMixer: {fileID: 243891823143132464, guid: f67a6fb94710df1408fd7dae3e0012fb,
-    type: 2}
---- !u!114 &114863780086465356
+  stickAudio: {fileID: 8300000, guid: 6e6d4f9002e305249a58b8ef29c08db1, type: 3}
+--- !u!114 &114226159778238602
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441193531087744}
+  m_GameObject: {fileID: 1582708557830062}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 461c9d06842d8ca448078b39637b314b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  launchAngle: 0
+  launchAngle: 45
   launched: 0
   hasLanded: 0
   doWait: 0
   maxTime: 0
   offset: {x: 0, y: 0, z: 0}
-  offset360: {x: -0.2, y: 0, z: 1.5}
-  offset270: {x: -1.5, y: 0, z: 0}
-  offset180: {x: 0.2, y: 0, z: -1.5}
-  offset90: {x: 1.5, y: 0, z: 0}
---- !u!135 &135415351572192356
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441193531087744}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.071848914
-  m_Center: {x: 0, y: 0, z: 0}
+  offset360: {x: 0, y: 0, z: 1.9}
+  offset270: {x: -3.2, y: 0, z: -1.5}
+  offset180: {x: 1.5, y: 0, z: -0.5}
+  offset90: {x: 3.2, y: 0, z: 1.5}

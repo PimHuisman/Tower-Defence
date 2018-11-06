@@ -113,9 +113,9 @@ public class WaveSystem : MonoBehaviour
     IEnumerator SpawnRate()
     {
 
-        Enemy1 = Mathf.RoundToInt(amountOfEnemies / 10 * 6);
-        Enemy2 = Mathf.RoundToInt(amountOfEnemies / 10 * 3);
-        Enemy3 = Mathf.RoundToInt(amountOfEnemies / 10 * 1);
+        Enemy1 = Mathf.RoundToInt(amountOfEnemies * .5f);
+        Enemy2 = Mathf.RoundToInt(amountOfEnemies * .3f);
+        Enemy3 = Mathf.RoundToInt(amountOfEnemies * .2f);
 
         yield return new WaitForSeconds(spawnWait);
 

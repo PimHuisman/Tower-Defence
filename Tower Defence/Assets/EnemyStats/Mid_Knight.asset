@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Mid_Knight
   m_EditorClassIdentifier: 
   myName: BackPack_Boy
-  health: 65
+  health: 70
   currencyWhenDead: 5
-  speed: 2
+  speed: 1.2
   attackDamage: 7
   attackCooldown: 2
   enterDamage: 2

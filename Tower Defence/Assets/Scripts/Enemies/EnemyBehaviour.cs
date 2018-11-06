@@ -85,7 +85,7 @@ public class EnemyBehaviour : MonoBehaviour
         hitTemple = true;
         temple.DamageMe(enemyStats.enterDamage);
 
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 0.3f);
     }
 
     void OnTriggerEnter(Collider other)
@@ -114,8 +114,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        //print("Colliding");
-
         if (other.gameObject.GetComponent<TempleStats>())
         {
             if (hitTemple == false)

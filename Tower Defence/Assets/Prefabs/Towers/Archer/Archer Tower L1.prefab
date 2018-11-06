@@ -232,11 +232,10 @@ MonoBehaviour:
   mainTarget: {fileID: 0}
   stickable: 1
   weapon: {fileID: 4598871066116448}
-  projectile: {fileID: 4100251030936216, guid: aa4f9c78de95f7043ab642b866df0fb5, type: 2}
+  projectile: {fileID: 4652194666160592, guid: 0894edd254a62784ea5715dedd6f7c15, type: 2}
   currentProjectile: {fileID: 0}
   projectileSpawn: {fileID: 4598871066116448}
   mySource: {fileID: 82816080371737572}
-  shootClip: {fileID: 8300000, guid: 4511f195a5516e4468bf810226145a3d, type: 3}
   force: 0
   damage: 0
   angle: 0

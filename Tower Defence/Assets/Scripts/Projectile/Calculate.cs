@@ -14,6 +14,7 @@ public class Calculate : MonoBehaviour
     public bool doWait;
     public float maxTime;
     Vector3 targetXZPos;
+    [Header("OffSet")]
     [SerializeField] Vector3 offset;
     [SerializeField] Vector3 offset360;
     [SerializeField] Vector3 offset270;
@@ -27,10 +28,7 @@ public class Calculate : MonoBehaviour
         if (GetComponent<Rigidbody>())
         {
             myRb = GetComponent<Rigidbody>();
-
         }
-        else { }
-
         myRb.useGravity = false;
         myRb.isKinematic = true;
     }
@@ -55,14 +53,12 @@ public class Calculate : MonoBehaviour
     {
         if (doWait == true)
         {
-
             StartCoroutine("WaitShoot");
         }
         else
         {
             Launch2();
         }
-
     }
 
     void Launch2()
@@ -70,22 +66,24 @@ public class Calculate : MonoBehaviour
         #region Rotation Target
         if (target != null)
         {
-            if (target.transform.eulerAngles.y < 362 && target.transform.eulerAngles.y > 272)
+            print(target.eulerAngles.y);
+            print(target.transform.name);
+            if (target.transform.eulerAngles.y < 360 && target.transform.eulerAngles.y > 280)
             {
                 print("i am between 360/270");
                 offset = offset360;
             }
-            if (target.transform.eulerAngles.y < 272 && target.transform.eulerAngles.y > 182)
+            if (target.transform.eulerAngles.y < 280 && target.transform.eulerAngles.y > 190)
             {
                 print("i am between 270/180");
                 offset = offset270;
             }
-            if (target.transform.eulerAngles.y < 182 && target.transform.eulerAngles.y > 92)
+            if (target.transform.eulerAngles.y < 190 && target.transform.eulerAngles.y > 100)
             {
                 print("i am between 180/90");
                 offset = offset180;
             }
-            if (target.transform.eulerAngles.y < 92 && target.transform.eulerAngles.y > 0)
+            if (target.transform.eulerAngles.y < 100 && target.transform.eulerAngles.y > 0)
             {
                 print("i am between 90/0");
                 offset = offset90;

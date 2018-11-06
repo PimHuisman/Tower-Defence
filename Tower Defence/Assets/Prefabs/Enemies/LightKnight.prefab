@@ -279,13 +279,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4484346390930464}
   - component: {fileID: 137817525419446906}
+  - component: {fileID: 95187864818759318}
   - component: {fileID: 195611299319697684}
   - component: {fileID: 114268761623722430}
   - component: {fileID: 54231911778815418}
   - component: {fileID: 114061821606281704}
   - component: {fileID: 114304217946110232}
   - component: {fileID: 135181630185277964}
-  - component: {fileID: 95187864818759318}
   - component: {fileID: 65810453859707040}
   m_Layer: 10
   m_Name: LightKnight
@@ -1722,7 +1722,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.9, z: 0.2}
+  m_Size: {x: 0.25, y: 0.9, z: 0.25}
   m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!95 &95187864818759318
 Animator:
