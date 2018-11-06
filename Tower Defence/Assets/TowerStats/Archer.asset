@@ -13,14 +13,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myName: Archer
   mySprite: {fileID: 21300000, guid: 6384d0d853590a8428442007aea317cd, type: 3}
-  cost: 70
-  range: 10
+  cost: 100
+  range: 12
   force: 5
   angle: 0
-  damage: 5
-  fireRate: 1
+  damage: 7
+  fireRate: 0.9
   projectileRespawnPercentage: 0
   tower: {fileID: 1973266785025132, guid: 0ccc8308e730ebd46b1eaefcba51afa9, type: 2}
-  ammo: {fileID: 0}
+  ammo: {fileID: 1860892618665308, guid: 0894edd254a62784ea5715dedd6f7c15, type: 2}
   fireClip: {fileID: 8300000, guid: daf2a7724c52af24a9ee79a7b737be2c, type: 3}
   hitClip: {fileID: 8300000, guid: 29a9430a4e7c41441b5f2448ac5d0ded, type: 3}

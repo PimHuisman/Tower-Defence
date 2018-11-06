@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 114304217946110232}
   - component: {fileID: 135181630185277964}
   - component: {fileID: 65810453859707040}
+  - component: {fileID: 136026659204468484}
   m_Layer: 10
   m_Name: LightKnight
   m_TagString: Enemy
@@ -1895,6 +1896,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136026659204468484
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368783248835812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1.0162501
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!137 &137817525419446906
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

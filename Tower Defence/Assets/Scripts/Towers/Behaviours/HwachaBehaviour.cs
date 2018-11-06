@@ -40,7 +40,7 @@ public class HwachaBehaviour : TowerBehaviour
             {
                 weapon.LookAt(mainTarget.forward);
             }
-            arrowList[i].GetComponent<Stick>().damage = damage;
+            arrowList[i].GetComponent<AreaOfEffect>().damage = damage;
             Calculate calc = arrowList[i].GetComponent<Calculate>();
             calc.maxTime = maxTime;
             calc.doWait = true;

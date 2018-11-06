@@ -14,11 +14,11 @@ MonoBehaviour:
   myName: Ballista
   mySprite: {fileID: 21300000, guid: 2c7966baee2ed83419c3f7492555e7c8, type: 3}
   cost: 160
-  range: 15
+  range: 9
   force: 3000
   angle: 0
-  damage: 50
-  fireRate: 0.4
+  damage: 40
+  fireRate: 0.3
   projectileRespawnPercentage: 0
   tower: {fileID: 1301845847321034, guid: b170ce20bf1010645be64873b1c9666b, type: 2}
   ammo: {fileID: 1582708557830062, guid: 3e18ec518bbccae40ba5b7de01b6206f, type: 2}

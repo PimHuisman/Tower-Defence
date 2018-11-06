@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23110779855149752}
   - component: {fileID: 65432983588502174}
   - component: {fileID: 54640308491148306}
-  - component: {fileID: 114209003372345720}
+  - component: {fileID: 114526999159560770}
   - component: {fileID: 114226159778238602}
   m_Layer: 0
   m_Name: ArrowHwacha
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582708557830062}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.241954, y: 2.964, z: -10.237779}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -117,23 +117,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020791527, y: 0.021486385, z: 0.492818}
   m_Center: {x: 0.0016483692, y: 0.00031247362, z: 0.24291313}
---- !u!114 &114209003372345720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1582708557830062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d31ffcc15c576e14b8299dca0cb219ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToDestroy: 10
-  pierceDepth: 0
-  damage: 0
-  audioPlayer: {fileID: 1877183934367104, guid: 958369cad9dab19478d185279b7dece1,
-    type: 2}
-  stickAudio: {fileID: 8300000, guid: 6e6d4f9002e305249a58b8ef29c08db1, type: 3}
 --- !u!114 &114226159778238602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,7 +135,25 @@ MonoBehaviour:
   doWait: 0
   maxTime: 0
   offset: {x: 0, y: 0, z: 0}
-  offset360: {x: 0, y: 0, z: 1.9}
-  offset270: {x: -3.2, y: 0, z: -1.5}
-  offset180: {x: 1.5, y: 0, z: -0.5}
-  offset90: {x: 3.2, y: 0, z: 1.5}
+  offset360: {x: -0.5, y: 0, z: 1.9}
+  offset270: {x: -1.5, y: 0, z: -0.3}
+  offset180: {x: 0.2, y: 0, z: -1}
+  offset90: {x: 1.5, y: 0, z: 0.3}
+--- !u!114 &114526999159560770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582708557830062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de51ea729ed3f948ba3ce7c0a508cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raduis: 0.5
+  damage: 0
+  audioPlayer: {fileID: 1877183934367104, guid: 958369cad9dab19478d185279b7dece1,
+    type: 2}
+  hitAudio: {fileID: 8300000, guid: 99e9d951fbb97f948bae3ba757b78a93, type: 3}
+  mortarMixer: {fileID: 243891823143132464, guid: f67a6fb94710df1408fd7dae3e0012fb,
+    type: 2}

@@ -232,7 +232,7 @@ MonoBehaviour:
   offset360: {x: 0, y: 0, z: 0.8}
   offset270: {x: -0.8, y: 0, z: 0}
   offset180: {x: 0, y: 0, z: -0.8}
-  offset90: {x: 0.9, y: 0, z: -0.1}
+  offset90: {x: 0.8, y: 0, z: -0.15}
 --- !u!114 &114839996885656126
 MonoBehaviour:
   m_ObjectHideFlags: 1

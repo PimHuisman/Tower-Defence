@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject deathParticles;
     [SerializeField] HealthBar healthBarScript;
     Currency currencyScript;
+    public bool dead = false;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
         currencyScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<Currency>();
     }
 
-    public void DamageMe(int damage, Collision other)
+    public bool DamageMe(int damage, Collision other)
     {
         currentHealth -= damage;
 
@@ -31,11 +32,13 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die(other);
+            return true;
         }
         else
         {
             healthBarScript.ChangeBar(currentHealth, enemyStats.health);
             PlayParticles(damageParticles, other.contacts[0].point, Quaternion.Euler(-other.contacts[0].normal));
+            return false;
         }
     }
 
@@ -55,7 +58,7 @@ public class EnemyHealth : MonoBehaviour
             PlayParticles(deathParticles, other.transform.position, other.transform.rotation);
             currencyScript.AddCurrency(enemyStats.currencyWhenDead);
             Destroy(gameObject);
-            WaveSystem.instace.currentAmountOfEnemies --;
+            WaveSystem.instace.currentAmountOfEnemies--;
         }
         else
         {

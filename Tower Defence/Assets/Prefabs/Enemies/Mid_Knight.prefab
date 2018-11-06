@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 114609032770207454}
   - component: {fileID: 135278022697902034}
   - component: {fileID: 54587904653398324}
-  - component: {fileID: 65310405268986790}
+  - component: {fileID: 136786391178770578}
   m_Layer: 10
   m_Name: Mid_Knight
   m_TagString: Enemy
@@ -8892,18 +8892,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &65310405268986790
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1118443224377784}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.9, z: 0.3}
-  m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!95 &95204029738947430
 Animator:
   serializedVersion: 3
@@ -9075,6 +9063,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136786391178770578
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118443224377784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!137 &137487653796218776
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

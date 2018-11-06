@@ -2662,13 +2662,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4379043835699998}
   - component: {fileID: 95647927102911154}
-  - component: {fileID: 65173877070144338}
   - component: {fileID: 195869010758556002}
   - component: {fileID: 54413306501569986}
   - component: {fileID: 114172623398821898}
   - component: {fileID: 114404745288712244}
   - component: {fileID: 114290002618567592}
   - component: {fileID: 135990942724703022}
+  - component: {fileID: 136341163545119934}
   m_Layer: 10
   m_Name: Heavy Knight
   m_TagString: Enemy
@@ -8903,18 +8903,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &65173877070144338
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1614582829348272}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.8, z: 0.2}
-  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!95 &95647927102911154
 Animator:
   serializedVersion: 3
@@ -9086,6 +9074,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136341163545119934
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614582829348272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!137 &137106488829204800
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
