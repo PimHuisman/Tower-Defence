@@ -23,6 +23,9 @@ public class TowerPad : MonoBehaviour
 
     void Start()
     {
+
+
+
         FindObjects();
         CheckForRenderer();
     }
