@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TowerInfo : MonoBehaviour {
 	TowerStat stat;
 	public GameObject infoParent;
-	public Image tSprite;
+
 	public Text tName;
 	public Text tDamage;
 	public Text tFireRate;
@@ -19,8 +19,6 @@ public class TowerInfo : MonoBehaviour {
 
 	public void OnEnter () {
 		infoParent.SetActive(true);
-		tSprite.sprite = stat.mySprite;
-		tSprite.preserveAspect = true;
 		tName.text = stat.myName;
 		tDamage.text = stat.damage.ToString();
 		tFireRate.text = stat.fireRate.ToString();
@@ -28,6 +26,6 @@ public class TowerInfo : MonoBehaviour {
 	}
 
 	public void OnExit() {
-		infoParent.SetActive(false);
+		//infoParent.SetActive(false);
 	}
 }

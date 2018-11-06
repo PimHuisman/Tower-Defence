@@ -18,7 +18,7 @@ public class MyTower : MonoBehaviour
     void Update()
     {
         nameText.text = tower.myName.ToString();
-        costText.text = tower.cost.ToString();
+        costText.text = "$" + tower.cost.ToString();
 
         CheckCurrency();
         CheckTower();
