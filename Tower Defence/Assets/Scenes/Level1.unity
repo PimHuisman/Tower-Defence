@@ -750,6 +750,7 @@ GameObject:
   - component: {fileID: 126448603}
   - component: {fileID: 126448602}
   - component: {fileID: 126448601}
+  - component: {fileID: 126448604}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -773,8 +774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 97, y: -75.6}
-  m_SizeDelta: {x: 123.2, y: 110.4}
+  m_AnchoredPosition: {x: 183, y: -75.601}
+  m_SizeDelta: {x: 353.7, y: 134.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &126448601
 MonoBehaviour:
@@ -815,8 +816,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1963728803}
-        m_MethodName: PlaySound
+      - m_Target: {fileID: 126448604}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -825,17 +826,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1963728798}
-        m_MethodName: PauseGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -873,6 +863,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 126448599}
   m_CullTransparentMesh: 0
+--- !u!114 &126448604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 126448599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fd1c0df7bae6f4baaa96ce3c9f0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &128858542
 Prefab:
   m_ObjectHideFlags: 0
@@ -4056,7 +4057,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: II
+  m_Text: QUIT
 --- !u!222 &787576006
 CanvasRenderer:
   m_ObjectHideFlags: 0
