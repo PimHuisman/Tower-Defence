@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 3b0ab46f0d104934db8a7d76b221ed5f
+guid: 9525db31f7cae8544adffa3ad01de54f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Stone
-    2100002: DarkStone
-    2100004: Wood
+    2100000: Stone.001
+    2100002: DarkStone.001
+    2100004: Wood.001
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube
+    4300000: Towerpad
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -50,7 +50,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
