@@ -53,7 +53,7 @@ public class TempleStats : MonoBehaviour {
     }
 
     public void ChangeUI () {
-        string s = beginHealth.ToString() + " / " + currentHealth.ToString();
+        string s = currentHealth.ToString() + " / " + beginHealth.ToString();
         print("String s is " + s);
         healthText.text = s;
         healthTextShadow.text = s;
