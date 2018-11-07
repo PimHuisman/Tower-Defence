@@ -10,6 +10,7 @@ public class Currency : MonoBehaviour
     public string currencyString;
     public GameObject currencyPanel;
     public Text currencyText;
+    public Text currencyTextShadow;
     public GameObject newCurrencyObject;
     public GameObject objectPlace;
     public float timeToDisableObject;
@@ -17,7 +18,9 @@ public class Currency : MonoBehaviour
 
     void Update()
     {
-        currencyText.text = currencyString + myCurrency.ToString();
+        string s = currencyString + myCurrency.ToString();
+        currencyText.text = s;
+        currencyTextShadow.text = s;
 		if (Input.GetButtonDown("O"))
 		{
 			AddCurrency(25);
