@@ -31,7 +31,7 @@ public class CameraMovement : MonoBehaviour {
 	}
 
 	void GetBounds () {
-		Renderer groundRend = ground.GetComponent<Renderer> ();
+		Collider groundRend = ground.GetComponent<Collider> ();
 		Bounds groundBounds = groundRend.bounds;
 		print (groundBounds);
 
