@@ -23,4 +23,4 @@ MonoBehaviour:
   tower: {fileID: 1973266785025132, guid: 0ccc8308e730ebd46b1eaefcba51afa9, type: 2}
   ammo: {fileID: 1860892618665308, guid: 0894edd254a62784ea5715dedd6f7c15, type: 2}
   fireClip: {fileID: 8300000, guid: daf2a7724c52af24a9ee79a7b737be2c, type: 3}
-  hitClip: {fileID: 8300000, guid: 29a9430a4e7c41441b5f2448ac5d0ded, type: 3}
+  hitClip: {fileID: 8300000, guid: 6e6d4f9002e305249a58b8ef29c08db1, type: 3}
