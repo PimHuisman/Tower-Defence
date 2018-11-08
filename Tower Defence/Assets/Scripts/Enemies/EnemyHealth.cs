@@ -8,7 +8,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject audioPlayer;
     AudioSource mySource;
     [SerializeField] int currentHealth;
-    [SerializeField] AudioClip deathSound;
+    [SerializeField] List<AudioClip> deathSounds;
+    AudioClip deathSound;
     [SerializeField] AudioClip damageSound;
     [SerializeField] GameObject damageParticles;
     [SerializeField] GameObject deathParticles;
@@ -71,10 +72,18 @@ public class EnemyHealth : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void SetSound() {
+        print("Count: " + deathSounds.Count);
+        int r = Random.Range(0, deathSounds.Count - 1);
+        deathSound = deathSounds[r];
+    }
+
     public void Die(Collision other)
     {
         if (other != null)
         {
+            SetSound();
             MakeAndPlayAudio(deathSound, other);
             PlayParticles(deathParticles, other.transform.position, other.transform.rotation);
             if (GetComponent<EnemyBehaviour>() != null)

@@ -9030,6 +9030,8 @@ MonoBehaviour:
   attack: 0
   target: {x: 0, y: 0, z: 0}
   raycastLength: 1.5
+  damageTime: 0
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114919411855038698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9054,7 +9056,6 @@ MonoBehaviour:
   deathParticles: {fileID: 1210216876415490, guid: abe475038625ec04ab66aea1142775ea,
     type: 2}
   healthBarScript: {fileID: 114609032770207454}
-  dead: 0
 --- !u!135 &135278022697902034
 SphereCollider:
   m_ObjectHideFlags: 1
