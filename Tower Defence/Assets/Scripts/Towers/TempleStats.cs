@@ -7,11 +7,9 @@ public class TempleStats : MonoBehaviour {
     public int beginHealth;
     float currentHealth;
 
-    public Text healthText;
-    public Text healthTextShadow;
+    public Image healthImg;
     public float damage;
     public EndScreen endScreen;
-    public Image currentHealthImg;
 
     public bool doDamage;
     public bool hasBeenFound;
@@ -53,11 +51,8 @@ public class TempleStats : MonoBehaviour {
     }
 
     public void ChangeUI () {
-        string s = currentHealth.ToString() + " / " + beginHealth.ToString();
-        print("String s is " + s);
-        healthText.text = s;
-        healthTextShadow.text = s;
-
+        float p = currentHealth / beginHealth;
+        healthImg.fillAmount = p;
 
     }
 }
