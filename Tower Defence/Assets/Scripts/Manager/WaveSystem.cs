@@ -22,7 +22,8 @@ public class WaveSystem : MonoBehaviour
     public List<Transform> enemy3SpawnPoints = new List<Transform>();
 
     [Header("Wave")]
-    [SerializeField] private Text wave;
+    [SerializeField] Text wave;
+    [SerializeField] Text waveShadow;
     public int waveAmount;
     bool resetHealth;
     bool flagCheck;
@@ -60,7 +61,9 @@ public class WaveSystem : MonoBehaviour
             currentAmountOfEnemies = 0;
         }
         //totalEnemies.text = ("Left" + "/" + currentAmountOfEnemies);
-        //wave.text = ("Wave" + "/" + waveAmount);
+        string s = ("Wave " + waveAmount.ToString());
+        wave.text = s;
+        waveShadow.text = s;
         if (currentAmountOfEnemies <= 0)
         {
             flagCheck = true;
