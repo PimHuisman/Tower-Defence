@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
-{
+public class EnemyHealth : MonoBehaviour {
     EnemyStrats enemyStats;
     [SerializeField] GameObject audioPlayer;
     AudioSource mySource;
     [SerializeField] int currentHealth;
-    [SerializeField] AudioClip deathSound;
+    [SerializeField] List<AudioClip> deathSounds;
+    AudioClip deathSound;
     [SerializeField] AudioClip damageSound;
     [SerializeField] GameObject damageParticles;
     [SerializeField] GameObject deathParticles;
@@ -16,62 +16,57 @@ public class EnemyHealth : MonoBehaviour
     Currency currencyScript;
     public bool dead = false;
 
-    void Start()
-    {
-        enemyStats = GetComponent<EnemyBehaviour>().enemyStats;
+    void Start () {
+        enemyStats = GetComponent<EnemyBehaviour> ().enemyStats;
         currentHealth = enemyStats.health;
-        currencyScript = GameObject.FindGameObjectWithTag("Manager").GetComponent<Currency>();
+        currencyScript = GameObject.FindGameObjectWithTag ("Manager").GetComponent<Currency> ();
     }
 
-    public bool DamageMe(int damage, Collision other)
-    {
+    public bool DamageMe (int damage, Collision other) {
         currentHealth -= damage;
 
-        MakeAndPlayAudio(damageSound, other);
+        MakeAndPlayAudio (damageSound, other);
 
-        if (currentHealth <= 0)
-        {
-            Die(other);
+        if (currentHealth <= 0) {
+            Die (other);
             return true;
-        }
-        else
-        {
-            healthBarScript.ChangeBar(currentHealth, enemyStats.health);
-            PlayParticles(damageParticles, other.contacts[0].point, Quaternion.Euler(-other.contacts[0].normal));
+        } else {
+            healthBarScript.ChangeBar (currentHealth, enemyStats.health);
+            PlayParticles (damageParticles, other.contacts[0].point, Quaternion.Euler (-other.contacts[0].normal));
             return false;
         }
     }
 
-    public void PlayParticles(GameObject parts, Vector3 position, Quaternion rotation)
-    {
-        GameObject newParts = Instantiate(damageParticles, position, rotation);
-        ParticleSystem partSystem = newParts.GetComponent<ParticleSystem>();
-        partSystem.Play();
-        Destroy(newParts, partSystem.main.duration);
+    public void PlayParticles (GameObject parts, Vector3 position, Quaternion rotation) {
+        GameObject newParts = Instantiate (damageParticles, position, rotation);
+        ParticleSystem partSystem = newParts.GetComponent<ParticleSystem> ();
+        partSystem.Play ();
+        Destroy (newParts, partSystem.main.duration);
     }
 
-    public void Die(Collision other)
-    {
-        if (other != null)
-        {
-            MakeAndPlayAudio(deathSound, other);
-            PlayParticles(deathParticles, other.transform.position, other.transform.rotation);
-            currencyScript.AddCurrency(enemyStats.currencyWhenDead);
-            Destroy(gameObject);
+    public void SetSound () {
+        int r = Random.Range(0, deathSounds.Count);
+        deathSound = deathSounds[r];
+        
+    }
+
+    public void Die (Collision other) {
+        if (other != null) {
+            SetSound();
+            MakeAndPlayAudio (deathSound, other);
+            PlayParticles (deathParticles, other.transform.position, other.transform.rotation);
+            currencyScript.AddCurrency (enemyStats.currencyWhenDead);
+            Destroy (gameObject);
             WaveSystem.instace.currentAmountOfEnemies--;
-        }
-        else
-        {
-            print("Works");
+        } else {
+            print ("Works");
         }
     }
 
-
-    public void MakeAndPlayAudio(AudioClip clip, Collision other)
-    {
-        GameObject newPlayer = Instantiate(audioPlayer, other.contacts[0].point, audioPlayer.transform.rotation);
-        mySource = newPlayer.GetComponent<AudioSource>();
-        mySource.PlayOneShot(clip);
-        Destroy(newPlayer, clip.length);
+    public void MakeAndPlayAudio (AudioClip clip, Collision other) {
+        GameObject newPlayer = Instantiate (audioPlayer, other.contacts[0].point, audioPlayer.transform.rotation);
+        mySource = newPlayer.GetComponent<AudioSource> ();
+        mySource.PlayOneShot (clip);
+        Destroy (newPlayer, clip.length);
     }
 }
