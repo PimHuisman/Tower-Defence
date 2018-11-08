@@ -14,10 +14,10 @@ MonoBehaviour:
   myName: Archer
   mySprite: {fileID: 21300000, guid: 6384d0d853590a8428442007aea317cd, type: 3}
   cost: 100
-  range: 12
+  range: 7
   force: 5
   angle: 0
-  damage: 7
+  damage: 15
   fireRate: 0.9
   projectileRespawnPercentage: 0
   tower: {fileID: 1973266785025132, guid: 0ccc8308e730ebd46b1eaefcba51afa9, type: 2}

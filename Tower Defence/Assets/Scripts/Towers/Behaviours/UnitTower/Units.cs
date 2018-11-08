@@ -7,42 +7,32 @@ using UnityEngine.AI;
 public class Units : MonoBehaviour
 {
     NavMeshAgent agent;
+    Animator anim;
     [HideInInspector] public Transform target;
-    
+    [SerializeField] float minDist;
+
     [Header("Health")]
     public int health;
     public int currentHealth;
 
     [Header("Raycast")]
-    [SerializeField] float distEnemy;
     [SerializeField] Vector3 offset;
     [SerializeField] float attackRate;
     [SerializeField] int damage;
     [SerializeField] bool isAttacking;
     RaycastHit hit;
     [SerializeField] float raycastLength;
-
-     [Header("FieldOfView")]
-    public float viewRadius;
-    [Range(0, 360)]
-    public float viewAngle;
-
-    public LayerMask targetMask;
-    public LayerMask obstacleMask;
-
-    public List<Transform> visibleTarget = new List<Transform>();
-
-    public float meshResolution;
-    public int edgeResolveInterations;
-    public float edgeDstThreshold;
-
-    [HideInInspector] public float distance;
+    public EnemyStrats unitStats;
+    [SerializeField] HealthBar healthBarScript;
+    Vector3 newPos;
+    Transform targetObject;
 
     void Start()
     {
+        GetComponent<NavMeshAgent>().speed = unitStats.speed;
+        anim = GetComponent<Animator>();
         StartCoroutine("AttackRate");
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine("FindTargetWithDelay", 0.2f);
         currentHealth = health;
     }
 
@@ -56,6 +46,18 @@ public class Units : MonoBehaviour
     void SetPosition()
     {
         agent.SetDestination(target.position);
+        float dist = Vector3.Distance(transform.position, target.position);
+        if (dist <= minDist)
+        {
+            print("Up Close");
+            anim.SetFloat("IsWalking", 0);
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.isStopped = false;
+            anim.SetFloat("IsWalking", 1);
+        }
     }
 
     void CheckHealth()
@@ -76,28 +78,25 @@ public class Units : MonoBehaviour
 
     public int CalculateHealth(int damage)
     {
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             return currentHealth = 0;
         }
+        healthBarScript.ChangeBar(currentHealth, health);
         currentHealth -= damage;
         return currentHealth;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<EnemyBehaviour>()) 
+        if (other.GetComponent<EnemyBehaviour>())
         {
+            targetObject = other.transform;
             isAttacking = true;
-            Vector3 newPos = new Vector3(other.transform.position.x + distEnemy,other.transform.position.y,other.transform.position.z);
+            newPos = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
             target.position = newPos;
-            agent.isStopped = true;
+            anim.SetFloat("IsWalking", 1);
         }
-    }
-
-    void OnTriggerStay(Collider other) 
-    {
-
     }
 
     void Attack()
@@ -107,12 +106,12 @@ public class Units : MonoBehaviour
             if (hit.transform.tag == "Enemy")
             {
                 isAttacking = true;
-                print(hit.transform.name);
+                anim.SetBool("IsAttacking", true);
             }
             else
             {
-                print("its not working");
                 isAttacking = false;
+                anim.SetBool("IsAttacking", false);
             }
         }
         Debug.DrawRay(transform.position + offset, transform.forward * raycastLength, Color.red);
@@ -124,55 +123,13 @@ public class Units : MonoBehaviour
         {
             while (isAttacking)
             {
+                if (targetObject != null)
+                {
+                    targetObject.gameObject.GetComponent<EnemyHealth>().DamageMe2(damage,hit.transform);
+                }
                 yield return new WaitForSeconds(attackRate);
-                //hit.transform.gameObject.GetComponent<EnemyHealth>().DamageMe(damage, null);
-                //print(hit.transform.name);
             }
             yield return null;
         }
     }
-
-    void FindVisibleTarget()
-    {
-        visibleTarget.Clear();
-        Collider[] targetInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
-
-
-        for (int i = 0; i < targetInViewRadius.Length; i++)
-        {
-            Transform target = targetInViewRadius[i].transform;
-            Vector3 dirToTarget = (target.position - transform.position).normalized;
-            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
-            {
-                float dstToTarget = Vector3.Distance(transform.position, target.position);
-
-                if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
-                {
-                    visibleTarget.Add(target);
-
-                    Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
-                }
-
-            }
-        }
-    }
-
-    IEnumerator FindTargetWithDelay(float delay)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(delay);
-            FindVisibleTarget();
-        }
-    }
-
-    public Vector3 DirFromAngel(float angleInDegrees, bool angleIsGlobal)
-    {
-        if (!angleIsGlobal)
-        {
-            angleInDegrees += transform.eulerAngles.y;
-        }
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
-
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class UnitBehaviour : MonoBehaviour
 {
-	public List<Transform> unitsList = new List<Transform>();
-	[SerializeField] Transform unit;
 	[SerializeField] int unitMaxAmount;
+	[SerializeField] Transform unit;
+	public List<Transform> unitsList = new List<Transform>();
 	[SerializeField] Transform spawnPos;
-	[SerializeField] Transform target;
+	public Transform target;
 	[SerializeField] int newAmount;
 	[SerializeField] float timerNewUnit;
 
@@ -18,8 +18,8 @@ public class UnitBehaviour : MonoBehaviour
 	[SerializeField] float radius;
 	void Start () 
 	{
-		StartCoroutine("NewEnemy");
 		CreateUnits(unitMaxAmount);
+		StartCoroutine("NewEnemy");
 		radius = stats.range;
 	}
 	
@@ -61,10 +61,10 @@ public class UnitBehaviour : MonoBehaviour
 		for (int i = 0; i < x; i++)
 		{
 			Transform newUnit = Instantiate(unit, spawnPos.position, spawnPos.rotation);
+			unitsList.Add(newUnit);
 			Vector3 newPos =  new Vector3(target.position.x, target.position.y, target.position.z);
 			newUnit.GetComponent<Units>().target = target;
 			newUnit.SetParent(spawnPos);
-			unitsList.Add(newUnit);
 		}
 	}
 

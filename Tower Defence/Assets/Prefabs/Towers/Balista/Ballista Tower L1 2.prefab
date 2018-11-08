@@ -270,7 +270,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 150
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -305,7 +305,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -383,7 +383,6 @@ MonoBehaviour:
   currentProjectile: {fileID: 0}
   projectileSpawn: {fileID: 4004274690777322}
   mySource: {fileID: 82041740986557532}
-  shootClip: {fileID: 8300000, guid: 4511f195a5516e4468bf810226145a3d, type: 3}
   force: 0
   damage: 5
   angle: 0

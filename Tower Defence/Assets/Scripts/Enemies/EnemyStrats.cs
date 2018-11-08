@@ -9,7 +9,7 @@ public class EnemyStrats : ScriptableObject
 	public int currencyWhenDead;
 	public float speed;
 	public int attackDamage;
-	public int attackCooldown;
+	public float attackCooldown;
 	public int enterDamage;
 
 }

@@ -50,14 +50,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625491241935272}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -15.174, y: -4.8857482e-17, z: 11.001726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4560537739248662}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4560537739248662
 Transform:
   m_ObjectHideFlags: 1
@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1057214225067246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24, y: 0, z: 3.59}
+  m_LocalPosition: {x: -0.14, y: 0, z: 3.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4547350572972978}
@@ -131,13 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078546d15ade98449ada5e5784bf5bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitsList: []
-  unit: {fileID: 4660883387130906, guid: 64b06a3cbeab95244af901f7977d0499, type: 2}
   unitMaxAmount: 1
+  unit: {fileID: 4833861620461682, guid: 8951078ba8865a7458976c827afa94db, type: 2}
+  unitsList: []
   spawnPos: {fileID: 4547350572972978}
   target: {fileID: 4560537739248662}
-  newAmount: 0
-  timerNewUnit: 1
+  newAmount: 1
+  timerNewUnit: 4
   stats: {fileID: 11400000, guid: 27cb7c87eac586e4994c30ff5f2335dc, type: 2}
   pathMask:
     serializedVersion: 2

@@ -16,5 +16,5 @@ MonoBehaviour:
   currencyWhenDead: 5
   speed: 1.5
   attackDamage: 5
-  attackCooldown: 1
+  attackCooldown: 1.5
   enterDamage: 1

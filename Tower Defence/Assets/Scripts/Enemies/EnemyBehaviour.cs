@@ -11,22 +11,26 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] Vector3 target;
     [SerializeField] float raycastLength;
     bool isAttacking = false;
+    [SerializeField] float damageTime;
     Transform targetObj;
-    Vector3 offset;
+    [SerializeField] Vector3 offset;
     Vector3 endPos;
     NavMeshAgent agent;
     RaycastHit hit;
     Animator anim;
     AudioSource mySource;
+    bool damage = false;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         StartCoroutine("AttackRate");
+        StartCoroutine("Damage");
         GetComponent<NavMeshAgent>().speed = enemyStats.speed;
         agent = GetComponent<NavMeshAgent>();
         endPos = GameObject.FindGameObjectWithTag("EndPoint").transform.position;
         target = endPos;
+        anim.SetFloat("IsWalking", 1);
     }
 
     void Update()
@@ -38,7 +42,11 @@ public class EnemyBehaviour : MonoBehaviour
     void TargetDestanation(Vector3 newtarget)
     {
         agent.SetDestination(newtarget);
-        anim.SetFloat("IsWalking", agent.speed);
+        if (targetObj == null)
+        {
+            agent.isStopped = false;
+            anim.SetFloat("IsWalking", 1);
+        }
     }
 
     IEnumerator AttackRate()
@@ -47,33 +55,50 @@ public class EnemyBehaviour : MonoBehaviour
         {
             while (attack)
             {
-                yield return new WaitForSeconds(enemyStats.attackCooldown);
                 if (targetObj != null)
                 {
-                    anim.SetBool("IsAttacking", true);
                     targetObj.gameObject.GetComponent<Units>().CalculateHealth(enemyStats.attackDamage);
-                    anim.SetBool("IsAttacking", false);
+                    damage = true;
                 }
-
+                yield return new WaitForSeconds(enemyStats.attackCooldown);
             }
+            yield return null;
+        }
+    }
+
+    IEnumerator Damage()
+    {
+        while (true)
+        {
+            while (damage)
+            {
+                anim.SetBool("IsAttacking", true);
+                damage = false;
+                anim.SetBool("IsAttacking", false);
+                yield return new WaitForSeconds(damageTime);
+            }
+
             yield return null;
         }
     }
 
     void Attack()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hit, raycastLength))
+        if (Physics.Raycast(transform.position + offset, transform.forward, out hit, raycastLength))
         {
             if (hit.transform.tag == "Unit")
             {
                 if (!isAttacking)
                 {
                     attack = true;
-                    target = hit.transform.position;
+                    anim.SetBool("IsAttacking", true);
                 }
             }
             else
             {
+                anim.SetBool("IsAttacking", false);
+                target = endPos;
+                targetObj = null;
                 attack = false;
             }
         }
@@ -84,7 +109,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         hitTemple = true;
         temple.DamageMe(enemyStats.enterDamage);
-
+        WaveSystem.instace.currentAmountOfEnemies--; 
         Destroy(gameObject, 0.3f);
     }
 
@@ -92,11 +117,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (other.transform.tag == "Unit")
         {
-            if (attack)
-            {
-                agent.isStopped = true;
-                anim.SetFloat("IsWalking", 0);
-            }
+            agent.isStopped = true;
+            anim.SetFloat("IsWalking", 0);
+            targetObj = other.transform;
         }
 
         if (other.transform.tag == "Enemy")
@@ -111,7 +134,6 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
     }
-
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.GetComponent<TempleStats>())
@@ -128,6 +150,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (other.gameObject == null)
         {
+            targetObj = null;
             target = endPos;
         }
     }

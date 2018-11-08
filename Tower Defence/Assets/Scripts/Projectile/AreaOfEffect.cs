@@ -23,7 +23,6 @@ public class AreaOfEffect : MonoBehaviour
             print(other.transform.name);
             col = other;
             DamageArea();
-            print("do damage");
             MakeAndPlaySound(transform.position);
         }
     }
@@ -48,10 +47,7 @@ public class AreaOfEffect : MonoBehaviour
         {
             if (nearbyObject.transform.tag == "Enemy")
             {
-                if (!nearbyObject.transform.GetComponent<EnemyHealth>().DamageMe(damage, col))
-                {
-                    nearbyObject.transform.GetComponent<EnemyHealth>().DamageMe(damage, col);
-                }
+                nearbyObject.transform.GetComponent<EnemyHealth>().DamageMe(damage, col);
             }
         }
 
