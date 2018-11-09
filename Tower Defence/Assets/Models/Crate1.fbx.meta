@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: 3b8fbf59cd53d0046b25260693878f9d
+guid: 703f82b0012ad85479a7973396a682b4
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Stone
+    2100000: Wood Edges
+    2100002: Wood Inner
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube.001
+    4300000: Crate
   externalObjects: {}
   materials:
     importMaterials: 1
