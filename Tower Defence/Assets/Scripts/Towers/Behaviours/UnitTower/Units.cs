@@ -55,8 +55,11 @@ public class Units : MonoBehaviour
         }
         else
         {
-            agent.isStopped = false;
-            anim.SetFloat("IsWalking", 1);
+            if (isAttacking)
+            {
+                agent.isStopped = false;
+                anim.SetFloat("IsWalking", 1);
+            }
         }
     }
 
@@ -125,7 +128,7 @@ public class Units : MonoBehaviour
             {
                 if (targetObject != null)
                 {
-                    targetObject.gameObject.GetComponent<EnemyHealth>().DamageMe2(damage,hit.transform);
+                    targetObject.gameObject.GetComponent<EnemyHealth>().DamageMe2(damage, hit.transform);
                 }
                 yield return new WaitForSeconds(attackRate);
             }

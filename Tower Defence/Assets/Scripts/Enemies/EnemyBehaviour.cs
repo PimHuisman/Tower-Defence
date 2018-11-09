@@ -109,19 +109,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         hitTemple = true;
         temple.DamageMe(enemyStats.enterDamage);
-        WaveSystem.instace.currentAmountOfEnemies--; 
+        WaveSystem.instace.currentAmountOfEnemies--;
         Destroy(gameObject, 0.3f);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Unit")
-        {
-            agent.isStopped = true;
-            anim.SetFloat("IsWalking", 0);
-            targetObj = other.transform;
-        }
-
         if (other.transform.tag == "Enemy")
         {
             isAttacking = other.GetComponent<EnemyBehaviour>().attack;
@@ -129,9 +122,29 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 if (other.GetComponent<EnemyBehaviour>().attack)
                 {
+                    print(other.GetComponent<EnemyBehaviour>().attack);
                     target = endPos;
                 }
             }
+        }
+        if (other.transform.CompareTag("Unit"))
+        {
+            agent.isStopped = true;
+            anim.SetFloat("IsWalking", 0);
+            targetObj = other.transform;
+            if (other.transform.tag == "Enemy")
+            {
+                isAttacking = other.GetComponent<EnemyBehaviour>().attack;
+                if (other.GetComponent<EnemyBehaviour>())
+                {
+                    if (other.GetComponent<EnemyBehaviour>().attack)
+                    {
+                        print(other.GetComponent<EnemyBehaviour>().attack);
+                        target = endPos;
+                    }
+                }
+            }
+
         }
     }
     void OnCollisionEnter(Collision other)

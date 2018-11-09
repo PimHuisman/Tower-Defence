@@ -47,7 +47,7 @@ public class AreaOfEffect : MonoBehaviour
         {
             if (nearbyObject.transform.tag == "Enemy")
             {
-                nearbyObject.transform.GetComponent<EnemyHealth>().DamageMe(damage, col);
+                nearbyObject.transform.GetComponent<EnemyHealth>().DamageMe2(damage, nearbyObject.transform);
             }
         }
 

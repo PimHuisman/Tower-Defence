@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] HealthBar healthBarScript;
     Currency currencyScript;
     int unitHealth;
+    bool dead;
     void Start()
     {
         if (GetComponent<Units>() == null)
@@ -40,7 +41,6 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die(other);
-            print("Dead");
         }
         else
         {
@@ -51,13 +51,17 @@ public class EnemyHealth : MonoBehaviour
 
     public void DamageMe2(int damage, Transform pos)
     {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
+
+        if (currentHealth > 0)
         {
-            print("dead");
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                Die2();
+            }
+            healthBarScript.ChangeBar(currentHealth, enemyStats.health);
         }
-        healthBarScript.ChangeBar(currentHealth, enemyStats.health);
-       // PlayParticles(damageParticles, pos.position, pos.rotation);
+        // PlayParticles(damageParticles, pos.position, pos.rotation);
     }
 
     public void PlayParticles(GameObject parts, Vector3 position, Quaternion rotation)
@@ -71,9 +75,11 @@ public class EnemyHealth : MonoBehaviour
     public void Die2()
     {
         Destroy(gameObject);
+        WaveSystem.instace.currentAmountOfEnemies--;
     }
 
-    public void SetSound() {
+    public void SetSound()
+    {
         print("Count: " + deathSounds.Count);
         int r = Random.Range(0, deathSounds.Count - 1);
         deathSound = deathSounds[r];
