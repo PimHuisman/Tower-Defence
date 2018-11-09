@@ -1744,7 +1744,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 1877183934367104, guid: 958369cad9dab19478d185279b7dece1,
     type: 2}
   currentHealth: 0
-  deathSound: {fileID: 8300000, guid: 3d8aebc1ca296d64d84ec15e1fb9e6f4, type: 3}
+  deathSounds: []
   damageSound: {fileID: 8300000, guid: 29a9430a4e7c41441b5f2448ac5d0ded, type: 3}
   damageParticles: {fileID: 1260725497868722, guid: 219916d2b00fc7a4bb013f36f6857cd8,
     type: 2}
@@ -1841,15 +1841,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   minDist: 0.5
-  health: 500
+  maxDist: 1
+  health: 50
   currentHealth: 0
   offset: {x: 0, y: 0.5, z: 0}
-  attackRate: 1
-  damage: 1
+  attackRate: 1.5
+  damageTime: 0
+  damage: 5
   isAttacking: 0
   raycastLength: 0.5
   unitStats: {fileID: 11400000, guid: 30fb078637fecf741a607d0b5f838b25, type: 2}
   healthBarScript: {fileID: 114437564646882314}
+  targetObject: {fileID: 0}
 --- !u!114 &114958285843659102
 MonoBehaviour:
   m_ObjectHideFlags: 1

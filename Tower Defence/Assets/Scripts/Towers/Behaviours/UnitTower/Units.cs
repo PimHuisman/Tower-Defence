@@ -9,7 +9,9 @@ public class Units : MonoBehaviour
     NavMeshAgent agent;
     Animator anim;
     [HideInInspector] public Transform target;
+    Transform tragetOpsl;
     [SerializeField] float minDist;
+    [SerializeField] float maxDist;
 
     [Header("Health")]
     public int health;
@@ -18,6 +20,7 @@ public class Units : MonoBehaviour
     [Header("Raycast")]
     [SerializeField] Vector3 offset;
     [SerializeField] float attackRate;
+    [SerializeField] float damageTime;
     [SerializeField] int damage;
     [SerializeField] bool isAttacking;
     RaycastHit hit;
@@ -25,10 +28,13 @@ public class Units : MonoBehaviour
     public EnemyStrats unitStats;
     [SerializeField] HealthBar healthBarScript;
     Vector3 newPos;
-    Transform targetObject;
+    [HideInInspector] public Transform targetObject;
+    bool damagebool = false;
 
     void Start()
     {
+        StartCoroutine("Damage");
+        tragetOpsl = target;
         GetComponent<NavMeshAgent>().speed = unitStats.speed;
         anim = GetComponent<Animator>();
         StartCoroutine("AttackRate");
@@ -43,10 +49,15 @@ public class Units : MonoBehaviour
         Attack();
     }
 
+
     void SetPosition()
     {
         agent.SetDestination(target.position);
         float dist = Vector3.Distance(transform.position, target.position);
+        if (dist >= maxDist)
+        {
+            agent.SetDestination(tragetOpsl.position);
+        }
         if (dist <= minDist)
         {
             print("Up Close");
@@ -94,11 +105,18 @@ public class Units : MonoBehaviour
     {
         if (other.GetComponent<EnemyBehaviour>())
         {
-            targetObject = other.transform;
-            isAttacking = true;
-            newPos = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
-            target.position = newPos;
-            anim.SetFloat("IsWalking", 1);
+            if (isAttacking)
+            {
+
+            }
+            else
+            {
+                targetObject = other.transform;
+                isAttacking = true;
+                newPos = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+                target.position = newPos;
+                anim.SetFloat("IsWalking", 1);
+            }
         }
     }
 
@@ -109,7 +127,6 @@ public class Units : MonoBehaviour
             if (hit.transform.tag == "Enemy")
             {
                 isAttacking = true;
-                anim.SetBool("IsAttacking", true);
             }
             else
             {
@@ -128,11 +145,28 @@ public class Units : MonoBehaviour
             {
                 if (targetObject != null)
                 {
+                    damagebool = true;
                     targetObject.gameObject.GetComponent<EnemyHealth>().DamageMe2(damage, hit.transform);
                 }
                 yield return new WaitForSeconds(attackRate);
             }
             yield return null;
         }
+    }
+
+    IEnumerator Damage()
+    {
+        while (true)
+        {
+            while (damagebool)
+            {
+                anim.SetBool("IsAttacking", true);
+                damagebool = false;
+                anim.SetBool("IsAttacking", false);
+                yield return new WaitForSeconds(damageTime);
+            }
+            yield return null;
+        }
+
     }
 }

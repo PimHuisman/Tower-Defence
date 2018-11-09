@@ -99,6 +99,7 @@ public class EnemyBehaviour : MonoBehaviour
                 anim.SetBool("IsAttacking", false);
                 target = endPos;
                 targetObj = null;
+                isAttacking = false;
                 attack = false;
             }
         }
@@ -122,29 +123,23 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 if (other.GetComponent<EnemyBehaviour>().attack)
                 {
-                    print(other.GetComponent<EnemyBehaviour>().attack);
+                    print("Go to the end pos");
                     target = endPos;
                 }
             }
         }
         if (other.transform.CompareTag("Unit"))
         {
-            agent.isStopped = true;
-            anim.SetFloat("IsWalking", 0);
-            targetObj = other.transform;
-            if (other.transform.tag == "Enemy")
+            if (other.transform.GetComponent<Units>().targetObject == null)
             {
-                isAttacking = other.GetComponent<EnemyBehaviour>().attack;
-                if (other.GetComponent<EnemyBehaviour>())
-                {
-                    if (other.GetComponent<EnemyBehaviour>().attack)
-                    {
-                        print(other.GetComponent<EnemyBehaviour>().attack);
-                        target = endPos;
-                    }
-                }
+                agent.isStopped = true;
+                anim.SetFloat("IsWalking", 0);
+                targetObj = other.transform;
             }
-
+            else
+            {
+                target = endPos;
+            }
         }
     }
     void OnCollisionEnter(Collision other)

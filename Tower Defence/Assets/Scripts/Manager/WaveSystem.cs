@@ -24,6 +24,9 @@ public class WaveSystem : MonoBehaviour
     [Header("Wave")]
     [SerializeField] Text wave;
     [SerializeField] Text waveShadow;
+    [SerializeField] Pause pauseScript;
+    [SerializeField] GameObject winScreen;
+    public int winWaveAmount;
     public int waveAmount;
     bool resetHealth;
     bool flagCheck;
@@ -53,9 +56,18 @@ public class WaveSystem : MonoBehaviour
         currentAmountOfEnemies = amountOfEnemies;
         StartCoroutine(SpawnRate());
     }
+    void CheckWave()
+    {
+        if (waveAmount >= winWaveAmount)
+        {
+            winScreen.SetActive(true);
+            pauseScript.isPaused = true;
+        }
+    }
 
     void Update()
     {
+        CheckWave();
         if (Input.GetButtonDown("I"))
         {
             currentAmountOfEnemies = 0;
